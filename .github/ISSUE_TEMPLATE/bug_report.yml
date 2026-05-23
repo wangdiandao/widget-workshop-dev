@@ -1,0 +1,15 @@
+name: Bug report
+description: Report a plugin, docs, schema, script, or example issue.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What failed, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation output
+      description: Paste output from Test-Repository.ps1 or Test-ComponentPackage.ps1 when relevant.

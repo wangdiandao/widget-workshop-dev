@@ -1,0 +1,15 @@
+name: Feature request
+description: Suggest an improvement to the Widget Workshop developer toolkit.
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Scenario
+      description: What component developer workflow should this improve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe the docs, Skill, schema, script, or example change you want.

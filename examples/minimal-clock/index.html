@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minimal Clock</title>
+  <style>
+    :root { color-scheme: light dark; font-family: "Segoe UI", sans-serif; }
+    body { margin: 0; height: 100vh; display: grid; place-items: center; background: transparent; color: CanvasText; }
+    main { width: calc(100% - 32px); min-height: 120px; display: grid; place-items: center; border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); border-radius: 16px; background: color-mix(in srgb, Canvas 86%, transparent); }
+    #time { font-size: 44px; font-weight: 600; line-height: 1; }
+    #date { margin-top: 10px; font-size: 14px; opacity: .72; }
+  </style>
+</head>
+<body>
+  <main>
+    <section aria-label="Clock">
+      <div id="time">--:--</div>
+      <div id="date"></div>
+    </section>
+  </main>
+  <script>
+    const timeEl = document.getElementById('time');
+    const dateEl = document.getElementById('date');
+
+    function render() {
+      const now = new Date();
+      timeEl.textContent = new Intl.DateTimeFormat(undefined, { hour: '2-digit', minute: '2-digit' }).format(now);
+      dateEl.textContent = new Intl.DateTimeFormat(undefined, { weekday: 'short', month: 'short', day: 'numeric' }).format(now);
+    }
+
+    async function start() {
+      try {
+        const settings = await window.widgetWorkshop.host.getComponentSettings();
+        if (settings && typeof settings.accent === 'string') {
+          document.documentElement.style.setProperty('accent-color', settings.accent);
+        }
+      } catch (_) {
+        // The component still works when settings are unavailable.
+      }
+
+      render();
+      setInterval(render, 1000);
+    }
+
+    start();
+  </script>
+</body>
+</html>

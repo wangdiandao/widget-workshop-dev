@@ -1,0 +1,33 @@
+{
+  "name": "widget-workshop",
+  "description": "Agents and skills for Widget Workshop component development. Create, validate, review, and troubleshoot component packages, manifests, settings, Host API usage, permissions, and Workshop-ready metadata.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Widget Workshop",
+    "url": "https://github.com/wangdiandao/widget-workshop-dev"
+  },
+  "license": "MIT",
+  "keywords": [
+    "widget-workshop",
+    "components",
+    "desktop-widgets",
+    "host-api",
+    "manifest",
+    "settings",
+    "validation",
+    "troubleshooting"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "widgets",
+    "components",
+    "desktop",
+    "host-api",
+    "validation",
+    "troubleshooting"
+  ],
+  "agents": "agents/",
+  "skills": [
+    "skills/"
+  ]
+}

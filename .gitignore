@@ -1,0 +1,24 @@
+# Build and dependency output
+bin/
+obj/
+.cache/
+.tmp/
+.codex-build/
+node_modules/
+coverage/
+
+# OS/editor state
+.DS_Store
+Thumbs.db
+.vs/
+.vscode/.suo
+.vscode/.user
+
+# Runtime and package artifacts
+*.zip
+*.nupkg
+*.msix
+*.msixbundle
+*.appx
+*.appxbundle
+steam_appid.txt

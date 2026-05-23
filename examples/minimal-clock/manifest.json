@@ -1,0 +1,26 @@
+{
+  "packageId": "com.widgetworkshop.examples.minimal-clock",
+  "displayName": "Minimal Clock",
+  "version": "1.0.0",
+  "description": "A minimal Widget Workshop clock component.",
+  "preview": "preview.png",
+  "windowSize": {
+    "width": 320,
+    "height": 180
+  },
+  "hasCustomSettings": true,
+  "categories": [
+    "desktop_personalization"
+  ],
+  "permissions": [
+    "host",
+    "theme"
+  ],
+  "locales": {
+    "default": "en-US",
+    "supported": [
+      "en-US",
+      "zh-CN"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0",
+  "categories": [
+    { "key": "app", "alwaysAvailableMethods": ["getLocaleInfo"], "description": "Read app metadata, locale, and preferred language information." },
+    { "key": "host", "ungatedMethods": ["getRuntimeInfo", "getComponentState", "getComponentSettings", "getComponentContext", "getPermissionGrants"], "description": "Read component context, settings, state, runtime information, and grant state." },
+    { "key": "process", "description": "Read host process and WebView memory, CPU, uptime, and version information." },
+    { "key": "system", "description": "Read operating system, architecture, environment, network, disk, and memory information." },
+    { "key": "screen", "description": "Read display, cursor, and coordinate conversion information." },
+    { "key": "theme", "description": "Read theme, high contrast, reduced motion, and system color information." },
+    { "key": "power", "description": "Read battery, idle, and display power state information." },
+    { "key": "shell", "description": "Open approved external URLs, package files, configured files, or reveal package items." },
+    { "key": "dialog", "description": "Open file pickers, save pickers, and message boxes." },
+    { "key": "clipboard", "description": "Read and write clipboard text and HTML." },
+    { "key": "storage", "description": "Read, write, remove, and clear component-private storage." },
+    { "key": "files", "description": "Read, write, inspect, and release user-granted file tokens." },
+    { "key": "fetch", "description": "Request public HTTPS data through the host fetch policy." }
+  ]
+}

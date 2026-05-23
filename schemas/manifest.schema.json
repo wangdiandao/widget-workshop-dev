@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/wangdiandao/widget-workshop-dev/schemas/manifest.schema.json",
+  "title": "Widget Workshop component manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["packageId", "displayName", "version", "preview", "windowSize", "hasCustomSettings"],
+  "properties": {
+    "packageId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.-]*[a-z0-9]$" },
+    "displayName": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "pattern": "^[A-Za-z0-9.+-]+$" },
+    "description": { "type": "string" },
+    "preview": { "type": "string", "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$)).*\\.(png|jpg|jpeg)$" },
+    "windowSize": { "$ref": "#/$defs/size" },
+    "dragArea": { "$ref": "#/$defs/rect" },
+    "hasCustomSettings": { "type": "boolean" },
+    "categories": { "type": "array", "uniqueItems": true, "items": { "enum": ["dashboard", "productivity", "desktop_personalization", "workflow_integrations", "device_environment", "lifestyle"] } },
+    "windowShape": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["rectangle", "roundedRectangle"] },
+        "cornerRadius": { "type": "number", "minimum": 0 }
+      }
+    },
+    "permissions": { "type": "array", "uniqueItems": true, "items": { "enum": ["app", "host", "process", "system", "screen", "theme", "power", "shell", "dialog", "clipboard", "storage", "files", "fetch"] } },
+    "locales": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["default", "supported"],
+      "properties": {
+        "default": { "type": "string", "minLength": 2 },
+        "supported": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 2 } }
+      }
+    }
+  },
+  "$defs": {
+    "size": { "type": "object", "additionalProperties": false, "required": ["width", "height"], "properties": { "width": { "type": "number", "exclusiveMinimum": 0 }, "height": { "type": "number", "exclusiveMinimum": 0 } } },
+    "rect": { "type": "object", "additionalProperties": false, "required": ["x", "y", "width", "height"], "properties": { "x": { "type": "number", "minimum": 0 }, "y": { "type": "number", "minimum": 0 }, "width": { "type": "number", "exclusiveMinimum": 0 }, "height": { "type": "number", "exclusiveMinimum": 0 } } }
+  }
+}

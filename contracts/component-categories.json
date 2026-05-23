@@ -1,0 +1,12 @@
+{
+  "version": "0.1.0",
+  "categories": [
+    { "key": "dashboard", "label": "Dashboard" },
+    { "key": "productivity", "label": "Productivity" },
+    { "key": "desktop_personalization", "label": "Desktop Personalization" },
+    { "key": "workflow_integrations", "label": "Workflow Integrations" },
+    { "key": "device_environment", "label": "Device Environment" },
+    { "key": "lifestyle", "label": "Lifestyle" }
+  ],
+  "fallback": { "key": "other", "label": "Other", "when": "missing or empty categories" }
+}

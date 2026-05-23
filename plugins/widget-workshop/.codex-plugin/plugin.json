@@ -1,0 +1,42 @@
+{
+  "name": "widget-workshop",
+  "version": "0.1.0",
+  "description": "Agents and skills for Widget Workshop component development. Create, validate, review, and troubleshoot component packages, manifests, settings, Host API usage, permissions, and Workshop-ready metadata.",
+  "author": {
+    "name": "Widget Workshop",
+    "url": "https://github.com/wangdiandao/widget-workshop-dev"
+  },
+  "homepage": "https://github.com/wangdiandao/widget-workshop-dev",
+  "repository": "https://github.com/wangdiandao/widget-workshop-dev",
+  "license": "MIT",
+  "keywords": [
+    "widget-workshop",
+    "components",
+    "desktop-widgets",
+    "host-api",
+    "manifest",
+    "settings",
+    "validation",
+    "troubleshooting"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Widget Workshop",
+    "shortDescription": "Build and validate Widget Workshop components.",
+    "longDescription": "End-to-end component developer assistance for Widget Workshop: create package folders, write manifest and settings files, use window.widgetWorkshop safely, validate contracts, review permissions, and troubleshoot import or runtime failures.",
+    "developerName": "Widget Workshop",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/wangdiandao/widget-workshop-dev",
+    "defaultPrompt": [
+      "Create a Widget Workshop component from this idea.",
+      "Validate this Widget Workshop component package.",
+      "Review these window.widgetWorkshop calls and permissions.",
+      "Debug this Widget Workshop import or runtime error."
+    ],
+    "brandColor": "#3B82F6"
+  }
+}

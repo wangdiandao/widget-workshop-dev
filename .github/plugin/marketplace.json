@@ -1,0 +1,26 @@
+{
+  "name": "widget-workshop-dev",
+  "interface": {
+    "displayName": "Widget Workshop Dev"
+  },
+  "metadata": {
+    "description": "Developer plugin, skills, schemas, and validation tools for Widget Workshop components.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "widget-workshop",
+      "description": "Build, validate, review, and troubleshoot Widget Workshop component packages.",
+      "version": "0.1.0",
+      "source": {
+        "source": "local",
+        "path": "./plugins/widget-workshop"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

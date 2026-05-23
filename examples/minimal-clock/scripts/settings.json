@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "fields": [
+    {
+      "key": "accent",
+      "label": {
+        "en-US": "Accent color",
+        "zh-CN": "强调色"
+      },
+      "type": "color",
+      "control": "color",
+      "default": "#3B82F6"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Widget Host API"
+  short_description: "Use window.widgetWorkshop with correct permissions."
+  default_prompt: "Use $widget-workshop-host-api to review these window.widgetWorkshop calls."

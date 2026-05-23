@@ -1,0 +1,4 @@
+interface:
+  display_name: "Widget Validation"
+  short_description: "Run plugin, docs, contract, and package gates."
+  default_prompt: "Use $widget-workshop-validation to validate this Widget Workshop package or repository change."
