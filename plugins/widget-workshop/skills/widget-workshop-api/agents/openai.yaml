@@ -1,0 +1,4 @@
+interface:
+  display_name: "Widget API"
+  short_description: "Use Widget Workshop contracts safely."
+  default_prompt: "Use $widget-workshop-api to check this Widget Workshop manifest, settings, permissions, or Host API usage."

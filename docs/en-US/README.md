@@ -28,14 +28,12 @@ Only `manifest.json`, `index.html`, and a preview file are always required. Loca
 
 ## AI Plugin And Skills
 
-The repository-local Widget Workshop AI plugin lives at `plugins/widget-workshop`. The `widget-workshop-dev` agent is the Skill orchestrator for component creators; when Codex helps implement or review a component, prefer that agent so it can load these task-focused skills:
+The repository-local Widget Workshop AI plugin lives at `plugins/widget-workshop`. Use `widget-workshop-workflow` as the Skill orchestrator for component creators; when Codex helps implement or review a component, start there so it can route to the focused Skill:
 
-- `widget-workshop-setup`: plugin installation, repository layout, prerequisites, and validation command orientation.
-- `widget-workshop-component-authoring`: component source folders, `manifest.json`, settings, locales, preview assets, import, and re-import.
-- `widget-workshop-host-api`: `window.widgetWorkshop` calls, permission categories, return shapes, and runtime boundaries.
-- `widget-workshop-validation`: repository, plugin, docs, contract, and component package validation gates.
-- `widget-workshop-troubleshooting`: import, settings, permission, fetch, file token, shell, and runtime failure triage.
-- `widget-workshop-review`: pre-publication review for manifest, settings, Host API, permissions, localization, preview, and graceful degradation.
+- `widget-workshop-workflow`: Skill routing, repository orientation, validation choice, and contract-sync boundaries.
+- `widget-workshop-dev`: component source folders, `manifest.json`, `index.html`, settings, locales, preview assets, styling, and runtime code.
+- `widget-workshop-api`: `window.widgetWorkshop` calls, permission categories, manifest fields, settings schema, return shapes, and runtime boundaries.
+- `widget-workshop-code-review`: pre-publication review for manifest, settings, Host API, permissions, localization, preview, security, and graceful degradation.
 
 Steam Workshop upload is a Widget Workshop app workflow, not a separate Skill; for public sharing, first prepare component metadata, preview, categories, permissions, and license information with [Workshop Publishing](workshop-publishing.md).
 

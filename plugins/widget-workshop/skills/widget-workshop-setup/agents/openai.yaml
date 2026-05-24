@@ -1,4 +1,0 @@
-interface:
-  display_name: "Widget Setup"
-  short_description: "Install and validate Widget Workshop Dev."
-  default_prompt: "Use $widget-workshop-setup to set up and validate this Widget Workshop Dev checkout."

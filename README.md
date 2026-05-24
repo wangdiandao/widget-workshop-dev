@@ -57,12 +57,10 @@ scripts/                          Validation and contract-sync scripts
 
 | Skill | Use it for |
 |---|---|
-| `widget-workshop-setup` | Installing the plugin, understanding the repository layout, and running validation scripts. |
-| `widget-workshop-component-authoring` | Creating or reviewing component source folders, manifests, settings, locales, preview assets, import, and re-import flow. |
-| `widget-workshop-host-api` | Implementing or reviewing `window.widgetWorkshop` calls, permissions, return shapes, and degraded behavior. |
-| `widget-workshop-validation` | Running repository, plugin, and component validation gates. |
-| `widget-workshop-troubleshooting` | Diagnosing import, settings, permission, fetch, file token, shell, and runtime failures. |
-| `widget-workshop-review` | Reviewing component packages before local sharing or Steam Workshop publication. |
+| `widget-workshop-workflow` | Choosing the right Widget Workshop Skill, repository sources, validation gate, and contract-sync path. |
+| `widget-workshop-api` | Checking `window.widgetWorkshop`, permission categories, `manifest.json`, settings schemas, categories, and runtime API errors. |
+| `widget-workshop-code-review` | Reviewing component packages before local sharing or Steam Workshop publication. |
+| `widget-workshop-dev` | Writing component folders, manifests, `index.html`, settings, locales, preview assets, styling, and runtime code. |
 
 ## Documentation
 

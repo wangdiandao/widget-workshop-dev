@@ -8,24 +8,32 @@ $ErrorActionPreference = 'Stop'
 function Fail([string]$Message) { throw $Message }
 function Assert-File([string]$Path) { if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { Fail "Missing file: $Path" } }
 function Assert-Directory([string]$Path) { if (-not (Test-Path -LiteralPath $Path -PathType Container)) { Fail "Missing directory: $Path" } }
+function Assert-MissingPath([string]$Path) { if (Test-Path -LiteralPath $Path) { Fail "Unexpected stale path: $Path" } }
 function Read-Json([string]$Path) { Assert-File $Path; return Get-Content -Raw -Encoding UTF8 -LiteralPath $Path | ConvertFrom-Json }
 function Assert-Contains([string]$Text, [string]$Needle, [string]$Path) { if ($Text.IndexOf($Needle, [StringComparison]::Ordinal) -lt 0) { Fail "Expected '$Needle' in $Path" } }
 function Assert-NotContains([string]$Text, [string]$Needle, [string]$Path) { if ($Text.IndexOf($Needle, [StringComparison]::Ordinal) -ge 0) { Fail "Unexpected '$Needle' in $Path" } }
 
 $pluginRoot = (Resolve-Path -LiteralPath $PluginPath).Path
 $expectedSkills = @(
-    'widget-workshop-setup',
-    'widget-workshop-component-authoring',
-    'widget-workshop-host-api',
-    'widget-workshop-validation',
-    'widget-workshop-troubleshooting',
-    'widget-workshop-review'
+    'widget-workshop-workflow',
+    'widget-workshop-api',
+    'widget-workshop-code-review',
+    'widget-workshop-dev'
+)
+$removedSkills = @(
+    ('widget-workshop-' + 'setup'),
+    ('widget-workshop-' + 'component-authoring'),
+    ('widget-workshop-' + 'host-api'),
+    ('widget-workshop-' + 'validation'),
+    ('widget-workshop-' + 'troubleshooting'),
+    ('widget-workshop-' + 'review')
 )
 
 Assert-File (Join-Path $pluginRoot 'plugin.json')
 Assert-File (Join-Path $pluginRoot '.codex-plugin\plugin.json')
 Assert-File (Join-Path $pluginRoot '.claude-plugin\plugin.json')
-Assert-File (Join-Path $pluginRoot 'agents\widget-workshop-dev.agent.md')
+Assert-File (Join-Path $pluginRoot 'agents\widget-workshop-workflow-agent.agent.md')
+Assert-MissingPath (Join-Path $pluginRoot 'agents\widget-workshop-dev.agent.md')
 Assert-Directory (Join-Path $pluginRoot 'skills')
 
 $manifestPaths = @(
@@ -41,14 +49,20 @@ foreach ($manifestPath in $manifestPaths) {
     if (-not $manifest.license -or $manifest.license -ne 'MIT') { Fail "Plugin manifest should declare MIT license in $manifestPath" }
 }
 
-$agentPath = Join-Path $pluginRoot 'agents\widget-workshop-dev.agent.md'
+$agentPath = Join-Path $pluginRoot 'agents\widget-workshop-workflow-agent.agent.md'
 $agent = Get-Content -Raw -Encoding UTF8 -LiteralPath $agentPath
 Assert-Contains $agent 'user-invocable: true' $agentPath
+Assert-Contains $agent 'name: widget-workshop-workflow-agent' $agentPath
 Assert-Contains $agent 'docs/en-US' $agentPath
 Assert-Contains $agent 'contracts/' $agentPath
 foreach ($skillName in $expectedSkills) { Assert-Contains $agent $skillName $agentPath }
+foreach ($skillName in $removedSkills) { Assert-NotContains $agent $skillName $agentPath }
 Assert-NotContains $agent ('dev/' + 'plugin/widget-workshop') $agentPath
 Assert-NotContains $agent ('dev/' + 'docs') $agentPath
+
+foreach ($skillName in $removedSkills) {
+    Assert-MissingPath (Join-Path $pluginRoot "skills\$skillName")
+}
 
 foreach ($skillName in $expectedSkills) {
     $skillPath = Join-Path $pluginRoot "skills\$skillName\SKILL.md"

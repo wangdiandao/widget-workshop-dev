@@ -28,14 +28,12 @@ scripts/settings.default.json
 
 ## AI 插件与 Skill
 
-仓库内的 Widget Workshop AI plugin 位于 `plugins/widget-workshop`。`widget-workshop-dev` agent 是面向组件创作者的 Skill 编排入口；需要让 Codex 帮助实现或审查组件时，优先调用它，由它按任务加载以下 Skill：
+仓库内的 Widget Workshop AI plugin 位于 `plugins/widget-workshop`。`widget-workshop-workflow` 是面向组件创作者的 Skill 编排入口；需要让 Codex 帮助实现或审查组件时，优先调用它，由它按任务路由到以下 Skill：
 
-- `widget-workshop-setup`：插件安装、仓库结构、前置条件和验证命令定位。
-- `widget-workshop-component-authoring`：组件源码目录、`manifest.json`、settings、locales、preview、导入和重新导入。
-- `widget-workshop-host-api`：`window.widgetWorkshop` 调用、权限 category、返回结构和运行时边界。
-- `widget-workshop-validation`：仓库、插件、文档、契约和组件包验证门禁。
-- `widget-workshop-troubleshooting`：导入、settings、权限、fetch、文件 token、shell 和运行时错误排查。
-- `widget-workshop-review`：发布前检查 manifest、settings、Host API、权限、localization、preview 和降级行为。
+- `widget-workshop-workflow`：Skill 路由、仓库定位、验证选择和契约同步边界。
+- `widget-workshop-dev`：组件源码目录、`manifest.json`、`index.html`、settings、locales、preview、样式和运行时代码。
+- `widget-workshop-api`：`window.widgetWorkshop` 调用、权限 category、manifest 字段、settings schema、返回结构和运行时边界。
+- `widget-workshop-code-review`：发布前检查 manifest、settings、Host API、权限、localization、preview、安全性和降级行为。
 
 Steam Workshop 上传是 Widget Workshop 应用内流程，不单独作为 Skill；需要公开分享时，先按 [Workshop 发布](workshop-publishing.md) 准备组件元数据、preview、分类、权限和许可信息。
 

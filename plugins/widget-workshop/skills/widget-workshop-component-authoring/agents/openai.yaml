@@ -1,4 +1,0 @@
-interface:
-  display_name: "Widget Authoring"
-  short_description: "Create and review Widget Workshop component packages."
-  default_prompt: "Use $widget-workshop-component-authoring to create and validate this Widget Workshop component package."

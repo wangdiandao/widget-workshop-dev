@@ -1,4 +1,0 @@
-interface:
-  display_name: "Widget Troubleshooting"
-  short_description: "Diagnose Widget Workshop component creator failures."
-  default_prompt: "Use $widget-workshop-troubleshooting to diagnose this Widget Workshop component failure."

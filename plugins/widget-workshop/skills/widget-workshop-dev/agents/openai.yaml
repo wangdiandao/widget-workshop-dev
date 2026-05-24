@@ -1,0 +1,4 @@
+interface:
+  display_name: "Widget Dev"
+  short_description: "Write Widget Workshop component code."
+  default_prompt: "Use $widget-workshop-dev to implement this Widget Workshop component."

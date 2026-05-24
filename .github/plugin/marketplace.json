@@ -4,13 +4,13 @@
     "displayName": "Widget Workshop Dev"
   },
   "metadata": {
-    "description": "Developer plugin, skills, schemas, and validation tools for Widget Workshop components.",
+    "description": "Developer plugin, focused skills, schemas, and validation tools for Widget Workshop components.",
     "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "widget-workshop",
-      "description": "Build, validate, review, and troubleshoot Widget Workshop component packages.",
+      "description": "Route, build, validate, and review Widget Workshop component packages.",
       "version": "0.1.0",
       "source": {
         "source": "local",

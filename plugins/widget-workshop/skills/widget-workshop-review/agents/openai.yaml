@@ -1,4 +1,0 @@
-interface:
-  display_name: "Widget Review"
-  short_description: "Review components before sharing or publishing."
-  default_prompt: "Use $widget-workshop-review to review this Widget Workshop component before publishing."

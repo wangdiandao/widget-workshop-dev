@@ -1,6 +1,6 @@
 {
   "name": "widget-workshop",
-  "description": "Agents and skills for Widget Workshop component development. Create, validate, review, and troubleshoot component packages, manifests, settings, Host API usage, permissions, and Workshop-ready metadata.",
+  "description": "Agents and skills for Widget Workshop component development. Route workflows, write component code, validate APIs, review packages, and keep manifests, settings, permissions, and Workshop-ready metadata aligned.",
   "version": "0.1.0",
   "author": {
     "name": "Widget Workshop",
@@ -14,8 +14,9 @@
     "host-api",
     "manifest",
     "settings",
-    "validation",
-    "troubleshooting"
+    "workflow",
+    "api",
+    "code-review"
   ],
   "category": "developer-tools",
   "tags": [
@@ -23,8 +24,9 @@
     "components",
     "desktop",
     "host-api",
-    "validation",
-    "troubleshooting"
+    "workflow",
+    "api",
+    "code-review"
   ],
   "agents": "agents/",
   "skills": [

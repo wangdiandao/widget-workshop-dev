@@ -1,0 +1,4 @@
+interface:
+  display_name: "Widget Code Review"
+  short_description: "Review Widget Workshop components."
+  default_prompt: "Use $widget-workshop-code-review to review this Widget Workshop component package."

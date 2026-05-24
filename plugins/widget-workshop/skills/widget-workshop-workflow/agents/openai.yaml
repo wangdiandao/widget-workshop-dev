@@ -1,0 +1,4 @@
+interface:
+  display_name: "Widget Workflow"
+  short_description: "Route Widget Workshop component tasks."
+  default_prompt: "Use $widget-workshop-workflow to choose the right Widget Workshop component workflow."
