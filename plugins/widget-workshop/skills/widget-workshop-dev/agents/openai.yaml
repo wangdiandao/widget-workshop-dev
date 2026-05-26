@@ -1,4 +1,4 @@
 interface:
   display_name: "Widget Dev"
-  short_description: "Write Widget Workshop component code."
-  default_prompt: "Use $widget-workshop-dev to implement this Widget Workshop component."
+  short_description: "Write Widget Workshop component packages from the current creator docs."
+  default_prompt: "Use $widget-workshop-dev to implement this Widget Workshop component from a source folder with manifest.json, index.html, preview assets, optional locales, optional scripts/settings.json, and validation."

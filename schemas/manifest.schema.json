@@ -28,11 +28,15 @@
     "locales": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["default", "supported"],
       "properties": {
+        "enable": { "type": "boolean" },
         "default": { "type": "string", "minLength": 2 },
         "supported": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 2 } }
-      }
+      },
+      "anyOf": [
+        { "required": ["enable"], "properties": { "enable": { "const": false } } },
+        { "required": ["default", "supported"] }
+      ]
     }
   },
   "$defs": {

@@ -7,7 +7,7 @@ description: Use when creating or editing Widget Workshop component source folde
 
 ## Overview
 
-Use this Skill to build the component package itself. Keep implementation tied to the creator-facing docs and validate the source folder after changing package files.
+Use this Skill to build the component package itself. Keep implementation tied to the redesigned creator-facing docs and validate the source folder after changing package files.
 
 ## Component Shape
 
@@ -21,19 +21,18 @@ my-component/
   locales/en-US.json
   locales/zh-CN.json
   scripts/settings.json
-  scripts/settings.default.json
 ```
 
-Only `manifest.json`, `index.html`, and a preview image are always required. Locale and settings files are required only when declared by the manifest.
+Only `manifest.json`, `index.html`, and a preview image are always required. Locale files are read only when localization is enabled, and settings files are read only when declared by the manifest.
 
 ## Build Flow
 
-1. Read `docs/*/component-quickstart.md`, `docs/*/manifest-reference.md`, and `docs/*/settings-reference.md`.
+1. Read `docs/zh-CN/component-quickstart.md`, `docs/zh-CN/manifest-reference.md`, and `docs/zh-CN/settings-reference.md`; use `docs/en-US` as the mirrored English structure.
 2. Create or update `manifest.json` before writing runtime code.
 3. Add `index.html` as the fixed entry.
 4. Add a package-relative `.png`, `.jpg`, or `.jpeg` preview.
-5. Add `locales/<language>.json` only when `manifest.locales.supported` declares that language.
-6. Add `scripts/settings.json` only when `hasCustomSettings` is `true`; add defaults when reset behavior matters.
+5. Add `locales/<language>.json` only when `locales.enable` is `true` or an old manifest declares `locales.default` and `locales.supported` without `enable`; otherwise keep visible text in `index.html`.
+6. Add `scripts/settings.json` only when `hasCustomSettings` is `true`; every settings field needs a compatible `default`.
 7. Use `widget-workshop-api` for every `window.widgetWorkshop` call and permission decision.
 8. Run component validation and re-import the component after package file changes.
 
@@ -44,6 +43,7 @@ Only `manifest.json`, `index.html`, and a preview image are always required. Loc
 - Use `app.getLocaleInfo()` for locale decisions.
 - Wrap Host API calls in `try`/`catch` and show useful degraded UI when a capability is unavailable.
 - Keep all package paths relative and inside the component folder.
+- Keep drag regions inside `windowSize`; if `dragArea` is missing, the whole unlocked window can drag.
 - Keep visual behavior self-contained in the component; do not require host app changes for normal package work.
 
 ## Example Host API Pattern
@@ -76,5 +76,6 @@ window.addEventListener("DOMContentLoaded", loadComponent);
 | Editing an installed runtime copy | Edit the source folder and re-import |
 | Adding unsupported manifest compatibility fields | Follow `schemas/manifest.schema.json` |
 | Setting `hasCustomSettings` without `scripts/settings.json` | Add the settings schema or set the flag to `false` |
+| Adding locale files without enabling localization | Set `locales.enable: true` or remove the locale files |
 | Calling gated APIs without UI fallback | Check grants and handle rejected promises |
 | Changing docs or contracts for one language only | Keep `docs/en-US` and `docs/zh-CN` mirrored |

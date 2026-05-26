@@ -1,24 +1,23 @@
 # Workshop Publishing
 
-Steam Workshop publishing starts from the same component source folder used for local validation. Publish only after the package imports cleanly and runs with the final manifest permission category list.
+Steam Workshop publishing uses the same local component source folder. Prepare a public upload only after the package imports cleanly and runs with the final permissions and settings.
 
-## Publishing Checklist
+## Pre-Publish Checklist
 
-- Manifest fields are complete and describe the component accurately.
-- `displayName`, `description`, `preview`, and `categories` are ready for public browsing.
-- The Steam account used for upload is the public Workshop author.
-- The component has a readable `.png`, `.jpg`, or `.jpeg` preview image; SVG previews are not supported.
-- The component does not depend on machine-local paths.
-- Locale files cover the languages declared in `locales.supported`.
-- Settings defaults are valid and useful on a fresh install.
-- Host API failures degrade cleanly.
-- The package follows the Steam Subscriber Agreement and any required EULA or third-party license obligations.
+- Manifest fields are complete, and `displayName`, `description`, `preview`, and `categories` are suitable for public browsing.
+- The preview image is clear, square or nearly square, and uses `.png`, `.jpg`, or `.jpeg`.
+- The package does not depend on local absolute paths from the development machine.
+- When localization is enabled, locale files cover `locales.supported`; when it is disabled, public text comes from `displayName`, `description`, and `index.html`.
+- Settings defaults are useful on a fresh install.
+- The component degrades cleanly when Host API calls fail.
+- Permission declarations match actual capabilities and do not request unrelated categories.
+- Package content follows the Steam Subscriber Agreement, EULA requirements, and third-party license obligations.
 
 ## Category Mapping
 
-Workshop browsing uses the manifest category keys:
+Workshop browsing uses manifest category keys:
 
-| manifest key | Steam Workshop tag |
+| manifest key | Workshop tag |
 |---|---|
 | `dashboard` | Dashboard |
 | `productivity` | Productivity |
@@ -30,6 +29,8 @@ Workshop browsing uses the manifest category keys:
 
 ## Before Upload
 
-Run a local import from a clean copy of the component folder. Open the imported component, exercise settings, grant only the requested permission categories, and verify every Host API path the component uses.
+Import once from a clean copy of the component folder. Open the imported component, exercise settings, grant only the final manifest permission categories, and verify every Host API path the component actually uses.
 
-After upload, install the Workshop copy and validate that the published package behaves like the local copy.
+After upload, install the Workshop copy and confirm the public package behaves the same as the local package.
+
+Workshop author identity comes from the uploading Steam account, not from a manifest field.

@@ -67,10 +67,15 @@ if ($manifest.hasCustomSettings -eq $true) {
 }
 
 if (Has-Property $manifest 'locales') {
-    if (-not (Has-Property $manifest.locales 'default') -or -not (Has-Property $manifest.locales 'supported')) { Fail 'manifest.locales requires default and supported.' }
-    $supported = @($manifest.locales.supported)
-    if ($supported -notcontains [string]$manifest.locales.default) { Fail 'manifest.locales.supported must include locales.default.' }
-    foreach ($locale in $supported) { Assert-File (Join-Path $packageRoot "locales\$locale.json") }
+    $localesEnabled = $true
+    if ((Has-Property $manifest.locales 'enable') -and $manifest.locales.enable -eq $false) { $localesEnabled = $false }
+
+    if ($localesEnabled) {
+        if (-not (Has-Property $manifest.locales 'default') -or -not (Has-Property $manifest.locales 'supported')) { Fail 'enabled manifest.locales requires default and supported.' }
+        $supported = @($manifest.locales.supported)
+        if ($supported -notcontains [string]$manifest.locales.default) { Fail 'manifest.locales.supported must include locales.default.' }
+        foreach ($locale in $supported) { Assert-File (Join-Path $packageRoot "locales\$locale.json") }
+    }
 }
 
 Write-Host "Component package validation passed: $packageRoot"

@@ -1,4 +1,4 @@
 interface:
   display_name: "Widget Workflow"
-  short_description: "Route Widget Workshop component tasks."
-  default_prompt: "Use $widget-workshop-workflow to choose the right Widget Workshop component workflow."
+  short_description: "Route Widget Workshop component tasks through current docs and contracts."
+  default_prompt: "Use $widget-workshop-workflow to route this Widget Workshop component task, starting from docs/zh-CN, mirrored docs/en-US, contracts, schemas, and the local validation gates."

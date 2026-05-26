@@ -1,27 +1,27 @@
-# Component Quickstart
+# Quickstart
 
-## Create A Component Folder
+## Enable The Developer Entry
 
-Create a local source folder outside the installed app data area. Keep all component files inside that folder so package-relative paths cannot escape the package boundary.
+1. Open developer mode in Widget Workshop settings.
+2. The development page appears in the sidebar.
+3. Create a component from the development page, then enter its name, size, preview, permissions, and other attributes.
+4. Open the source folder from the project card and edit the component files.
+5. Re-import after package file changes, then enable and test the component from the component list.
+
+The create-component flow can enable or disable multilingual text. When it is off, the component does not read `locales/*.json`; the component name uses `displayName`, and visible text lives directly in `index.html`. When it is on, the template creates one `locales/<language>.json` starter file for the current default language, and you can extend `supported` later.
+
+## Minimal Component Folder
 
 ```text
-my-clock/
+minimal-clock/
   manifest.json
   index.html
   preview.png
-  locales/
-    en-US.json
-    zh-CN.json
-  scripts/
-    settings.json
-    settings.default.json
 ```
 
-The source folder is what a component developer edits. The app copies and validates it during import.
+If the component has a settings page, add `scripts/settings.json`. If localization is enabled, add `locales/<language>.json`.
 
-## Minimal Component
-
-Use this shape when the component has no generated settings page and no localized text files:
+## Minimal manifest
 
 ```json
 {
@@ -33,32 +33,29 @@ Use this shape when the component has no generated settings page and no localize
   "windowSize": { "width": 320, "height": 180 },
   "hasCustomSettings": false,
   "categories": ["desktop_personalization"],
-  "permissions": ["host"]
+  "permissions": ["host"],
+  "locales": { "enable": false }
 }
 ```
 
-`index.html` is the fixed entry. Do not add an `entry` field to the manifest.
+`packageId` is the component's unique ID. Prefer a lowercase reverse-DNS style string. `index.html` is the fixed entry; do not add an `entry` field to the manifest. Workshop author attribution comes from the uploading Steam account, so do not add an `author` field.
 
-Do not add an `author` field. Workshop author attribution comes from the Steam uploader identity.
+## Write The Entry Page
 
-For desktop pet style components, add `dragArea` to the manifest when only part of the visible window should start dragging:
-
-```json
-"dragArea": { "x": 48, "y": 96, "width": 128, "height": 132 }
-```
-
-If `dragArea` is missing, the whole component window remains draggable while unlocked.
-
-## Implement `index.html`
-
-Load component settings and runtime context through `window.widgetWorkshop` after the page is ready:
+Component pages run in WebView2. After the page loads, read context, settings, and grants through `window.widgetWorkshop`:
 
 ```html
 <script>
 async function start() {
-  const context = await window.widgetWorkshop.host.getComponentContext();
-  const settings = await window.widgetWorkshop.host.getComponentSettings();
+  const api = window.widgetWorkshop;
+  const [context, settings, grants] = await Promise.all([
+    api.host.getComponentContext(),
+    api.host.getComponentSettings(),
+    api.host.getPermissionGrants()
+  ]);
+
   document.body.textContent = `${context.displayName} ready`;
+  document.body.dataset.canFetch = grants.fetch === true ? "true" : "false";
 }
 
 start().catch(error => {
@@ -67,24 +64,24 @@ start().catch(error => {
 </script>
 ```
 
-Always handle rejected Host API promises. Gated calls may fail with `PermissionDenied`, and unknown category or method names return `MethodNotFound`.
+Every Host API method returns a Promise. Protected calls may fail with `PermissionDenied`; unknown categories or methods return `MethodNotFound`. Show an understandable degraded state instead of leaving the component blank.
 
-## Import And Test
+## Drag Area
 
-1. Enable developer mode in Widget Workshop.
-2. Open the development workspace.
-3. Add the component source folder.
-4. Validate the manifest, preview, locales, settings schema, and entry file.
-5. Import the controlled local copy.
-6. Enable the component from the component list.
-7. Test the component with the same permission categories and settings values that a published package will use.
+When `dragArea` is missing, the whole unlocked window can start a drag. Desktop pet or transparent decorative components usually need only part of the visible surface to drag:
 
-Re-import after changing `manifest.json`, `index.html`, `preview.png`, locale files, or settings files.
+```json
+"dragArea": { "x": 48, "y": 96, "width": 128, "height": 132 }
+```
 
-## Continue Reading
+The drag area must stay fully inside `windowSize`. Do not put the drag area outside the visible display region.
 
-- [manifest Reference](manifest-reference.md)
-- [settings Reference](settings-reference.md)
-- [Host API Reference](host-api-reference.md)
-- [Permissions And Security](permissions-and-security.md)
-- [Debugging And Validation](debugging-and-validation.md)
+## Local Validation
+
+Use the example package validation command in this repository:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\Test-ComponentPackage.ps1 -Path .\examples\minimal-clock
+```
+
+For your own component, point `-Path` at the component source folder. After validation, import it in Widget Workshop and test the real runtime behavior.

@@ -1,27 +1,27 @@
-# 组件快速开始
+# 快速开始
 
-## 创建组件源码目录
+## 启用开发入口
 
-在应用安装数据目录之外创建本地源码目录。所有组件文件都应保留在该目录内，避免包内路径越界。
+1. 在 Widget Workshop 设置页打开开发者模式。
+2. 侧边栏会出现开发页面入口。
+3. 在开发页面右上角创建组件，填写名称、尺寸、预览图、权限等属性。
+4. 在项目卡片中打开源码目录，编辑组件文件。
+5. 修改包文件后重新导入，再在组件列表中启用并测试。
+
+创建组件时可以选择是否启用多语言文本。关闭时，组件不读取 `locales/*.json`，组件名称使用 `displayName`，界面文字直接写在 `index.html`。开启时，模板会生成当前默认语言的一个 `locales/<language>.json` 起点，之后可自行扩展 `supported`。
+
+## 最小组件目录
 
 ```text
-my-clock/
+minimal-clock/
   manifest.json
   index.html
   preview.png
-  locales/
-    en-US.json
-    zh-CN.json
-  scripts/
-    settings.json
-    settings.default.json
 ```
 
-该源码目录由 component developer 编辑。应用导入时会复制并校验它。
+如果组件有设置页，添加 `scripts/settings.json`。如果启用本地化，添加 `locales/<language>.json`。
 
-## 最小组件
-
-没有生成式设置页、也没有本地化文本文件时，可以使用如下 manifest：
+## 最小 manifest
 
 ```json
 {
@@ -33,32 +33,29 @@ my-clock/
   "windowSize": { "width": 320, "height": 180 },
   "hasCustomSettings": false,
   "categories": ["desktop_personalization"],
-  "permissions": ["host"]
+  "permissions": ["host"],
+  "locales": { "enable": false }
 }
 ```
 
-`index.html` 是固定入口。不要在 manifest 中添加 `entry` 字段。
+`packageId` 是组件唯一 ID，建议使用反向域名风格的小写字符串。`index.html` 是固定入口，不要在 manifest 中添加 `entry`。Workshop 作者来自上传所用 Steam 账号，不要添加 `author` 字段。
 
-不要添加 `author` 字段。Workshop 作者来自 Steam 上传者身份。
+## 编写入口页面
 
-如果组件类似桌宠，只希望可见窗口的一部分触发拖动，可以在 manifest 中添加 `dragArea`：
-
-```json
-"dragArea": { "x": 48, "y": 96, "width": 128, "height": 132 }
-```
-
-未声明 `dragArea` 时，未锁定状态下整个组件窗口都可以拖动。
-
-## 实现 `index.html`
-
-页面准备好后，通过 `window.widgetWorkshop` 读取组件上下文和设置：
+组件页面运行在 WebView2 中。页面加载后，通过 `window.widgetWorkshop` 读取上下文、设置和授权状态：
 
 ```html
 <script>
 async function start() {
-  const context = await window.widgetWorkshop.host.getComponentContext();
-  const settings = await window.widgetWorkshop.host.getComponentSettings();
+  const api = window.widgetWorkshop;
+  const [context, settings, grants] = await Promise.all([
+    api.host.getComponentContext(),
+    api.host.getComponentSettings(),
+    api.host.getPermissionGrants()
+  ]);
+
   document.body.textContent = `${context.displayName} ready`;
+  document.body.dataset.canFetch = grants.fetch === true ? "true" : "false";
 }
 
 start().catch(error => {
@@ -67,24 +64,24 @@ start().catch(error => {
 </script>
 ```
 
-始终处理 Host API Promise 的 rejected 状态。受权限保护的调用可能返回 `PermissionDenied`，未知 category 或 method 会返回 `MethodNotFound`。
+所有 Host API 方法都返回 Promise。受权限保护的方法可能因 `PermissionDenied` 失败；未知类别或方法会返回 `MethodNotFound`。组件应显示可理解的降级状态，而不是空白。
 
-## 导入与测试
+## 拖动区域
 
-1. 在 Widget Workshop 中打开开发者模式。
-2. 进入开发工作区。
-3. 添加组件源码目录。
-4. 校验 manifest、preview、locales、settings schema 和入口文件。
-5. 导入受控本地副本。
-6. 在组件列表中启用该组件。
-7. 使用发布时同样的 permission category 和 settings 值测试组件。
+未声明 `dragArea` 时，未锁定状态下整个窗口都可触发拖动。桌宠或透明装饰类组件通常需要只让一部分区域可拖动：
 
-每次修改 `manifest.json`、`index.html`、`preview.png`、locale 文件或 settings 文件后，都应重新导入。
+```json
+"dragArea": { "x": 48, "y": 96, "width": 128, "height": 132 }
+```
 
-## 继续阅读
+拖动区域必须完整位于 `windowSize` 内。不要把拖动区域放到可见显示区域外。
 
-- [manifest 参考](manifest-reference.md)
-- [settings 参考](settings-reference.md)
-- [Host API 参考](host-api-reference.md)
-- [权限与安全](permissions-and-security.md)
-- [调试与校验](debugging-and-validation.md)
+## 本地校验
+
+在仓库中可用示例包验证命令：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\Test-ComponentPackage.ps1 -Path .\examples\minimal-clock
+```
+
+开发自己的组件时，将 `-Path` 指向组件源码目录。校验通过后，再在 Widget Workshop 中导入并测试实际运行效果。

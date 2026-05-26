@@ -1,24 +1,23 @@
 # Workshop 发布
 
-Steam Workshop 发布使用的仍是本地校验过的组件源码目录。只有在包可干净导入、并且能用最终 manifest permission category 列表运行后，才准备发布。
+Steam Workshop 发布使用同一个本地组件源码目录。只有在包能干净导入，并且按最终权限和设置运行正常后，才准备公开上传。
 
-## 发布清单
+## 发布前清单
 
-- manifest 字段完整，并准确描述组件。
-- `displayName`、`description`、`preview` 和 `categories` 适合公开浏览。
-- 用于上传的 Steam 账号就是公开 Workshop 作者。
-- 组件有清晰可读的 `.png`、`.jpg` 或 `.jpeg` 预览图；不再支持 SVG 预览图。
-- 组件不依赖机器本地路径。
-- locale 文件覆盖 `locales.supported` 声明的语言。
+- manifest 字段完整，`displayName`、`description`、`preview` 和 `categories` 适合公开浏览。
+- 预览图清晰、方形或接近方形，格式为 `.png`、`.jpg` 或 `.jpeg`。
+- 包不依赖开发机器的本地绝对路径。
+- 启用本地化时，locale 文件覆盖 `locales.supported`；未启用时，公开文本来自 `displayName`、`description` 和 `index.html`。
 - settings 默认值适合全新安装。
 - Host API 失败时组件能降级显示。
-- 包内容遵守 Steam Subscriber Agreement，并满足 EULA 或第三方许可要求。
+- 权限声明与实际使用能力一致，不申请无关 category。
+- 包内容遵守 Steam Subscriber Agreement、EULA 和第三方许可要求。
 
 ## 分类映射
 
 Workshop 浏览使用 manifest category key：
 
-| manifest key | Steam Workshop tag |
+| manifest key | Workshop tag |
 |---|---|
 | `dashboard` | Dashboard |
 | `productivity` | Productivity |
@@ -28,8 +27,10 @@ Workshop 浏览使用 manifest category key：
 | `lifestyle` | Lifestyle |
 | 缺失或为空 | Other |
 
-## 上传前
+## 上传前测试
 
-从干净的组件文件夹执行一次本地导入。打开导入后的组件，操作 settings，只授予请求的 permission category，并验证组件使用到的每一条 Host API 路径。
+从干净副本执行一次本地导入。打开导入后的组件，操作 settings，只授予最终 manifest 中声明的 permission category，并验证组件实际用到的每一条 Host API 路径。
 
-上传后，再安装 Workshop 副本，确认发布包与本地副本行为一致。
+上传后，再安装 Workshop 副本，确认公开包与本地包行为一致。
+
+Workshop 作者身份来自上传所用 Steam 账号，不来自 manifest 字段。

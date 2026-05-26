@@ -1,57 +1,51 @@
 # Widget Workshop Component Developer Docs
 
-This documentation is written for component developer work. It describes the package files, manifest contract, generated settings schema, Host API permissions, validation flow, and Steam Workshop publishing requirements for Widget Workshop components.
-
-## Package Anatomy
-
-A component source folder is the source of truth. Widget Workshop imports a controlled runnable copy from that folder, so edit the source folder and re-import after changes.
-
-```text
-manifest.json
-index.html
-preview.png
-locales/zh-CN.json
-locales/en-US.json
-scripts/settings.json
-scripts/settings.default.json
-```
-
-Only `manifest.json`, `index.html`, and a preview file are always required. Locale and settings files are required only when the manifest declares them.
+These docs are for Widget Workshop component developers. They describe how to create, debug, validate, and publish desktop widgets from a local source folder. A component runs in WebView2 as a host-mounted transparent window with an HTML page inside it.
 
 ## Reading Path
 
-- Start with [Component Quickstart](component-quickstart.md) to create, validate, import, and test a component.
-- Use [manifest Reference](manifest-reference.md), [settings Reference](settings-reference.md), and [Host API Reference](host-api-reference.md) while implementing package behavior.
-- Read [Permissions And Security](permissions-and-security.md) before using `fetch`, files, clipboard, shell, system, screen, theme, process, or power APIs.
-- Use [Debugging And Validation](debugging-and-validation.md) when local import or runtime behavior fails.
-- Use [Workshop Publishing](workshop-publishing.md) before preparing a public Steam Workshop upload.
+- [Quickstart](component-quickstart.md): enable developer mode and create the first importable component.
+- [manifest Reference](manifest-reference.md): component identity, window, preview, localization, categories, and permission declarations.
+- [settings Reference](settings-reference.md): generated settings pages from `scripts/settings.json`.
+- [Host API Reference](host-api-reference.md): available `window.widgetWorkshop` APIs, returns, and errors.
+- [Permissions And Security](permissions-and-security.md): sensitive capabilities, grant boundaries, file access, and network limits.
+- [Debugging And Validation](debugging-and-validation.md): import failures, runtime failures, and local validation scripts.
+- [Workshop Publishing](workshop-publishing.md): metadata, licensing, and final checks before public release.
+
+## Component Development Model
+
+The component source folder is the developer-owned source of truth. Widget Workshop validates that folder on import, then creates a controlled runnable copy. Re-import after changing `manifest.json`, `index.html`, the preview image, locale files, or settings files.
+
+```text
+my-component/
+  manifest.json
+  index.html
+  preview.png
+  locales/
+    zh-CN.json
+    en-US.json
+  scripts/
+    settings.json
+```
+
+Only `manifest.json`, `index.html`, and a preview image are always required. `locales/*.json` files are read only when localization is enabled. `scripts/settings.json` is read only when `hasCustomSettings` is `true`.
+
+## Current Public Contract
+
+- The entry file is always `index.html`.
+- Preview images support `.png`, `.jpg`, and `.jpeg`; SVG is not supported.
+- The component name defaults to `displayName`; when localization is enabled, a locale file `title` can override it.
+- The settings page is generated from `scripts/settings.json`; each field `default` is its reset value.
+- Runtime API calls go only through `window.widgetWorkshop`.
+- Permissions are declared by manifest category and granted by the user, not by individual method.
+- Component categories come from `contracts/component-categories.json`; missing or empty categories browse as Other.
 
 ## AI Plugin And Skills
 
-The repository-local Widget Workshop AI plugin lives at `plugins/widget-workshop`. Use `widget-workshop-workflow` as the Skill orchestrator for component creators; when Codex helps implement or review a component, start there so it can route to the focused Skill:
+The repository-local Widget Workshop AI plugin lives at `plugins/widget-workshop`. For AI-assisted component work, start with `widget-workshop-workflow`, then route by task:
 
-- `widget-workshop-workflow`: Skill routing, repository orientation, validation choice, and contract-sync boundaries.
-- `widget-workshop-dev`: component source folders, `manifest.json`, `index.html`, settings, locales, preview assets, styling, and runtime code.
-- `widget-workshop-api`: `window.widgetWorkshop` calls, permission categories, manifest fields, settings schema, return shapes, and runtime boundaries.
-- `widget-workshop-code-review`: pre-publication review for manifest, settings, Host API, permissions, localization, preview, security, and graceful degradation.
+- `widget-workshop-dev`: write component folders, manifests, HTML, settings, locales, preview assets, and runtime code.
+- `widget-workshop-api`: check Host API calls, permission categories, manifest fields, settings schemas, and runtime errors.
+- `widget-workshop-code-review`: review security, graceful degradation, metadata, and package shape before sharing or publishing.
 
-Steam Workshop upload is a Widget Workshop app workflow, not a separate Skill; for public sharing, first prepare component metadata, preview, categories, permissions, and license information with [Workshop Publishing](workshop-publishing.md).
-
-## Current Component Surface
-
-- Entry file: `index.html`.
-- Preview formats: `.png`, `.jpg`, `.jpeg`. SVG previews are not supported.
-- Settings schema: `scripts/settings.json` with optional `scripts/settings.default.json`.
-- Runtime API: `window.widgetWorkshop`.
-- Permission model: manifest permission category declaration plus host grant for gated methods.
-- Marketplace categories: Dashboard, Productivity, Desktop Personalization, Workflow Integrations, Device Environment, Lifestyle, and Other.
-
-## Document Index
-
-- [Component Quickstart](component-quickstart.md)
-- [manifest Reference](manifest-reference.md)
-- [settings Reference](settings-reference.md)
-- [Host API Reference](host-api-reference.md)
-- [Permissions And Security](permissions-and-security.md)
-- [Debugging And Validation](debugging-and-validation.md)
-- [Workshop Publishing](workshop-publishing.md)
+Public Steam Workshop upload is an in-app Widget Workshop workflow, not a separate Skill workflow.

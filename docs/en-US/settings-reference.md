@@ -1,13 +1,15 @@
 # settings Reference
 
-Generated component settings are defined by `scripts/settings.json`. Default values may be stored in `scripts/settings.default.json`.
+Generated component settings pages are defined by `scripts/settings.json`. Widget Workshop reads that file only when `hasCustomSettings` is `true` in `manifest.json`.
 
 ## File Location
 
-- `scripts/settings.json`: schema for the generated settings page.
-- `scripts/settings.default.json`: optional default-value object used by the reset action.
+```text
+scripts/
+  settings.json
+```
 
-The app reads `scripts/settings.json` only when `hasCustomSettings` is `true` in `manifest.json`.
+Every field must declare `default`. Reset uses field-level defaults and no longer depends on a separate `settings.default.json`.
 
 ## Schema Shape
 
@@ -17,7 +19,7 @@ The app reads `scripts/settings.json` only when `hasCustomSettings` is `true` in
   "fields": [
     {
       "key": "accent",
-      "label": { "en-US": "Accent color", "zh-CN": "强调色" },
+      "label": { "zh-CN": "强调色", "en-US": "Accent color" },
       "type": "color",
       "control": "color",
       "default": "#3B82F6"
@@ -26,56 +28,61 @@ The app reads `scripts/settings.json` only when `hasCustomSettings` is `true` in
 }
 ```
 
-Each field needs `key`, `label`, `type`, `control`, and `default`.
+Every field needs `key`, `label`, `type`, `control`, and `default`.
+
+## Field Rules
+
+- `key` is a stable internal key and must not be localized.
+- `label` is a language-to-text object and must provide at least one language.
+- `default` must match the field type, control, and options.
+- `select` and `segmented` require `options`.
+- Number fields can provide `min`, `max`, and `step`.
+- File fields can provide `extensions`, such as `[".txt", ".json"]`.
 
 ## Supported Controls
 
-- `string`: `text`, `textarea`, `select`, `segmented`
-- `number`: `number`, `slider`
-- `boolean`: `toggle`, `checkbox`
-- `color`: `color`
-- `file`: `file`
+| type | control |
+|---|---|
+| `string` | `text`, `textarea`, `select`, `segmented` |
+| `number` | `number`, `slider` |
+| `boolean` | `toggle`, `checkbox` |
+| `color` | `color` |
+| `file` | `file` |
 
-`select` and `segmented` require `options`. Number fields may provide `min`, `max`, and `step`. File fields may provide `extensions`.
-
-## Options
+## Option Fields
 
 ```json
 {
   "key": "mode",
-  "label": { "en-US": "Mode", "zh-CN": "模式" },
+  "label": { "zh-CN": "模式", "en-US": "Mode" },
   "type": "string",
   "control": "segmented",
   "default": "compact",
   "options": [
-    { "value": "compact", "label": { "en-US": "Compact", "zh-CN": "紧凑" } },
-    { "value": "full", "label": { "en-US": "Full", "zh-CN": "完整" } }
+    { "value": "compact", "label": { "zh-CN": "紧凑", "en-US": "Compact" } },
+    { "value": "full", "label": { "zh-CN": "完整", "en-US": "Full" } }
   ]
 }
 ```
 
-The field default must match one option value.
+The default value must equal one option `value`.
 
-## Default Values
+## Reading Settings From A Component
 
-`scripts/settings.default.json` must be a JSON object compatible with the schema:
-
-```json
-{
-  "accent": "#3B82F6",
-  "mode": "compact"
-}
-```
-
-If a saved value is missing or invalid, Widget Workshop falls back to the schema default for that field.
-
-## File Fields
-
-A `file` setting stores a path selected from the settings page. This is only a saved setting value. For user-selected file reads and writes inside component code, use the Host API token flow:
+Runtime code reads user-saved settings through Host API:
 
 ```js
-const picked = await window.widgetWorkshop.dialog.showOpenFilePicker(options);
-const text = await window.widgetWorkshop.files.readText(token);
+const settings = await window.widgetWorkshop.host.getComponentSettings();
 ```
 
-Use `shell.launchConfiguredFile(path)` and `shell.getConfiguredFileIcon(path)` only for paths saved by this component's `file` settings.
+Component pages cannot write settings through Host API. Runtime-private mutable data belongs in `storage.*`.
+
+## file Settings
+
+A `file` setting stores an absolute path selected from the settings page. It is for configured-file scenarios such as launching a saved path or reading its icon:
+
+```js
+await window.widgetWorkshop.shell.launchConfiguredFile(settings.launchTarget);
+```
+
+If component code needs to read or write a user-selected file, use the `dialog` plus `files` token flow instead of directly using the file setting path.

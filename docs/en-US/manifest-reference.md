@@ -1,6 +1,6 @@
 # manifest Reference
 
-`manifest.json` defines the public package contract for a Widget Workshop component. The file must be a JSON object at the package root.
+`manifest.json` is the public package contract for a component. It must live at the component root and must be a JSON object.
 
 ## Example
 
@@ -18,30 +18,35 @@
   "windowShape": { "kind": "roundedRectangle", "cornerRadius": 16 },
   "permissions": ["host", "fetch"],
   "locales": {
-    "default": "en-US",
-    "supported": ["en-US", "zh-CN"]
+    "enable": true,
+    "default": "zh-CN",
+    "supported": ["zh-CN", "en-US"]
   }
 }
 ```
 
 ## Required Fields
 
-- `packageId`: stable lowercase identity. Use lowercase letters, digits, dots, and hyphens.
-- `displayName`: display name shown in Widget Workshop.
-- `version`: component version. Use letters, digits, dots, hyphens, or plus signs.
-- `preview`: package-local preview image. Supported extensions are `.png`, `.jpg`, and `.jpeg`; SVG previews are not supported.
-- `windowSize`: fixed component window size with positive `width` and `height`.
-- `hasCustomSettings`: set to `true` only when `scripts/settings.json` exists.
+| Field | Description |
+|---|---|
+| `packageId` | Unique component ID. Use lowercase letters, digits, dots, and hyphens. |
+| `displayName` | Default component name. When localization is off, the component list shows this value. |
+| `version` | Component version. Letters, digits, dots, hyphens, and plus signs are supported. |
+| `preview` | Package-local preview image path. Supports `.png`, `.jpg`, and `.jpeg`. |
+| `windowSize` | Fixed window size; `width` and `height` must be positive. |
+| `hasCustomSettings` | Set to `true` only when `scripts/settings.json` exists. |
 
-`description` is recommended for local development and Workshop publishing. Workshop author attribution is resolved from the Steam account that uploads the item, not from `manifest.json`.
+`description` should be a short useful summary. It can seed Workshop copy, but public release copy should still be reviewed on the publishing page.
 
-## Entry And Package Paths
+## Package Paths And Entry
 
-The entry file is always `index.html`. Manifest paths must stay inside the component package. Do not use absolute paths or `..` segments for preview or other package assets.
+The entry file is always `index.html`. Manifest paths must be package-relative. Do not use absolute paths, backslash paths, or `..` path segments.
+
+The preview image should be square or nearly square and readable in the component list and Workshop browse page.
 
 ## Window Shape
 
-`windowShape` is optional. Supported forms:
+`windowShape` is optional:
 
 ```json
 { "kind": "rectangle" }
@@ -51,33 +56,42 @@ The entry file is always `index.html`. Manifest paths must stay inside the compo
 { "kind": "roundedRectangle", "cornerRadius": 16 }
 ```
 
-For a rounded rectangle, `cornerRadius` must be finite, non-negative, and no larger than half of the smaller window dimension.
+The corner radius should be non-negative and no larger than half of the shorter window dimension.
 
 ## Drag Area
 
-`dragArea` is optional. When it is missing, the whole `windowSize` surface can start an unlocked drag. When it is declared, only that rectangle starts dragging; content outside it remains visible and moves with the component.
-
-Use component-window logical pixels:
+`dragArea` is optional. When it is missing, the whole `windowSize` surface can start a drag. When it is declared, only that rectangle starts a drag. Coordinates use component-window logical pixels.
 
 ```json
 { "x": 48, "y": 96, "width": 128, "height": 132 }
 ```
 
-`x` and `y` must be finite numbers greater than or equal to `0`. `width` and `height` must be positive finite numbers. The rectangle must stay fully inside `windowSize`, or manifest validation fails.
+`x` and `y` must be greater than or equal to 0. `width` and `height` must be greater than 0. The rectangle must stay fully inside `windowSize`.
 
-## Locale Contract
+## Localization
 
-When `locales` is declared:
+When localization is not enabled, omit `locales` or write:
 
+```json
+"locales": { "enable": false }
+```
+
+Widget Workshop then does not read `locales/*.json`; the component name comes from `displayName`, and visible text should live directly in `index.html`.
+
+When localization is enabled:
+
+- `locales.enable` is `true`.
 - `locales.default` is required.
 - `locales.supported` must include the default language.
-- Each supported language resolves to `locales/<language>.json`.
+- Every supported language must have `locales/<language>.json`.
 
-Use safe language tags such as `en-US` and `zh-CN`.
+Compatibility rule: if `locales` declares `default` and `supported` without `enable`, it is treated as enabled.
 
-## Category Tags
+A locale file can use `title` to override the component management display name. Missing `title` falls back to `displayName`.
 
-| manifest key | Display tag |
+## Categories
+
+| manifest key | Browse tag |
 |---|---|
 | `dashboard` | Dashboard |
 | `productivity` | Productivity |
@@ -87,12 +101,12 @@ Use safe language tags such as `en-US` and `zh-CN`.
 | `lifestyle` | Lifestyle |
 | missing or empty | Other |
 
-## Permission Categories
+## Permissions
 
-Accepted permission category values are `app`, `host`, `process`, `system`, `screen`, `theme`, `power`, `shell`, `dialog`, `clipboard`, `storage`, `files`, and `fetch`.
+`permissions` accepts only permission categories: `app`, `host`, `process`, `system`, `screen`, `theme`, `power`, `shell`, `dialog`, `clipboard`, `storage`, `files`, and `fetch`.
 
-Declare categories only. Values such as `process.getCpuUsage` are invalid because permissions are granted by permission category, not by individual method.
+Do not declare individual methods such as `process.getCpuUsage`. Permissions are declared and granted by category.
 
 ## Removed Fields
 
-Do not use `schemaVersion`, `entry`, `initEntry`, `defaultSize`, `sizeLimits`, `capabilities`, `settingsEntry`, `author`, or `locales.resources`. The app rejects these fields so older package shapes do not silently return.
+Do not use `schemaVersion`, `entry`, `initEntry`, `defaultSize`, `sizeLimits`, `capabilities`, `settingsEntry`, `author`, or `locales.resources`. These fields are treated as old package shapes and rejected.

@@ -53,7 +53,9 @@ $agentPath = Join-Path $pluginRoot 'agents\widget-workshop-workflow-agent.agent.
 $agent = Get-Content -Raw -Encoding UTF8 -LiteralPath $agentPath
 Assert-Contains $agent 'user-invocable: true' $agentPath
 Assert-Contains $agent 'name: widget-workshop-workflow-agent' $agentPath
+Assert-Contains $agent 'docs/zh-CN' $agentPath
 Assert-Contains $agent 'docs/en-US' $agentPath
+Assert-Contains $agent 'locales.enable' $agentPath
 Assert-Contains $agent 'contracts/' $agentPath
 foreach ($skillName in $expectedSkills) { Assert-Contains $agent $skillName $agentPath }
 foreach ($skillName in $removedSkills) { Assert-NotContains $agent $skillName $agentPath }
@@ -73,8 +75,16 @@ foreach ($skillName in $expectedSkills) {
     Assert-Contains $skill "name: $skillName" $skillPath
     Assert-Contains $skill 'description:' $skillPath
     Assert-NotContains $skill '[TODO' $skillPath
+    Assert-NotContains $skill 'settings.default.json' $skillPath
     Assert-NotContains $skill ('dev/' + 'plugin/widget-workshop') $skillPath
     Assert-NotContains $skill ('dev/' + 'docs') $skillPath
+
+    if ($skillName -in @('widget-workshop-workflow', 'widget-workshop-api', 'widget-workshop-dev', 'widget-workshop-code-review')) {
+        Assert-Contains $skill 'locales.enable' $skillPath
+    }
+    if ($skillName -in @('widget-workshop-api', 'widget-workshop-dev', 'widget-workshop-code-review')) {
+        Assert-Contains $skill 'default' $skillPath
+    }
 
     $metadata = Get-Content -Raw -Encoding UTF8 -LiteralPath $metadataPath
     Assert-Contains $metadata 'interface:' $metadataPath

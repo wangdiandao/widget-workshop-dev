@@ -1,38 +1,60 @@
 # Debugging And Validation
 
-Use local validation before publishing or sharing a component. Most failures come from paths, schema mismatches, undeclared permission categories, or assumptions about host grants.
+Before publishing or sharing a component, run local validation. Most issues come from escaped paths, schema mismatches, undeclared permission categories, missing locale files, or assuming the user has already granted a capability.
 
-## Import Validation Checklist
+## Package Shape Checklist
 
 - `manifest.json` is valid JSON and contains required fields.
 - `index.html` exists at the package root.
-- `preview` points to an existing `.png`, `.jpg`, or `.jpeg` file inside the package. SVG previews are not supported.
-- `windowSize.width` and `windowSize.height` are positive finite numbers.
-- If `dragArea` is declared, its `x`, `y`, `width`, and `height` stay fully inside `windowSize`.
-- `windowShape.cornerRadius` fits inside the fixed window size.
-- `locales.supported` files exist at `locales/<language>.json`.
+- `preview` points to an existing `.png`, `.jpg`, or `.jpeg` file inside the package.
+- `windowSize.width` and `windowSize.height` are positive.
+- If `dragArea` is declared, the rectangle stays fully inside `windowSize`.
+- `windowShape.cornerRadius` does not exceed the window size.
 - `hasCustomSettings` matches whether `scripts/settings.json` exists.
-- `scripts/settings.default.json` values are compatible with `scripts/settings.json`.
-- `categories` and `permissions` use accepted category keys.
+- `categories` and `permissions` use category keys from the public contracts.
+
+## Localization Checklist
+
+- Missing `locales` or `locales.enable:false` does not require locale files.
+- `locales.enable:true` requires `default` and `supported`.
+- `supported` must include `default`.
+- Every supported language must have `locales/<language>.json`.
+- If the component list name should be localized, provide `title` in the locale file.
+
+## settings Checklist
+
+- `scripts/settings.json` has `schemaVersion` set to `1`.
+- Every field has `key`, `label`, `type`, `control`, and `default`.
+- `select` and `segmented` fields provide `options`.
+- `default` matches the field type and option value.
+- `hasCustomSettings:false` should not have `scripts/settings.json`.
 
 ## Runtime Checklist
 
 - Guard every Host API call with `try`/`catch`.
-- Check for `PermissionDenied` before assuming the method or bridge is broken.
-- Check for `MethodNotFound` when adding new category or method names.
-- Re-import after changing package files.
-- Test with the same manifest permission category list that the published component will use.
+- For `PermissionDenied`, check manifest declaration and user grant first.
+- For `MethodNotFound`, check that the category and method come from `contracts/host-api.d.ts`.
+- Re-import after package file changes.
+- Test with the same permission categories and settings values planned for release.
 
-## Settings Debugging
+## Validation Commands
 
-If settings do not appear, confirm `hasCustomSettings` is `true` and `scripts/settings.json` has `schemaVersion: 1`.
+Validate one component package:
 
-If a reset action is missing, confirm `scripts/settings.default.json` exists, is a JSON object, and every value matches the declared field type and options.
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\Test-ComponentPackage.ps1 -Path <component-source>
+```
 
-## Host API Debugging
+Validate this repository:
 
-For `fetch.request`, inspect `FetchBlocked`, `FetchTimeout`, and `FetchTooLarge` separately. A blocked URL is a policy problem, not a network retry problem.
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\Test-Repository.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\Test-Plugin.ps1 -PluginPath .\plugins\widget-workshop
+git diff --check
+```
 
-For `dialog.showOpenFilePicker(options)` followed by `files.readText(token)`, confirm you pass the returned token string, not a file path.
+When Host API, permission categories, or component category contracts change and the local Widget Workshop host repo is available, run:
 
-For `shell.openPackageFile(path)`, confirm the target is package-relative and not an executable or active file type.
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\Sync-ContractsFromHost.ps1 -WidgetWorkshopRepo E:\repos\widget_workshop
+```

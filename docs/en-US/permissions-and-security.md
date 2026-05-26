@@ -1,10 +1,10 @@
 # Permissions And Security
 
-Widget Workshop uses permission category declarations plus host grants for gated Host API methods. A component developer should request the narrowest categories that match the component's behavior.
+Widget Workshop controls sensitive Host API access through manifest permission declarations and user grants. A component should request only the smallest permission categories its behavior really needs.
 
 ## Declaration And Grant
 
-Declare permission category values in `manifest.json`:
+Declare permission categories in `manifest.json`:
 
 ```json
 {
@@ -12,34 +12,34 @@ Declare permission category values in `manifest.json`:
 }
 ```
 
-The manifest declaration says what the component may ask for. The host grant says what the current installation allows. If either side is missing, the method returns `PermissionDenied`.
+The manifest declaration says what the component may use. The user grant says what the current installation allows. If either side is missing, protected methods return `PermissionDenied`.
 
-Some context methods are available without a grant: `app.getLocaleInfo()`, `host.getComponentContext()`, `host.getComponentSettings()`, `host.getRuntimeInfo()`, and `host.getPermissionGrants()`.
+Some context methods do not require a user grant: `app.getLocaleInfo()`, `host.getComponentContext()`, `host.getComponentSettings()`, `host.getRuntimeInfo()`, and `host.getPermissionGrants()`.
 
-## Category Guidelines
+## Category Selection
 
-- Use `host` for component settings reads, runtime state, permission grants, and display policy.
-- Use `fetch` for public HTTPS data requests.
-- Use `dialog` and `files` together for user-selected file access.
-- Use `storage` for component-private key-value data.
-- Use `clipboard` only when the component clearly reads or writes clipboard data.
-- Use `shell` only for external links, package files, or saved configured file settings.
-- Use `process`, `system`, `screen`, `theme`, and `power` for environment-aware components such as dashboards or device monitors.
+- `host`: read component settings, runtime state, grant state, and display policy.
+- `fetch`: request public HTTPS data.
+- `dialog` + `files`: access files selected by the user.
+- `storage`: save component-private key-value data.
+- `clipboard`: use only when the component clearly reads or writes clipboard data.
+- `shell`: open external links, passive package files, or saved file settings.
+- `process`, `system`, `screen`, `theme`, `power`: use for dashboards, device state, and environment-aware components.
 
-## fetch Boundaries
+## Network Boundaries
 
-`fetch.request` blocks non-HTTPS, localhost, private, local, and reserved network targets. It also blocks controlled headers and oversized responses. Treat it as a public data API, not as a local network scanner.
+`fetch.request` is for public HTTPS data. It blocks non-HTTPS, localhost, private, local, and reserved network targets. It also limits controlled headers, redirects, timeout, and response body size. Do not design it as local network scanning or intranet access.
 
 ## File Boundaries
 
-File reads and writes require a token returned by `dialog.showOpenFilePicker(options)` or `dialog.showSaveFilePicker(options)`. Do not store tokens as durable settings; tokens are session-scoped, and token metadata does not expose absolute paths.
+File reads and writes must first receive a token from `dialog.showOpenFilePicker(options)` or `dialog.showSaveFilePicker(options)`, then pass that token to `files.*`.
 
-`files.readText(token)` and related methods fail when the token is unknown, released, or belongs to another component.
+Do not store tokens as durable settings. Tokens are session-scoped grants, metadata does not expose absolute paths, and released tokens cannot be reused.
 
-## Shell Boundaries
+## shell Boundaries
 
-`shell.openPackageFile(path)` and `shell.showPackageItemInFolder(path)` accept package-relative paths. They are not arbitrary local path launch APIs.
+`shell.openPackageFile(path)` and `shell.showPackageItemInFolder(path)` accept only package-relative paths. `openPackageFile` blocks executables and active script file types.
 
-`shell.launchConfiguredFile(path)` and `shell.getConfiguredFileIcon(path)` accept only paths that were saved in this component's `file` settings. These settings-scoped methods still require the component to declare the `shell` permission category.
+`shell.launchConfiguredFile(path)` and `shell.getConfiguredFileIcon(path)` accept only paths saved by this component's `file` settings, and the manifest still must declare the `shell` category.
 
-Component pages cannot write component settings through Host API. Use `storage.*` for component-private mutable data.
+Component pages cannot write component settings through Host API. Use `storage.*` for runtime mutable data.
