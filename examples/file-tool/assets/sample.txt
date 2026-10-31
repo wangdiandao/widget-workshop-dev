@@ -1,0 +1,3 @@
+WidgetWorkshop package asset
+Read one bounded block at a time.
+Cancel and close resources when finished.

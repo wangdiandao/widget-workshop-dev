@@ -1,15 +1,24 @@
-name: Bug report
-description: Report a plugin, docs, schema, script, or example issue.
+name: 问题报告
+description: 文档、示例、插件或站点的问题
+title: '[Bug] '
 body:
   - type: textarea
     id: problem
     attributes:
-      label: Problem
-      description: What failed, and what did you expect?
+      label: 问题与复现步骤
+      description: 提供页面/文件、最小复现及预期行为；不要提交令牌或用户数据。
     validations:
       required: true
   - type: textarea
-    id: validation
+    id: environment
     attributes:
-      label: Validation output
-      description: Paste output from Test-Repository.ps1 or Test-ComponentPackage.ps1 when relevant.
+      label: 环境与实际结果
+      description: 宿主/SDK/客户端版本、错误码、当前结果及已尝试的操作。
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 验收条件
+    validations:
+      required: true

@@ -1,0 +1,27 @@
+:root {font: 13px system-ui, sans-serif; color-scheme: light dark; background: transparent;}
+html, body {margin: 0; width: 100%; height: 100%; overflow: hidden; background: transparent;}
+#pet {position: absolute; left: 90px; top: 4px; width: 100px; height: 112px; cursor: grab; touch-action: none; user-select: none;}
+.palettePeach {--petFill:#ffc19d;--petShade:#e59473;}
+.paletteSky {--petFill:#98d8ff;--petShade:#64addb;}
+.body {position: absolute; left: 8px; top: 14px; width: 84px; height: 84px; border-radius: 45% 45% 42% 42%; background: var(--petFill,#6de6c5); box-shadow: inset 0 -6px var(--petShade,#41bda2); animation: breathe 2.4s ease-in-out infinite;}
+.eye {position: absolute; top: 28px; width: 8px; height: 13px; border-radius: 50%; background: #163e43;}
+.left {left: 21px;} .right {right: 21px;}
+.mouth {position: absolute; left: 35px; top: 49px; width: 14px; height: 8px; border-bottom: 3px solid #163e43; border-radius: 50%;}
+#panel {box-sizing: border-box; position: absolute; left: 12px; top: 126px; width: 256px; height: 82px; border: 1px solid #809896; border-radius: 12px; padding: 10px; background: Canvas; color: CanvasText;}
+#petName {box-sizing: border-box; width: 112px; margin: 0 6px; font: inherit;}
+button {font: inherit;} output {display:block;margin-top:6px;line-height:15px;max-height:30px;overflow:auto;white-space:normal;overflow-wrap:anywhere;}
+output:focus-visible {outline:2px solid Highlight;outline-offset:1px;}
+@keyframes breathe {50% {transform: translateY(-5px) rotate(3deg);}}
+@media (prefers-reduced-motion: reduce) {.body {animation: none;}}
+
+.renderPaused .body {animation-play-state:paused;}
+.calm .body {animation:none;}
+
+body:not(.activityReady) .body {animation-play-state:paused;}
+
+@media (forced-colors:active) {
+  .body {box-sizing:border-box;background:Canvas;border:2px solid CanvasText;box-shadow:none;}
+  .eye {background:CanvasText;}
+  .mouth {border-color:CanvasText;}
+  #panel {border-color:CanvasText;}
+}

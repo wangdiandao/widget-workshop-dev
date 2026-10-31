@@ -1,103 +1,100 @@
-# Widget Workshop Dev
+# Widget Workshop · 组件开发指南
 
-Widget Workshop Dev is the standalone developer toolkit for creating, validating, reviewing, and troubleshooting Widget Workshop component packages. It ships an AI plugin, focused Skills, component contracts, package schemas, example components, bilingual documentation, and local verification scripts.
+为 Widget Workshop 编写桌宠、游戏、信息流和桌面工具。从 HTML/CSS/JavaScript 起步，查阅当前宿主协议，也可让 Codex 或 Claude Code 使用仓库根目录的开发插件。
 
-The toolkit is modeled after `microsoft/win-dev-skills`: a small installable plugin with an orchestrator agent, task-focused Skills, repository-local scripts, CI validation, and release documentation.
+**[English](#english) · [在线文档](https://wangdiandao.github.io/widget-workshop-dev/) · [快速开始](docs/guide/quickstart.md) · [场景方案](docs/recipes/index.md) · [接口参考](docs/reference/index.md) · [提交 Issue](https://github.com/wangdiandao/widget-workshop-dev/issues/new/choose)**
 
-> [!WARNING]
-> Preview v0.x. Skill names, package schemas, and validation scripts can change before v1.0. Pin a release tag when you need a stable version.
+仓库只保留两个英文 Skills：开发（含接口与审查）和示例（按需加载场景与本地开发经验）。[本地开发经验](docs/guide/lessons.md)整理了源码可核对的 11 条处理模式。
 
-## Install
+## 本地文档
 
-### GitHub Copilot CLI
+需要 Node.js 22 或更新版本。
 
-```powershell
-copilot plugin marketplace add https://github.com/wangdiandao/widget-workshop-dev
-copilot plugin install widget-workshop@widget-workshop-dev
+```sh
+npm ci
+npm run check
+npm run docs:dev
 ```
 
-### Claude Code
+发布前运行 `npm run docs:build`；`npm run docs:preview` 预览产物。GitHub Actions 在 main 上构建并部署到 GitHub Pages，PR 只检查、不发布。站点基础路径为 `/widget-workshop-dev/`。
 
-```powershell
-claude plugin marketplace add https://github.com/wangdiandao/widget-workshop-dev
-claude plugin install widget-workshop@widget-workshop-dev
+## 安装开发插件
+
+本仓库根目录就是插件，不需要进入 plugins 子目录。插件包含 Skills、文档、类型参考和示例，不需要 API Key，也没有 MCP 服务。安装不会自动安装或启用任何桌面组件。
+
+Codex CLI（本机命令已核对；不同版本以 `codex plugin --help` 为准）：
+
+```sh
+codex plugin marketplace add wangdiandao/widget-workshop-dev --ref main
+codex plugin add widget-workshop@widget-workshop-dev
 ```
 
-### OpenAI Codex
-
-Add `https://github.com/wangdiandao/widget-workshop-dev` as a plugin marketplace, then enable the `widget-workshop` plugin. Codex may expose Skills directly rather than the orchestrator agent; invoke the Skill that matches the task.
-
-## Quick Start
-
-Ask the agent or a compatible coding assistant:
-
-> Create a Widget Workshop component from this idea: a compact world clock with custom accent color.
-
-For local package validation without an AI assistant:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\Test-ComponentPackage.ps1 -Path .\examples\minimal-clock
-```
-
-## Repository Layout
+Claude Code：
 
 ```text
-.github/plugin/                  Marketplace manifest
-.github/workflows/               CI and release-policy checks
-plugins/widget-workshop/          Plugin manifests, orchestrator agent, and Skills
-docs/en-US/                       English component developer docs
-docs/zh-CN/                       Chinese component developer docs
-contracts/                        Host API and category contract snapshots
-schemas/                          JSON schemas for component files
-examples/minimal-clock/           Minimal valid component package
-scripts/                          Validation and contract-sync scripts
+/plugin marketplace add wangdiandao/widget-workshop-dev
+/plugin install widget-workshop@widget-workshop-dev
 ```
 
-## Skills
+本地试用 Claude Code 可在仓库根目录运行 `claude --plugin-dir .`。Codex 可使用 `codex plugin marketplace add .` 注册本地目录后按上述名称安装；安装后的宿主重新加载方式以当前客户端为准。本次仓库检查不代表已经在你的客户端完成安装。
 
-| Skill | Use it for |
-|---|---|
-| `widget-workshop-workflow` | Choosing the right Widget Workshop Skill, repository sources, validation gate, and contract-sync path. |
-| `widget-workshop-api` | Checking `window.widgetWorkshop`, permission categories, `manifest.json`, settings schemas, categories, and runtime API errors. |
-| `widget-workshop-code-review` | Reviewing component packages before local sharing or Steam Workshop publication. |
-| `widget-workshop-dev` | Writing component folders, manifests, `index.html`, settings, locales, preview assets, styling, and runtime code. |
+使用方式及场景提示词见 [插件指南](docs/guide/ai-plugin.md)。根目录 `plugin.json` 为 portable 入口，`.codex-plugin`、`.claude-plugin` 提供两端入口，`skills/` 只维护一份。
 
-## Documentation
+## 目录与维护
 
-- [English component developer docs](docs/en-US/README.md)
-- [中文组件开发者文档](docs/zh-CN/README.md)
-- [Manifest schema](schemas/manifest.schema.json)
-- [Settings schema](schemas/settings.schema.json)
-- [Host API types](contracts/host-api.d.ts)
+| 目录 | 用途 |
+| --- | --- |
+| docs/guide | 开发流程与常见问题 |
+| docs/recipes | 桌宠、游戏、信息流、文件、Worker、多屏和桌面集成方案 |
+| docs/reference | 从宿主生成的协议与模块参考 |
+| docs/public/sdk | 仅供开发的类型和机器协议快照，不放进组件包 |
+| examples | 可作为源码阅读和宿主本地验证输入的示例 |
+| skills | Codex / Claude Code 共用 Skills |
+| tools | 同步与静态检查 |
 
-## Validation
-
-Run the full local gate before pushing:
+本仓库不接受外部贡献，外部用户只能提 Issue。维护者采用 **Issue → 分支 → PR → 检查 → 合并 → Pages**，详见 [Maintenance Policy](CONTRIBUTING.md)。宿主规范或实现影响作者时必须同时更新这里。同步入口：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\Test-Repository.ps1
-powershell -ExecutionPolicy Bypass -File .\scripts\Test-Plugin.ps1 -PluginPath .\plugins\widget-workshop
-powershell -ExecutionPolicy Bypass -File .\scripts\Test-ComponentPackage.ps1 -Path .\examples\minimal-clock
-git diff --check
+node tools/sync-host.mjs --source 'E:\repos\Widget Workshop'
+node tools/sync-host.mjs --source 'E:\repos\Widget Workshop' --check
+npm run check
+npm run docs:build
 ```
 
-When a local Widget Workshop app checkout is available, also verify that contract snapshots still match the host source:
+SDK 当前为 0.1.0，protocolVersion / hostApiMajor 为 1。这里的参考是当前宿主快照，不是兼容旧版本的承诺。具体来源文件与 SHA-256 见 host-snapshot.json；维护方法见 [同步说明](docs/guide/maintenance.md)。
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\Sync-ContractsFromHost.ps1 -WidgetWorkshopRepo E:\repos\widget_workshop
+## English
+
+Widget Workshop developer documentation and a root-level Codex/Claude Code plugin for desktop pets, games, information feeds and tools.
+
+**[English documentation](https://wangdiandao.github.io/widget-workshop-dev/en/) · [Quickstart](docs/en/guide/quickstart.md) · [Recipes](docs/en/recipes/index.md) · [Local-development lessons](docs/en/guide/lessons.md) · [API reference](docs/en/reference/index.md)**
+
+### Documentation
+
+Use Node.js 22 or newer. Run `npm ci`, `npm run check` and `npm run docs:dev`. Build with `npm run docs:build` and preview with `npm run docs:preview`. Main deploys to GitHub Pages through Actions; PRs validate without deploying. Chinese pages live at the site root and English pages at /en/.
+
+### Plugin installation
+
+The repository root is the plugin. It bundles two English Skills: **widget-workshop-dev** for development/API lookup/debugging/review, and **widget-workshop-examples** for routed recipes and lessons. It adds no MCP server, account connection or automatic widget installation.
+
+```sh
+codex plugin marketplace add wangdiandao/widget-workshop-dev --ref main
+codex plugin add widget-workshop@widget-workshop-dev
 ```
 
-## Pinning To A Release
+In Claude Code:
 
-```powershell
-copilot plugin install https://github.com/wangdiandao/widget-workshop-dev.git#v0.1.0
-claude plugin install https://github.com/wangdiandao/widget-workshop-dev.git#v0.1.0
+```text
+/plugin marketplace add wangdiandao/widget-workshop-dev
+/plugin install widget-workshop@widget-workshop-dev
 ```
 
-## Release Flow
+For local Claude testing use `claude --plugin-dir .`; for Codex use `codex plugin marketplace add .` followed by the same install selector. Check installed CLI help for version-specific behavior. Repository checks do not mean a plugin has already been installed or invoked in your client.
 
-Day-to-day work lands on `staging`. Promotion PRs from `staging` to `main` update `CHANGELOG.md` and keep `.github/plugin/marketplace.json`, `plugins/widget-workshop/plugin.json`, `.codex-plugin/plugin.json`, and `.claude-plugin/plugin.json` on the same version. See [RELEASING.md](RELEASING.md).
+### Maintenance and sources
 
-## Contributing
+**External contributions are not accepted. External users may only open Issues.** The owner follows Issue → branch → PR → checks → merge → Pages; see [Maintenance Policy](CONTRIBUTING.md). AGENTS.md is local-only and ignored; CLAUDE.md is not distributed.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md), [SUPPORT.md](SUPPORT.md), and [SECURITY.md](SECURITY.md). This project is licensed under the [MIT License](LICENSE).
+The host SDK/contract files are authoritative. Run `node tools/sync-host.mjs --source "E:/repos/Widget Workshop"`, then the same command with `--check`, `npm run check` and `npm run docs:build`. Generated references, declarations, machine protocol and five host examples have source/output hashes in host-snapshot.json. Review both language editions and Skills whenever host behavior changes.
+
+SDK baseline: 0.1.0; protocolVersion/hostApiMajor: 1. Do not bundle the SDK into components or promise legacy compatibility. Static checks are separate from strict host validation, WebView execution, physical input and multi-monitor/device acceptance. See [Sources and scope](docs/en/guide/sources.md) and [Third-party notices](THIRD_PARTY_NOTICES.md).

@@ -1,0 +1,9 @@
+:root { color-scheme: light dark; font: 15px/1.5 system-ui, sans-serif; }
+body { margin: 0; padding: 16px; color: CanvasText; background: Canvas; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+h1 { margin: 0; font-size: 20px; }
+button { font: inherit; min-height: 36px; cursor: pointer; }
+ul { margin: 0; padding-left: 24px; }
+li { margin-bottom: 12px; overflow-wrap: anywhere; }
+li button { display: block; margin-top: 4px; }
+button:disabled { cursor: default; }

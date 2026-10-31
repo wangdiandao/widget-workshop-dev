@@ -1,0 +1,18 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "widget-workshop",
+  "version": "0.1.0",
+  "description": "Widget Workshop component development, verified APIs, practical examples and local-development lessons.",
+  "author": {
+    "name": "wangdiandao"
+  },
+  "homepage": "https://wangdiandao.github.io/widget-workshop-dev/",
+  "repository": "https://github.com/wangdiandao/widget-workshop-dev",
+  "license": "MIT",
+  "keywords": [
+    "widget-workshop",
+    "widgets",
+    "desktop-pet",
+    "skills"
+  ]
+}

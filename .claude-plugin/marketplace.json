@@ -1,0 +1,15 @@
+{
+  "name": "widget-workshop-dev",
+  "owner": {
+    "name": "wangdiandao"
+  },
+  "plugins": [
+    {
+      "name": "widget-workshop",
+      "source": "./",
+      "description": "Widget Workshop component development, verified APIs, practical examples and local-development lessons.",
+      "version": "0.1.0"
+    }
+  ],
+  "description": "Widget Workshop development and practical example Skills."
+}

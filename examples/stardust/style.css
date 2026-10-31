@@ -1,0 +1,15 @@
+:root {background:transparent;--glow:#7aedcf;--light:#dafff5}
+:root[data-palette=violet] {--glow:#a796fb;--light:#f3e0ff}
+:root[data-palette=amber] {--glow:#f7c070;--light:#fff3d6}
+html,body {margin:0;width:100%;height:100%;overflow:hidden;background:transparent;pointer-events:none}
+canvas,#fallback {position:absolute;inset:0;width:100%;height:100%}
+[hidden] {display:none!important}
+#fallback::before,#fallback::after {content:"";position:absolute;left:20%;top:27%;width:60%;height:46%;border:1px solid var(--glow);border-radius:50%;opacity:.24;transform:rotate(-12deg)}
+#fallback::after {inset:34% 29%;width:auto;height:auto;transform:rotate(12deg)}
+#fallback i {position:absolute;width:4px;height:4px;border-radius:50%;background:var(--light);box-shadow:0 0 12px 3px var(--glow)}
+#fallback i:nth-child(1) {left:25%;top:40%} #fallback i:nth-child(2) {left:40%;top:30%}
+#fallback i:nth-child(3) {left:60%;top:63%} #fallback i:nth-child(4) {left:71%;top:44%}
+#fallback i:nth-child(5) {left:48%;top:58%} #fallback i:nth-child(6) {left:36%;top:65%}
+
+#fallback.has-preview {background-size:100% 100%;background-repeat:no-repeat}
+#fallback.has-preview::before,#fallback.has-preview::after,#fallback.has-preview i {display:none}

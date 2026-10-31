@@ -1,0 +1,11 @@
+{
+  "name": "widget-workshop-dev",
+  "plugins": [
+    {
+      "name": "widget-workshop",
+      "source": {"source": "local", "path": "./"},
+      "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+      "category": "Developer Tools"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "kind": "widget",
+  "widgetId": "f267806c-3180-48aa-a4c2-f881c2181375",
+  "version": "1.18.3",
+  "hostApiMajor": 1,
+  "name": "文件统计",
+  "description": "文件与网络统计、PNG缩略预览和缩放导出，以及授权目录自动刷新。",
+  "author": "WidgetWorkshop",
+  "entry": "index.html",
+  "window": {
+    "size": {
+      "width": 380,
+      "height": 540,
+      "minWidth": 320,
+      "minHeight": 280
+    },
+    "layer": "top"
+  },
+  "capabilities": [
+    "clipboard"
+  ],
+  "configuration": [
+    {
+      "key": "filePreview",
+      "label": "本地 UTF-8 文本预览",
+      "description": "选定的 txt/csv/md/json/jsonl/ndjson/log 显示开头最多8192字符单元；不是格式验证，不将正文写入统计导出。",
+      "type": "boolean",
+      "default": false,
+      "shareable": true
+    },
+    {
+      "key": "responsePreview",
+      "label": "文本响应预览",
+      "type": "boolean",
+      "default": true,
+      "shareable": true
+    },
+    {
+      "key": "url",
+      "label": "网络统计地址",
+      "type": "string",
+      "default": "",
+      "maxLength": 2048,
+      "shareable": true
+    },
+    {
+      "key": "token",
+      "label": "可选 HTTP 令牌",
+      "type": "secret",
+      "default": null,
+      "shareable": false
+    },
+    {
+      "key": "folder",
+      "label": "自动刷新的目录",
+      "type": "directory",
+      "default": null,
+      "shareable": false
+    }
+  ],
+  "allowMultipleInstances": true,
+  "tags": [
+    "File Tools"
+  ]
+}

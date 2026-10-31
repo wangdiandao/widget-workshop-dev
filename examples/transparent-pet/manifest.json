@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "kind": "widget",
+  "widgetId": "ec33e1dd-1c16-47fe-b706-1f459b05ce8d",
+  "version": "1.18.0",
+  "hostApiMajor": 1,
+  "name": "透明团团",
+  "author": "WidgetWorkshop",
+  "description": "可点击、可拖动和输入名字的透明桌宠；关闭交互可作为纯展示装饰。",
+  "entry": "index.html",
+  "window": {
+    "size": {
+      "width": 280,
+      "height": 220,
+      "minWidth": 280,
+      "minHeight": 220
+    },
+    "layer": "top",
+    "surface": {
+      "transparent": true,
+      "inputMode": "regions"
+    }
+  },
+  "capabilities": [],
+  "configuration": [
+    {
+      "key": "palette",
+      "label": "团团配色",
+      "group": "呈现",
+      "description": "薄荷、桃子或晴空；只改变外观，各显示器独立保存。",
+      "type": "enum",
+      "options": [
+        {
+          "value": "mint",
+          "label": "薄荷"
+        },
+        {
+          "value": "peach",
+          "label": "桃子"
+        },
+        {
+          "value": "sky",
+          "label": "晴空"
+        }
+      ],
+      "default": "mint",
+      "shareable": true
+    },
+    {
+      "key": "interactive",
+      "label": "可交互",
+      "group": "呈现",
+      "description": "关闭后只展示角色；仍可从显示页的编辑模式恢复位置。",
+      "type": "boolean",
+      "default": true,
+      "shareable": true
+    },
+    {
+      "key": "wander",
+      "label": "缓慢散步",
+      "group": "呈现",
+      "description": "还需在宿主允许自主移动。操作名字/投喂面板、拖动、隐藏、减少动画或节能时不移动；进度与位置不写入布局。",
+      "type": "boolean",
+      "default": false,
+      "shareable": true
+    }
+  ],
+  "allowMultipleInstances": true,
+  "tags": [
+    "Desktop Pet"
+  ]
+}

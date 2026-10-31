@@ -1,0 +1,6 @@
+interface:
+  display_name: "Widget Workshop Examples"
+  short_description: "Practical widget recipes and local-development lessons"
+  default_prompt: "Use $widget-workshop-examples to adapt a bundled example for this component."
+policy:
+  allow_implicit_invocation: true

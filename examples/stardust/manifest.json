@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "widget",
+  "widgetId": "38964ed3-1574-4c92-bc44-5d59ac350871",
+  "version": "1.8.3",
+  "hostApiMajor": 1,
+  "name": "星河微光",
+  "author": "WidgetWorkshop",
+  "description": "透明、无声音的纯展示星群；质量和静止模式通过配置调整，隐藏停止自己的绘制。",
+  "entry": "index.html",
+  "window": {
+    "size": {
+      "width": 520,
+      "height": 300,
+      "minWidth": 520,
+      "minHeight": 300
+    },
+    "layer": "top",
+    "surface": {
+      "transparent": true,
+      "inputMode": "none"
+    }
+  },
+  "capabilities": [],
+  "configuration": [
+    {
+      "key": "frameRate",
+      "label": "目标帧率",
+      "type": "integer",
+      "minimum": 10,
+      "maximum": 60,
+      "default": 30,
+      "shareable": true,
+      "group": "质量",
+      "description": "作者绘制目标，不保证所有设备达到；节能最多 10 fps。"
+    },
+    {
+      "key": "stars",
+      "label": "星星数量",
+      "type": "integer",
+      "minimum": 16,
+      "maximum": 96,
+      "default": 48,
+      "shareable": true,
+      "group": "质量",
+      "description": "最多 96，节能最多 24；每颗只计算两条候选连线。"
+    },
+    {
+      "key": "still",
+      "label": "静止呈现",
+      "type": "boolean",
+      "default": false,
+      "shareable": true,
+      "group": "呈现",
+      "description": "只绘制必要的一帧；系统减少动画同样生效。"
+    },
+    {
+      "key": "palette",
+      "label": "配色",
+      "type": "enum",
+      "options": [
+        {
+          "value": "mint",
+          "label": "薄荷星河"
+        },
+        {
+          "value": "violet",
+          "label": "暮色星河"
+        },
+        {
+          "value": "amber",
+          "label": "琥珀星河"
+        }
+      ],
+      "default": "mint",
+      "shareable": true,
+      "group": "呈现"
+    }
+  ],
+  "allowMultipleInstances": true,
+  "tags": [
+    "Decoration"
+  ]
+}
