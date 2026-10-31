@@ -11,13 +11,13 @@ Declaration is not authorization. These are the only six valid `manifest.capabil
 | `directory.write` | Preserve read-only features; writes stay within user bindings |
 | `screen.capture` | Use the system picker; handle cancellation and invalidation |
 
-Networking, metrics, directory reads, media and documented base interfaces are not capability declarations. They still obey resource scope, lifecycle, quotas and final-delivery validation.
+Networking, metrics, directory reads, media and documented base interfaces work without authorization and obey resource scope, lifecycle, quotas and final-delivery validation.
 
 ## Networking and accounts
 
-Direct fetch/WebSocket/WebRTC are allowed, without a network permission switch or offline guarantee. Browser fetch obeys CORS. Host network methods provide bounded HTTP responses and Base64 bodies; a header chooses plaintext value OR `secretBindingId` with optional prefix.
+Direct fetch/WebSocket/WebRTC are allowed. Browser fetch obeys CORS. Host network methods provide bounded HTTP responses and Base64 bodies; a header chooses plaintext value OR `secretBindingId` with optional prefix.
 
-Do not evade CORS through arbitrary public proxies, remote scripts or remote embedded pages. The component and provider own login and consent; the host has no provider-specific account API. Consult the selected service's official documentation before choosing a login flow.
+Do not evade CORS through arbitrary public proxies, remote scripts or remote embedded pages. The component and provider own login and consent. Consult the selected service's official documentation before choosing a login flow.
 
 ## Bound resources and invalidation
 

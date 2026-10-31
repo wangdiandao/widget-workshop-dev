@@ -4,7 +4,7 @@
 
 当前SDK0.1.0，hostApiMajor/apiMajor=1、protocolVersion=1。类型声明与机器可读字段以sdk唯一来源同步。
 
-宿主不提供服务专用账号授权接口。组件自行通过直接联网或通用network接口完成登录、令牌和服务请求；参见[组件登录验证](../modules/github.md)。
+组件自行通过直接联网或通用network接口完成登录、令牌和服务请求；参见[组件登录验证](../modules/github.md)。
 
 ## 参数与关联协议
 
@@ -42,7 +42,7 @@ window.addEventListener('pagehide', offTheme, {once: true});
 
 ## 强调色与文字缩放
 
-`context.system.accentColor` 为宿主使用的 Windows 强调色，固定大写 `#RRGGBB`，不可用时为 null；宿主没有独立强调色覆盖。`context.system.textScaleFactor` 为系统辅助功能文字大小倍率，范围 1–2.25，不可用时为 null。它与 `environment.scale` 的显示器 DPI 比例分别定义，不返回精确显示器或用户身份。功能标志分别为 `context.system.accentColor` 和 `context.system.textScaleFactor`，无需 Capability。
+`context.system.accentColor` 为宿主使用的 Windows 强调色，固定大写 `#RRGGBB`，不可用时为 null。`context.system.textScaleFactor` 为系统辅助功能文字大小倍率，范围 1–2.25，不可用时为 null。它与 `environment.scale` 的显示器 DPI 比例分别定义，不返回精确显示器或用户身份。功能标志分别为 `context.system.accentColor` 和 `context.system.textScaleFactor`，无需 Capability。
 
 初始值随 ready.system 返回，未完成采样时允许 null；首次采样及后续实际变化通过既有 `system.changed` 整体投递，SDK 在通知前更新 context.system。沿用有限系统上下文的有界后台采样与隐藏/暂停规则；暂停期间不采样，恢复后读取最新状态，不积压中间变化。组件自行应用配色和文字大小，宿主不修改网页 CSS、浏览器缩放或窗口尺寸；高对比时优先遵循强制色规则，不把强调色视为对比度保证。
 
@@ -178,7 +178,7 @@ Services 唯一拥有监听注册表、资源绑定与生命周期，平台只�
 
 `assets.open {path}` 只打开当前已激活包中的普通文件，返回与 `files.open` 相同的 `{fileId,name,sizeBytes}`，随后使用 `files.read/close`。path 是不解码的包内相对路径，最多 512 UTF-16 单元，使用 `/`；拒绝空段、`.`、`..`、反斜线、冒号、控制字符和末尾空格/句点，不接受 URL 或本机路径。祖先目录和叶文件拒绝重解析点，打开后核对实际路径归属；读取不执行脚本、Wasm 或原生代码。
 
-资产与用户导入共享每实例十六个/全局十六个句柄、单资源 256 MiB、64 KiB 块、单句柄背压与期限。Services 从可信实例确定当前包和失效票据，绑定原文档；导航、包激活或停用使旧资源失效。后台执行，不持事务锁打开文件，不向网页返回包目录。正常包 URL 仍可用于浏览器图片/媒体加载，此接口用于明确按需读取二进制内容，不替作者累计整个资源。没有新增能力授权或任意文件入口。
+资产与用户导入共享每实例十六个/全局十六个句柄、单资源 256 MiB、64 KiB 块、单句柄背压与期限。Services 从可信实例确定当前包和失效票据，绑定原文档；导航、包激活或停用使旧资源失效。后台执行，不持事务锁打开文件，不向网页返回包目录。正常包 URL 仍可用于浏览器图片/媒体加载，此接口用于明确按需读取二进制内容，不替作者累计整个资源。
 
 
 ## 用户选择的文件与有界读取
@@ -209,7 +209,7 @@ window.addEventListener('pagehide', () => { offDrop(); offDropError(); }, {once:
 
 作者逐块拉取和消费后再请求下一范围，取消时在 finally 关闭句柄；不得把大文件先拼成一个无限增长的字符串或 KV 值。导出和带秘密绑定的 HTTP 流分别见本页对应定义。
 
-本协议定义不可信网页与原生宿主的边界。组件不能直接访问宿主对象、Steam SDK或任意本机API；网络和执行策略见下节。发布前协议允许破坏性修改，不提供旧包适配。
+本协议定义不可信网页与原生宿主的边界。组件不能直接访问宿主对象、Steam SDK或任意本机API；网络和执行策略见下节。发布前协议允许破坏性修改。
 
 实际执行及最终投递均校验撤权与失效代次，慢IO使用全局有界队列。
 
@@ -242,7 +242,7 @@ manifest 只声明可能调用的能力；权限记录位于宿主，按 install
 | directory.write | 授权目录读写 | 对用户绑定目录增加写入、创建、重命名和单项删除；基础读取不受此开关控制 |
 | screen.capture | 显示画面采集 | 系统选择器选定窗口或显示器，短期有界会话 |
 
-下列9项为基础接口，不声明Capability、不请求授权、不出现在授权状态或首次授权弹窗中。原方法名、资源范围、额度、实例/文档生命周期、取消和最终投递检查保持；旧能力名称不再接受为manifest声明，不增加兼容分支。
+下列9项为基础接口，无需声明或授权，遵守各自的资源范围、额度、实例/文档生命周期、取消和最终投递规则。
 
 | 基础功能 | 方法 | 范围 |
 | --- | --- | --- |
@@ -256,11 +256,11 @@ manifest 只声明可能调用的能力；权限记录位于宿主，按 install
 | 音量控制 | audio.output.get/set | 默认输出音量与静音，与组件静音分开 |
 | 活动状态 | system.activity.get | 当前会话活跃/空闲状态，无输入内容或历史 |
 
-location需要独立声明与授权。网页使用标准 `getCurrentPosition` / `watchPosition`，没有新增桥接方法。定位 PermissionRequested 只允许当前实例的包来源，执行时检查声明、安装级授权与启用状态；不把允许状态保存到浏览器 profile。定位授权变化时重建该安装的运行 WebView，停止旧文档定位请求与监听，保留配置、启用及可见性。撤销不能收回已经交付的位置或已发出的网络请求。系统定位关闭、服务无结果、用户拒绝或超时都不能阻止启用。
+location需要独立声明与授权。网页使用标准 `getCurrentPosition` / `watchPosition`。定位 PermissionRequested 只允许当前实例的包来源，执行时检查声明、安装级授权与启用状态；不把允许状态保存到浏览器 profile。定位授权变化时重建该安装的运行 WebView，停止旧文档定位请求与监听，保留配置、启用及可见性。撤销不能收回已经交付的位置或已发出的网络请求。系统定位关闭、服务无结果、用户拒绝或超时都不能阻止启用。
 
-配置、实例 KV 存储、读取自身上下文、`window.setSize` 和 `network.request` 是基础接口，不需要弹窗授权，但严格限定自身实例。这些接口不允许读取任意文件或其他组件数据。`network.request` 不在 manifest.capabilities 或 capabilities grant 列表中，不返回网络能力未声明/拒绝错误。没有“必需能力”的字段和启用门槛。
+配置、实例 KV 存储、读取自身上下文、`window.setSize` 和 `network.request` 是基础接口，不需要弹窗授权，但严格限定自身实例。这些接口不允许读取任意文件或其他组件数据。
 
-`target.open` 不接受组件传来的程序路径、命令行或 shell 字符串。应用/快捷方式绑定必须由用户在可信 UI 中选择；文件绑定拒绝脚本与可执行载荷的伪装。首次版本不提供作者自定义启动参数，既有快捷方式的目标由宿主向用户显示后绑定。使用 directoryBindingId 的形式只允许普通文档，不允许直接启动目录中的可执行文件、脚本或快捷方式；这些目标须经专门的启动绑定选择流程。
+`target.open` 不接受组件传来的程序路径、命令行或 shell 字符串。应用/快捷方式绑定必须由用户在可信 UI 中选择；文件绑定拒绝脚本与可执行载荷的伪装。既有快捷方式的目标由宿主向用户显示后绑定。使用 directoryBindingId 的形式只允许普通文档，不允许直接启动目录中的可执行文件、脚本或快捷方式；这些目标须经专门的启动绑定选择流程。
 
 ## 网页与网络边界
 
@@ -268,11 +268,11 @@ location需要独立声明与授权。网页使用标准 `getCurrentPosition` / 
 
 包资源通过实例专属本地虚拟 origin 提供，主文档锁定为包内页面。拒绝包外 file URL、跨实例资源、远程顶层导航、子框架、弹窗、新窗口、下载、外部协议跳转以及摄像头/麦克风等未提供的浏览器权限。定位仅通过上表的 `location` 能力开放，其他浏览器权限仍默认拒绝。
 
-**组件默认可联网，不提供网络权限控制。** 网页直接 fetch/XHR、HTTP(S) 图片/字体/媒体/样式、WebSocket、EventSource、WebRTC、Beacon 和数据预取可以使用；遵循浏览器 CORS、TLS 与混合内容规则，不承诺跨源请求必然成功。可访问用户网络可达的本机、局域网和外网，不做目的域名白名单。Shared/Service Worker、子框架、表单导航、远程顶层页面及远程可执行脚本仍不开放。`network.request` 是可选的宿主 HTTP(S) 数据接口，允许作者使用秘密绑定等宿主服务，不是唯一联网通路。
+**组件默认可联网。** 网页直接 fetch/XHR、HTTP(S) 图片/字体/媒体/样式、WebSocket、EventSource、WebRTC、Beacon 和数据预取可以使用；遵循浏览器 CORS、TLS 与混合内容规则，不承诺跨源请求必然成功。可访问用户网络可达的本机、局域网和外网，不做目的域名白名单。Shared/Service Worker、子框架、表单导航、远程顶层页面及远程可执行脚本仍不开放。`network.request` 是可选的宿主 HTTP(S) 数据接口，允许作者使用秘密绑定等宿主服务。
 
 宿主在交付响应时注入受控 CSP（JavaScript 仅包内，禁 frame/object，Dedicated Worker 仅包内、禁 JavaScript eval/Function 和内联脚本，使用 `wasm-unsafe-eval` 允许 WebAssembly 编译；连接允许 HTTP(S)/WS(S)，图片、字体、媒体和样式可使用 HTTP(S)，样式可内联），并配置 WebView 事件、权限和资源拦截策略。网页不能删除宿主响应头策略。WebAssembly 不增加宿主能力或改变授权检查。宿主提供的 SDK 将用户点击的外链转到受控 external.open；其他外部导航由宿主阻止，具体规则见下文。网络代理允许标准 HTTP 方法、验证 TLS、最多跟随 5 次 HTTP(S) 重定向，每跳重新检查当前有效会话与运行状态；不自动附加 Windows 身份、其他浏览器 Cookie 或系统代理凭据。
 
-上述是剩余宿主边界与必须验证的实现策略，**不构成断网或防外传隔离**。联网及宿主/代码边界的改动按 必要测试（宿主文档：`../testing.md`） 选择相关检查，不再使用已取消的独立验证门槛。诊断中仍区分 WebView 自身流量和组件请求。
+上述是剩余宿主边界与必须验证的实现策略，**不构成断网或防外传隔离**。联网及宿主/代码边界的改动按 必要测试（宿主文档：`../testing.md`） 选择相关检查。诊断中仍区分 WebView 自身流量和组件请求。
 
 ## 会话与消息
 
@@ -306,7 +306,7 @@ location需要独立声明与授权。网页使用标准 `getCurrentPosition` / 
 
 ## 请求顺序与预算
 
-发布前协议可破坏性调整，不提供旧请求 ID 或旧分页适配。features 返回支持的方法名及 `webassembly`、`location`、`events`、`context.visibility`、`request.cancel`、`directory.snapshot`、`network.safeRedirect`；实现支持不代表授权。manifest不提供requiredFeatures；features仅供作者可选探测与降级，不构成安装门槛。所有Capability仍可拒绝。
+发布前协议可破坏性调整。features 返回支持的方法名及 `webassembly`、`location`、`events`、`context.visibility`、`request.cancel`、`directory.snapshot`、`network.safeRedirect`；实现支持不代表授权。features供作者探测支持情况并提供降级。所有Capability仍可拒绝。
 
 解析前每 WebView 限 60 条/秒、突发 16 条，8 MiB/秒、突发 16 MiB；全宿主限 240 条/秒、突发 64 条，32 MiB/秒、突发 64 MiB。超额不解析、不回应不可信 ID，SDK 等待会超时；单条仍限 8 MiB。limits 返回这些值和并发、超时、正文、KV、目录额度。获取 WebView 原始消息的开销无法由预算消除。
 
@@ -368,7 +368,7 @@ await widgetHost.call('window.setSize', {width: 360, height: 420});
 
 ## 限额与错误
 
-用户锁定KV写入输入优先校验：storage.set通过既有实例有效性、取消及安装级顺序检查后，先按JSON序列化的UTF-8字节检查新值的256 KiB单值限额；超额立即返回QUOTA_EXCEEDED，不读取/创建KV目录、不扫描或发布大小索引、不改变已有记录。即使磁盘另有损坏，本次超额输入仍优先报QUOTA_EXCEEDED；合法输入的首次写入继续完整扫描并校验所有记录与总额度，磁盘异常错误和失败保留规则不变。没有放宽总配额、逐键故障隔离或合法首写的性能要求。
+用户锁定KV写入输入优先校验：storage.set通过既有实例有效性、取消及安装级顺序检查后，先按JSON序列化的UTF-8字节检查新值的256 KiB单值限额；超额立即返回QUOTA_EXCEEDED，不读取/创建KV目录、不扫描或发布大小索引、不改变已有记录。即使磁盘另有损坏，本次超额输入仍优先报QUOTA_EXCEEDED；合法输入的首次写入继续完整扫描并校验所有记录与总额度，磁盘异常错误和失败保留规则不变。
 
 实例KV的磁盘记录读取沿用当前写入限制：冷索引重建逐条检查键/值及累计配额，超限停止并丢弃候选索引；目标读取也拒绝超限存活值。键长或配额异常的磁盘记录返回RESOURCE_UNAVAILABLE，不把部分扫描结果用于提交；正常set超过额度仍返回QUOTA_EXCEEDED，既有值保留。内部扫描与取消边界见开发规范（宿主文档：`../development.md`）。
 
@@ -402,7 +402,7 @@ await widgetHost.call('window.setSize', {width: 360, height: 420});
 
 `collaboration.publish/get`在同一安装内交换最新一条临时提示，所有实例均可发布/读取，见[协作协议](collaboration.md)。
 
-宿主不提供作者可用的协作暂停策略、事件、累计暂停时间或网页暂停辅助函数；可信管理入口的[全局暂停](../modules/runtime.md#全局暂停)使用 WebView2 尽力挂起，不新增作者接口。组件可自行设计游戏内暂停，显隐、锁屏和挂起通知保持各自语义。
+可信管理入口的[全局暂停](../modules/runtime.md#全局暂停)使用 WebView2 尽力挂起。组件可自行设计游戏内暂停，显隐、锁屏和挂起通知保持各自语义。
 
 ## 桌面扩展接口
 

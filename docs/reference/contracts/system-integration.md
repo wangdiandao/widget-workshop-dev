@@ -2,7 +2,7 @@
 
 # 系统集成
 
-本协议定义画面、桌面空间、丰富剪贴板、媒体补全、系统输出音量、文件图像和空闲状态。只有screen.capture和clipboard需要声明和安装级授权；桌面空间、活动状态、音量及媒体接口为基础接口。执行及最终投递检查原文档、安装、授权和资源代次，撤权重授不复活旧资源。网络歌词检索、OCR、翻译、图像处理、碰撞及交互逻辑由作者完成。公开方法只列已实现能力，不为未实现功能增加接口、字段或提示。
+本协议定义画面、桌面空间、丰富剪贴板、媒体补全、系统输出音量、文件图像和空闲状态。只有screen.capture和clipboard需要声明和安装级授权；桌面空间、活动状态、音量及媒体接口为基础接口。执行及最终投递检查原文档、安装、授权和资源代次，撤权重授不复活旧资源。网络歌词检索、OCR、翻译、图像处理、碰撞及交互逻辑由作者完成。
 
 ## 画面采集
 
@@ -38,4 +38,4 @@
 
 媒体接口无需Capability。`media.get` 增加albumTitle、albumArtist、subtitle、trackNumber、albumTrackCount、genres（最多16项）、playbackType（music/video/image/unknown）、timeline（startMs/endMs/positionMs/minSeekMs/maxSeekMs/updatedAt）。文字沿用128单元上限；未提供的文本为空、数字为系统原值，时间轴不是作者暂停或可信离线计时。读取不枚举播放器，不声明歌词接口或支持状态。
 
-`media.artwork {sessionId}` 读取最近引用且仍为当前会话的封面，返回 `{image:null|PNG图片}`；源最多4MiB，输出最长边2048、最多4MiB。`media.control` 增加command:"seek"及positionMs，仅在播放器支持且位于当前seek范围时发出；controls增加seek。会话切换、停用、重载及到期后旧引用拒绝。控制沿用已有额度和3秒等待预算。系统无通用歌词字段，宿主不内建歌词服务、播放器私有协议或账号服务，作者使用元数据自行联网检索。
+`media.artwork {sessionId}` 读取最近引用且仍为当前会话的封面，返回 `{image:null|PNG图片}`；源最多4MiB，输出最长边2048、最多4MiB。`media.control` 增加command:"seek"及positionMs，仅在播放器支持且位于当前seek范围时发出；controls增加seek。会话切换、停用、重载及到期后旧引用拒绝。控制沿用已有额度和3秒等待预算。作者可使用媒体元数据自行联网检索歌词。

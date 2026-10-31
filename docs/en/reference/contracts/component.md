@@ -4,7 +4,7 @@ The package `schemaVersion` and `hostApiMajor` are 1; SDK baseline is 0.1.0. Del
 
 ## Manifest fields
 
-Required identity fields include kind: widget, a UUID `widgetId`, three-part numeric version, nonempty name/author and matching `hostApiMajor`. Optional description/tags/i18n/entry/preview/window/capabilities/configuration follow the current schema. Unknown top-level fields, capabilities and field types are rejected. Capabilities are unique names, not grant requirements. configuration is an array with unique keys.
+Required identity fields include kind: widget, a UUID `widgetId`, three-part numeric version, nonempty name/author and matching `hostApiMajor`. Optional description/tags/i18n/entry/preview/window/capabilities/configuration follow the current schema. Unknown top-level fields, capabilities and field types are rejected. Capabilities are unique names; the array may be empty. configuration is an array with unique keys.
 
 `allowMultipleInstances` defaults false: one enabled intent across displays, including hidden/disconnected states. When true there is still at most one instance per installation per display. Installation identity is distinct from the author's `widgetId`, and cross-source duplicate additions are rejected.
 
@@ -25,10 +25,10 @@ Positions are host-chosen and cannot be specified as monitor/screen coordinates 
 
 Paths must be safe package-relative paths without URLs, absolute roots, traversal or links. Bundle scripts/frameworks; remote JavaScript and native DLL/EXE extensions are not allowed. The three reserved SDK filenames are rejected anywhere, case-insensitively.
 
-Defaults: manifest 256 KiB; preview PNG 1 MiB with longest side 4096 pixels; individual asset 64 MiB; package 256 MiB and 10,000 files. Content hashes establish integrity, not publisher trust. Local import accepts directories, not ZIPs. Ordinary import is not a source-directory update mechanism.
+Defaults: manifest 256 KiB; preview PNG 1 MiB with longest side 4096 pixels; individual asset 64 MiB; package 256 MiB and 10,000 files. Content hashes establish integrity, not publisher trust. Local import validates and copies a component directory into a new installation.
 
 See [development](../modules/development.md), [configuration](configuration.md) and [API authorization](host-api.md).
 
 ## Source and related declarations
 
-This English reference describes the same current contract for authors. The [synchronized source-language contract](../../../reference/contracts/component.md) retains the host's full wording. Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).
+Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).

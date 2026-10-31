@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
+import {englishDeclarations, englishProtocol} from './sdk-english.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => readFile(path.join(root, file), 'utf8');
@@ -36,6 +37,22 @@ const snapshot = await json('host-snapshot.json');
 for (const file of snapshot.files) {
   const bytes = await readFile(path.join(root, file.destination));
   assert.equal(createHash('sha256').update(bytes).digest('hex'), file.sha256, `Snapshot changed: ${file.destination}`);
+}
+assert.equal(await read('docs/public/sdk/widget-host.en.d.ts'), englishDeclarations(await read('docs/public/sdk/widget-host.d.ts')));
+assert.equal(await read('docs/public/sdk/protocol.en.json'), englishProtocol(await read('docs/public/sdk/protocol.json')));
+assert.deepEqual(await json('docs/public/sdk/protocol.en.json'), await json('docs/public/sdk/protocol.json'));
+for (const file of (await walk('docs/en')).filter(file => file.endsWith('.md'))) {
+  const text = await read(file);
+  assert(!/\p{Script=Han}/u.test(text), `English required: ${file}`);
+  for (const match of text.matchAll(/^<<<\s+(\S+)/gm)) {
+    const included = path.posix.normalize(path.posix.join(path.posix.dirname(file), match[1]));
+    assert(!/\p{Script=Han}/u.test(await read(included)), `English snippet required: ${file} -> ${included}`);
+  }
+  for (const match of text.matchAll(/\[[^\]]*\]\(([^)]+\.md)(?:#[^)]*)?\)/g)) {
+    if (/^https?:/.test(match[1])) continue;
+    const linked = path.posix.normalize(path.posix.join(path.posix.dirname(file), match[1]));
+    assert(linked.startsWith('docs/en/'), `English page links outside its language: ${file} -> ${linked}`);
+  }
 }
 let skills = 0;
 for (const file of await walk('skills')) {

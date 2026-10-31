@@ -10,38 +10,38 @@
     {
       "source": "docs/contracts/cache.md",
       "destination": "docs/reference/contracts/cache.md",
-      "sourceSha256": "69de26a9e7f7bb3836f7d5eded08f92cd78800ff4e80f5f241ae557dc23d20ab",
-      "sha256": "c96aad4c4b81176a22194488fe1db7a103e590b31e176c87d08af1374fb9bbd2"
+      "sourceSha256": "8c8efa3e542f029968cce6eef72f54562cd707904d34459a1189ba7e3f9f1b22",
+      "sha256": "487dec82c5822ba3abd11b1bd06d3b2b4030dd8662fe9dc17163d2cf1d33080b"
     },
     {
       "source": "docs/contracts/collaboration.md",
       "destination": "docs/reference/contracts/collaboration.md",
-      "sourceSha256": "74be5523bc9479072be458930834f2b13ec32ec1081cb34fcf86c2609b71759c",
-      "sha256": "5d8a5eb8afa7fc3d773e52c6eec07ec29691a1eacd4312f4f115663770e1e2f1"
+      "sourceSha256": "0f1a0e889daf954133caabdc4de5352da3bd28a6983b8baa89eb34b2bd9c51a0",
+      "sha256": "e894f72a915da35a3cfb2e5cfb75e129e69158561da61f2835463e69e4935f3f"
     },
     {
       "source": "docs/contracts/component.md",
       "destination": "docs/reference/contracts/component.md",
-      "sourceSha256": "a645046decd2e0bf2709a4deb4a0074657fa4e648572877d1106f4f600b2fbf8",
-      "sha256": "4deccdaa6cbcd953716d1fc00d91cb39fbe10f6b5171dd506ceafd9a48d95101"
+      "sourceSha256": "c57962fe94d3f16c7093a88dd427d983a0058c4abd1e15e93a7ed34fbef01779",
+      "sha256": "604d558aafbcc079d2f9827a18ce02d5af74ebeaebeebbf4533269c57423bf7a"
     },
     {
       "source": "docs/contracts/configuration.md",
       "destination": "docs/reference/contracts/configuration.md",
-      "sourceSha256": "c1755d5e31eed3d9a07391b6d63b62c838808d72e652a19efd7c35faa4a436fe",
-      "sha256": "e056a0f110dc5d5c86e2dff3fbf5c3c0d2c33e6158f1b60c314e02720fb0cabf"
+      "sourceSha256": "8e966ef37b5954ae8c2ed66949bf2c5feb4dd7d1abae965d95ac9599c1735160",
+      "sha256": "d6d5820bd45ea5ca2690094108f2f641eb3d0fe610c76f6d1382be28e5f83f26"
     },
     {
       "source": "docs/contracts/desktop-extensions.md",
       "destination": "docs/reference/contracts/desktop-extensions.md",
-      "sourceSha256": "88d52ad4b8641e6933182c4f7b69d59bbea214baf66263d4502363844f8bb397",
-      "sha256": "61624d589b414c2cad9d2510dffa509f6767d1a463610a7ab31ea5a671173f42"
+      "sourceSha256": "5afb2944007ab7fa4dfa98c2e7e05a39992b944a73ebe1c6ad78fb484a6e7f5e",
+      "sha256": "23d82342a59eda04dd93fd418accaa2d5703d3c72cde6aa0695c3df36dfe280f"
     },
     {
       "source": "docs/contracts/host-api.md",
       "destination": "docs/reference/contracts/host-api.md",
-      "sourceSha256": "8ab30878639b815541247769d08d5e1c1a3b898439efdb3acc9b23cec1363788",
-      "sha256": "5b3601a494c0ab2d213d31176ae5760762b9a7185d475f3d2a2f66fb3d3e77d2"
+      "sourceSha256": "b72cebc6d86920e104c80f964e8d9317e3058a22162fd9ddc896368c94b753de",
+      "sha256": "2ceddef581f0c250c55a533562a6cac70516fc24f4d2a224233a72081711d7f0"
     },
     {
       "source": "docs/contracts/layout.md",
@@ -58,26 +58,26 @@
     {
       "source": "docs/contracts/saves.md",
       "destination": "docs/reference/contracts/saves.md",
-      "sourceSha256": "4da58b3ff1f147f5297cc40329074e535fe5187a7b9457037c8f845e82e7089a",
-      "sha256": "a07b0a018704a8ece5eeca0b3cf9214ad8790b0459d4b514b931a20cf169f004"
+      "sourceSha256": "b7ac7ad3ed292b04f0b6124553379234e73bf199a678eb78803c6801e377424e",
+      "sha256": "0a0c68ec8ea428b7c38a61893a97be0dee0dc3465e71f13284b3f22c8b298930"
     },
     {
       "source": "docs/contracts/system-integration.md",
       "destination": "docs/reference/contracts/system-integration.md",
-      "sourceSha256": "b682968f17aa6565f76c146f72c4a64bedb2d0afe825d6a5775daa5122886bc5",
-      "sha256": "1700996d161bb0a02c9e750a9e5f38d9d2e8a2f8b09d45854c40fe24d7247e1f"
+      "sourceSha256": "f18d582b47ba6e99a912764945b87a47a1bd8d9ee30deae49aa1bfb863b37f4f",
+      "sha256": "b4c19f5455ced21385efc721c36a847b0d66e264138b1444b3ea0f048087819b"
     },
     {
       "source": "docs/modules/audio.md",
       "destination": "docs/reference/modules/audio.md",
-      "sourceSha256": "64226c6c50df2da0eef2f84429f2ca9862ed85debb5074cf9f4b16a1ab58c8ec",
-      "sha256": "e6654c7d36c0ab244d26e5ab3e370657d7c5c2d29146f65637946ad30ba5ad99"
+      "sourceSha256": "04f7ba416d72a6ba1631bd4fc303d477f6e80b3172dd1a821370e4ae7348ce75",
+      "sha256": "d10ba9d2cd23ab336d15320ad36c80d2258883a75e7ec1395977e68e53c2ebb2"
     },
     {
       "source": "docs/modules/development.md",
       "destination": "docs/reference/modules/development.md",
-      "sourceSha256": "bef557d69b160e7319fc33a3b8f8a41e4934c3776869eca520c3200fefbef0ee",
-      "sha256": "d8db0740faaaa42aca04d63ce5ae86f1b79402dd4c3eb00a04deeb67203f7ab7"
+      "sourceSha256": "f1b387b76fc3528ae20cdb3c274e016e0b5d7897cfa3b869b45d7f03d96e4d99",
+      "sha256": "f625e78b3fe20125053e34545e400149b4586d1785916274fd6f03df5e227c3e"
     },
     {
       "source": "docs/modules/edge-garden.md",
@@ -94,8 +94,8 @@
     {
       "source": "docs/modules/github.md",
       "destination": "docs/reference/modules/github.md",
-      "sourceSha256": "853fa905ef52c73942ee4578d5543447d13abe9a8f1ddff7734ff176de3a5ef1",
-      "sha256": "43c8e3ef127b320b0400a3f9bb75e5fa84eaf56c8317a319a30e99a796b1ad21"
+      "sourceSha256": "986d005d8d6d64b424db6826924b85f74704593d1ba2dea3174356b11c5869b8",
+      "sha256": "1694e0cd08e9115ac0b360f9e9f0d65b83854b5da37d8a14a0f92586dfe789d2"
     },
     {
       "source": "docs/modules/media.md",
@@ -106,8 +106,8 @@
     {
       "source": "docs/modules/runtime.md",
       "destination": "docs/reference/modules/runtime.md",
-      "sourceSha256": "d76fa0fd101173073275df6b1932e9c96f0ea64c6bcc007bf234b68ed80ec55a",
-      "sha256": "fc873c4d9ea7d0c6bc733fe4fb958d8c968eef7211efb18b4c8d33631d59ab0d"
+      "sourceSha256": "b9de79a53c090c3dec60c71ae14c0a4767568d5a1fc17c37438c1fff5147b8c7",
+      "sha256": "07322692ce24838545f35f9e75be92c1e1bc684591269bd4c4ac99451fdc79f0"
     },
     {
       "source": "docs/modules/stardust.md",
@@ -118,8 +118,8 @@
     {
       "source": "docs/modules/workshop.md",
       "destination": "docs/reference/modules/workshop.md",
-      "sourceSha256": "67b31ec81cb97a36d346405df899041fb90a4183956eb7843a134cbc5fad4cf7",
-      "sha256": "bb968f80eb396f17d1cff3464da485c7fc79fd95083736a3c12050640c2add01"
+      "sourceSha256": "0b142bb19ae7db3c2ac861f97e1185ad07261d0fcea257e9083668aff847b9a4",
+      "sha256": "0e60bb8f54a7565b452d400a869362a0d10c25872de65506027366f6457f4376"
     },
     {
       "source": "examples/edge-garden/audio.js",
@@ -332,10 +332,22 @@
       "sha256": "8b03b542ca4fd3d85c09858e49ca14e931cc33ffe6782bac03b2066f2bae59e9"
     },
     {
+      "source": "sdk/protocol.json",
+      "destination": "docs/public/sdk/protocol.en.json",
+      "sourceSha256": "0a57c6d4ca751c4e830fc8c5270094792011c8ba16c8bccee8d2cce448454efb",
+      "sha256": "731e6a6f602a82dbacd85af61422ce1f31147fdec3c9f90e4af7bfec076189be"
+    },
+    {
       "source": "sdk/widget-host.d.ts",
       "destination": "docs/public/sdk/widget-host.d.ts",
       "sourceSha256": "cf0a99066a80ca638006e2c34abc317cb1e796563fd187792a5ff4d90619678e",
       "sha256": "a48301f130c02db74474a19613e7cb6ce8fd3d0b0457ee8c227e24cad595a618"
+    },
+    {
+      "source": "sdk/widget-host.d.ts",
+      "destination": "docs/public/sdk/widget-host.en.d.ts",
+      "sourceSha256": "cf0a99066a80ca638006e2c34abc317cb1e796563fd187792a5ff4d90619678e",
+      "sha256": "3727bec8c7b75d2b3ac92ffeed04b15e1c1fa88e7339cf8c940ea2545cab2cf0"
     }
   ]
 }

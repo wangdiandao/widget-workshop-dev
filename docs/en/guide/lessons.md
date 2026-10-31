@@ -2,7 +2,7 @@
 
 These implementation patterns cover interaction, asynchronous work, persistence and resource cleanup. Adapt them to your component.
 
-## 1. Transparency is not a CSS-only feature
+## 1. Configure transparent rendering and input together
 
 The pet submits a character polygon and an input-panel rectangle together. Transparent CSS affects appearance; native regions decide what receives input. A character-only shape makes panel inputs unreachable, while a full-window region blocks the desktop.
 
@@ -56,7 +56,7 @@ A missing cache should still allow a CSS static preview. Worker/GPU failure shou
 
 Stardust cache stores reconstructible previews and is not proof that GPU recovery succeeded. Sources: stardust module and cache contract. Test empty/corrupt cache, failed Worker initialization and reduced motion without relying on prior successful runs.
 
-## 10. Reload runs a validated copy, not live source
+## 10. Reload runs a validated copy
 
 Source watching waits at least one second of stable changes before copy/validation. Invalid candidates preserve the last successful version. Unsaved drafts delay automatic activation; manual actions retain save/discard/continue editing. Restoring the previous package disables automatic reload to prevent immediate replacement.
 

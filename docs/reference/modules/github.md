@@ -4,15 +4,13 @@
 
 ## 平台边界
 
-宿主不提供账号授权接口、服务专用能力或专用凭据类型，不管理第三方登录、访问/刷新令牌及账号变化通知。没有github.*方法、github.read能力、管理界面账号连接区或宿主OAuth回调入口。
-
 组件使用直接fetch/WebSocket或现有通用network.request/open接口自行实现服务登录、请求、刷新和退出。现有网络额度、取消、实例隔离和最终投递检查保持，联网不新增授权。需要打开系统浏览器时沿用external.open的一般授权；服务本人登录/同意仍由用户完成。需要Client Secret的服务由作者自己的后端处理，不将共享秘密嵌入包或要求宿主代管登录。
 
-普通秘密绑定仍只服务用户显式配置的通用请求，不作为平台账号系统。启动时仅允许directory/launchTarget/secret资源绑定，未支持的绑定经Services既有失效及清理事务移除，凭据文件与恢复引用同时处理，不读取或转交给组件。旧含github.read/专用requiredFeatures的包与状态不受当前协议支持，直接拒绝而不转换；本次不访问、重写或清空正式用户数据。
+普通秘密绑定用于用户显式配置的通用请求。启动时仅允许directory/launchTarget/secret资源绑定，未支持的绑定经Services既有失效及清理事务移除，凭据文件与恢复引用同时处理，不读取或转交给组件。
 
 ## 本地验证组件
 
-examples/github-tasks只用于仓库本地开发验证，不随应用打包。组件使用配置的公共Client ID，通过通用HTTP请求实现GitHub Device Flow，自己展示用户码并由用户打开服务授权页。没有专用宿主账号状态或Issue接口。
+examples/github-tasks只用于仓库本地开发验证，不随应用打包。组件使用配置的公共Client ID，通过通用HTTP请求实现GitHub Device Flow，自己展示用户码并由用户打开服务授权页。
 
 设备码、访问和刷新令牌只保存在当前页面内存，不写KV、存档、缓存、浏览存储或日志；离开清除，重载重新登录。取消/失效丢弃迟到结果；取消不能撤销用户已完成的远端授权。本地退出仅释放本页凭据，远端撤销由用户在GitHub完成。
 
@@ -20,4 +18,4 @@ examples/github-tasks只用于仓库本地开发验证，不随应用打包。�
 
 ## 服务资料
 
-登录流程和令牌刷新遵循GitHub官方[Device Flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-device-flow-to-generate-a-user-access-token)与[刷新令牌](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens)。这些是组件服务集成规则，不增加宿主登录API。
+登录流程和令牌刷新遵循GitHub官方[Device Flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-device-flow-to-generate-a-user-access-token)与[刷新令牌](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens)。

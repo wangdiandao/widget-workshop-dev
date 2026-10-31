@@ -31,7 +31,7 @@ Combine and extend the patterns in the routing table to address other component 
 5. Pets separate visual transparency from native hit regions, include form controls and host edit recovery, and handle autonomous-movement lifecycle restrictions. Games bound offline time, validate saves and handle conflicts. Feeds validate data/URLs, render text and retain a labeled successful snapshot.
 6. Workers have no host bridge. Use local code, task IDs, consumption acknowledgements and explicit retry. Rebuild transferred canvas resources on user retry; pagehide only releases and never reconstructs old DOM.
 7. Close temporary file/capture/stream/export resources on every path. Cancellation cannot retract committed saves, exported files, clipboard values or reminders. Separate confirmed mutation from cancelled follow-up reads. Keep mutation slots occupied until cleanup finishes.
-8. Query current official provider/library documentation for third-party integrations. Tokens belong to credentials or user-bound secrets, never query strings, logs, shared configuration or packages. The host has no provider-specific account authorization service.
+8. Query current official provider/library documentation for third-party integrations. Tokens belong to credentials or user-bound secrets, never query strings, logs, shared configuration or packages. The component owns the provider login flow and token lifecycle.
 
 ## Verify and report
 

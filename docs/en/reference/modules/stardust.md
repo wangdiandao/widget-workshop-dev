@@ -4,4 +4,4 @@ The sample is a pass-through decorative particle renderer with bounded state mes
 
 ## Sources and author guidance
 
-The [synchronized source-language module](../../../reference/modules/stardust.md) retains the host wording. Read the [local development lessons](../../guide/lessons.md), [recipes](../../recipes/index.md) and [exact SDK declarations](../types.md) before implementing an integration.
+Read the [local development lessons](../../guide/lessons.md), [recipes](../../recipes/index.md) and [exact SDK declarations](../types.md) before implementing an integration.

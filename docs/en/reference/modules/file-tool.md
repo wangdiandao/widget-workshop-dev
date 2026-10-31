@@ -4,4 +4,4 @@ Statistics, HTTP input, finite previews, PNG processing, directory watching and 
 
 ## Sources and author guidance
 
-The [synchronized source-language module](../../../reference/modules/file-tool.md) retains the host wording. Read the [local development lessons](../../guide/lessons.md), [recipes](../../recipes/index.md) and [exact SDK declarations](../types.md) before implementing an integration.
+Read the [local development lessons](../../guide/lessons.md), [recipes](../../recipes/index.md) and [exact SDK declarations](../types.md) before implementing an integration.
