@@ -1,6 +1,6 @@
 # Current host reference
 
-The host owns the SDK and contract definitions. This edition explains the current contract in English; the Chinese edition includes synchronized source-language wording. Both editions share exact SDK declarations and machine budgets. Source hashes are recorded in host-snapshot.json.
+The host owns the SDK and contract definitions. This edition explains the current contract in English; the Chinese edition includes synchronized source-language wording. Both editions share exact SDK declarations and machine budgets. Source hashes are recorded in `host-snapshot.json`.
 
 ## Contracts
 
@@ -23,5 +23,3 @@ The host owns the SDK and contract definitions. This edition explains the curren
 - [Component-owned login](modules/github.md)
 - [Edge garden](modules/edge-garden.md), [stardust](modules/stardust.md), [file tools](modules/file-tool.md), [media remote](modules/media.md)
 - [Workshop](modules/workshop.md)
-
-Read [maintenance](../guide/maintenance.md) before changing reference material. Synchronization alone does not update translations or author guidance.

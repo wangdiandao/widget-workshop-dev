@@ -1,7 +1,7 @@
 {
   "name": "widget-workshop",
   "version": "0.1.0",
-  "description": "Widget Workshop component development, verified APIs, practical examples and local-development lessons.",
+  "description": "Develop components for Widget Workshop.",
   "author": {
     "name": "wangdiandao"
   },

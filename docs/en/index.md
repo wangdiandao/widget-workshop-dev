@@ -3,7 +3,7 @@ layout: home
 hero:
   name: Widget Workshop
   text: Put your ideas on the desktop
-  tagline: Build desktop pets, games, feeds and tools with web technologies. Learn native hit regions, reliable saves and multi-monitor collaboration.
+  tagline: Develop components for Widget Workshop with guides, API references and practical examples.
   actions:
     - theme: brand
       text: Build your first widget
@@ -19,8 +19,8 @@ features:
     details: Write HTML, CSS and JavaScript, or use your preferred frontend build tools. Deliver a static package.
     link: /en/guide/package
   - title: Real desktop interaction
-    details: Design transparent pets with native hit regions, dragging and recovery through trusted host editing.
-    link: /en/recipes/desktop-pet
+    details: Work with component windows, input, lifecycle and host capabilities.
+    link: /en/guide/lifecycle
   - title: Clear data ownership
     details: Choose per-display configuration, instance KV, installation saves or temporary collaboration hints.
     link: /en/guide/data

@@ -29,9 +29,9 @@ function theme(en: boolean) {
           ? ['Component package', 'Configuration', 'Host API', 'Saves', 'Collaboration', 'Cache', 'Reminders', 'Desktop extensions', 'System integration', 'Layouts']
           : ['组件包', '配置', '宿主 API', '存档', '协作消息', '缓存', '持久提醒', '桌面扩展', '系统集成', '布局'], contractSlugs, 'reference/contracts')
       ]},
-      {text: en ? 'Tools and maintenance' : '工具与维护', items: items(en
-        ? ['Codex / Claude Code plugin', 'Issue-driven maintenance', 'Sources and support scope']
-        : ['Codex / Claude Code 插件', 'Issue 驱动与同步维护', '来源与支持范围'], ['ai-plugin', 'maintenance', 'sources'], 'guide')}
+      {text: en ? 'Development resources' : '开发资源', items: items(en
+        ? ['Codex / Claude Code plugin', 'References']
+        : ['Codex / Claude Code 插件', '参考资料'], ['ai-plugin', 'sources'], 'guide')}
     ],
     outline: {label: en ? 'On this page' : '本页内容', level: [2, 3] as [number, number]},
     docFooter: {prev: en ? 'Previous page' : '上一页', next: en ? 'Next page' : '下一页'},

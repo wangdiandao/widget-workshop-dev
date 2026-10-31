@@ -7,9 +7,9 @@
     {
       "name": "widget-workshop",
       "source": "./",
-      "description": "Widget Workshop component development, verified APIs, practical examples and local-development lessons.",
+      "description": "Develop components for Widget Workshop.",
       "version": "0.1.0"
     }
   ],
-  "description": "Widget Workshop development and practical example Skills."
+  "description": "Develop components for Widget Workshop."
 }

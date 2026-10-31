@@ -1,6 +1,6 @@
 ---
 name: widget-workshop-examples
-description: Select and adapt practical Widget Workshop examples and local-development lessons for pets, games, feeds, file tools, Worker/Canvas/Wasm, collaboration and desktop integrations.
+description: Select and adapt practical examples, solutions and implementation patterns for Widget Workshop component development.
 ---
 
 # Widget Workshop examples and solutions
@@ -22,11 +22,13 @@ The plugin root is two directories above this file. Resolve paths from that root
 
 ## Adapt the example
 
+Combine and extend the patterns in the routing table to address other component requirements.
+
 1. State what the source implements and what the extension adds. Host examples are not automatic installations or proofs of all devices. Generate a new widgetId for a new work.
 2. Read docs/public/sdk/widget-host.d.ts and the relevant contract. Inspect synchronized source-language wording for detailed boundaries. Never invent capabilities or infer authorization from method availability.
 3. Use per-display configuration for appearance, instance KV for local state and installation saves for shared progress. Use CAS revisions; collaboration is a temporary hint rather than a save receipt.
 4. Apply local lessons: one current operation plus latest intent; generation checks for stale configuration/results; independent lock and suspension reasons; explicit resource ownership; bounded queues/retry; a usable initial/fallback state.
-5. Pets separate visual transparency from native hit regions, include form controls and host edit recovery, and respect autonomous-movement preference. Games bound offline time, validate saves and handle conflicts. Feeds validate data/URLs, render text and retain a labeled successful snapshot.
+5. Pets separate visual transparency from native hit regions, include form controls and host edit recovery, and handle autonomous-movement lifecycle restrictions. Games bound offline time, validate saves and handle conflicts. Feeds validate data/URLs, render text and retain a labeled successful snapshot.
 6. Workers have no host bridge. Use local code, task IDs, consumption acknowledgements and explicit retry. Rebuild transferred canvas resources on user retry; pagehide only releases and never reconstructs old DOM.
 7. Close temporary file/capture/stream/export resources on every path. Cancellation cannot retract committed saves, exported files, clipboard values or reminders. Separate confirmed mutation from cancelled follow-up reads. Keep mutation slots occupied until cleanup finishes.
 8. Query current official provider/library documentation for third-party integrations. Tokens belong to credentials or user-bound secrets, never query strings, logs, shared configuration or packages. The host has no provider-specific account authorization service.

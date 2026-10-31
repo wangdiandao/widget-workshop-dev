@@ -21,6 +21,6 @@
 
 ## 先选择一条路径
 
-第一次开发从[快速开始](quickstart.md)写一个无权限计数卡。需要桌宠时阅读[透明桌宠](../recipes/desktop-pet.md)，游戏阅读[边缘游戏](../recipes/game.md)，数据面板阅读[信息流](../recipes/information-feed.md)。完整名词定义见[术语](../reference/glossary.md)。
+第一次开发从[快速开始](quickstart.md)写一个无权限计数卡。再按需阅读[示例与解决方案](../recipes/index.md)。完整名词定义见[术语](../reference/glossary.md)。
 
 内置天气、日历、待办和便签随宿主分发；本仓库 examples 是作者阅读及本地开发验证用源码，不会自动安装，也不是宿主发行包内容。

@@ -4,4 +4,4 @@ A subscription is not the installed runtime directory. The host validates/copies
 
 ## Sources and author guidance
 
-The [synchronized source-language module](../../../reference/modules/workshop.md) retains the host wording. Read the [local development lessons](../../guide/lessons.md), [recipes](../../recipes/index.md) and [exact SDK declarations](../types.md) before implementing an integration. Do not interpret this source summary as a claim that all runtime/device paths were retested.
+The [synchronized source-language module](../../../reference/modules/workshop.md) retains the host wording. Read the [local development lessons](../../guide/lessons.md), [recipes](../../recipes/index.md) and [exact SDK declarations](../types.md) before implementing an integration.
