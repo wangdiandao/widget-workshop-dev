@@ -19,7 +19,7 @@ Each field requires key, label and type. Keys start with an ASCII letter followe
 | launchTarget | Host launch-target `bindingId` or null |
 | secret | Host secret `bindingId` or null |
 
-Options are value/label pairs. Bounds must be ordered and defaults legal. No nested custom objects, custom HTML editors, executable validators or arbitrary regular expressions are supported. Ordinary `shareable` defaults false; resource/secret fields cannot be `shareable`. On schema changes, the host retains only same-key/type valid values, uses defaults for new/invalid values and removes deleted fields; it never converts secrets to plain strings or restores revoked bindings.
+Options are value/label pairs. Bounds must be ordered and defaults legal. Ordinary `shareable` defaults false; resource/secret fields cannot be `shareable`. On schema changes, the host retains only same-key/type valid values, uses defaults for new/invalid values and removes deleted fields; it never converts secrets to plain strings or restores revoked bindings.
 
 Use current declared types and constraints from the host contract. Provide valid defaults, human-readable labels and explicit sharing choices. `config.get` returns the current complete object. `config.set` accepts ordinary field values and returns the validated committed configuration; it is not a way to create grants or replace resource bindings.
 
@@ -35,4 +35,4 @@ See [SDK types](../types.md), [security](../../guide/security.md) and the synchr
 
 ## Source and related declarations
 
-This English reference describes the same current contract for authors. The [synchronized source-language contract](../../../reference/contracts/configuration.md) retains the host's full wording. Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).
+Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).

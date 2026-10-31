@@ -1,6 +1,6 @@
 # Current host reference
 
-The host owns the SDK and contract definitions. This edition explains the current contract in English; the Chinese edition includes synchronized source-language wording. Both editions share exact SDK declarations and machine budgets. Source hashes are recorded in `host-snapshot.json`.
+The host owns the SDK and contract definitions. Both language editions describe the current contract and share SDK type signatures and machine budgets.
 
 ## Contracts
 

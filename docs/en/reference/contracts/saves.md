@@ -1,6 +1,6 @@
 # Installation-shared saves
 
-All instances of the same installation automatically share save slots. There is no host leader/follower role or author-selected installation scope. Configuration and KV remain instance-local.
+All instances of the same installation automatically share save slots. Configuration and KV remain instance-local.
 
 ## Calls
 
@@ -24,4 +24,4 @@ Use elapsedSince with a business `maxMs` for offline calculation, handling `cloc
 
 ## Source and related declarations
 
-This English reference describes the same current contract for authors. The [synchronized source-language contract](../../../reference/contracts/saves.md) retains the host's full wording. Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).
+Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).

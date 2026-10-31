@@ -1,6 +1,6 @@
 # Understand components
 
-A component is a web content package managed by Widget Workshop. The host owns windows, installation identity, authorization, configuration and delivery. Authors own rendering, business rules, interaction and error states. The target is supported, updated Windows 11 x64 with WebView2, rather than an ordinary browser tab.
+A component is a web content package managed by Widget Workshop. The host owns windows, installation identity, authorization, configuration and delivery. Authors own rendering, business rules, interaction and error states. The target is supported, updated Windows 11 x64 with WebView2.
 
 ## Work, installation and instance
 

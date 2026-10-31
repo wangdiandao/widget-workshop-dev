@@ -14,4 +14,4 @@ Publish a save revision hint only after commit; recipients still load the succes
 
 ## Source and related declarations
 
-This English reference describes the same current contract for authors. The [synchronized source-language contract](../../../reference/contracts/collaboration.md) retains the host's full wording. Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).
+Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).

@@ -2,6 +2,7 @@ import {readFile, writeFile, mkdir, readdir, lstat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
+import {englishDeclarations, englishProtocol} from './sdk-english.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -69,6 +70,14 @@ for (const [from, to] of pairs) {
   await output(to, value);
   records.push({source: from, destination: to, sourceSha256: hash(input), sha256: hash(value)});
 }
+const declarationSource = await readFile(path.join(source, 'sdk/widget-host.d.ts'));
+const englishTypes = englishDeclarations(declarationSource.toString('utf8'));
+await output('docs/public/sdk/widget-host.en.d.ts', englishTypes);
+records.push({source: 'sdk/widget-host.d.ts', destination: 'docs/public/sdk/widget-host.en.d.ts', sourceSha256: hash(declarationSource), sha256: hash(englishTypes)});
+const protocolSource = await readFile(path.join(source, 'sdk/protocol.json'));
+const englishMachineProtocol = englishProtocol(protocolSource.toString('utf8'));
+await output('docs/public/sdk/protocol.en.json', englishMachineProtocol);
+records.push({source: 'sdk/protocol.json', destination: 'docs/public/sdk/protocol.en.json', sourceSha256: hash(protocolSource), sha256: hash(englishMachineProtocol)});
 records.sort((a, b) => a.source.localeCompare(b.source, 'en'));
 await output('host-snapshot.json', JSON.stringify({sdkVersion: JSON.parse(await readFile(path.join(source, 'sdk/protocol.json'), 'utf8')).sdkVersion, files: records}, null, 2) + '\n');
 if (check && changes.length) throw new Error(`Host snapshot is stale:\n${changes.join('\n')}`);

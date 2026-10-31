@@ -4,4 +4,4 @@ Enabled intent, visibility and global pause are separate. Hidden widgets continu
 
 ## Sources and author guidance
 
-The [synchronized source-language module](../../../reference/modules/runtime.md) retains the host wording. Read the [local development lessons](../../guide/lessons.md), [recipes](../../recipes/index.md) and [exact SDK declarations](../types.md) before implementing an integration.
+Read the [local development lessons](../../guide/lessons.md), [recipes](../../recipes/index.md) and [exact SDK declarations](../types.md) before implementing an integration.

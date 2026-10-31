@@ -6,7 +6,7 @@ SDK 0.1.0 uses `apiMajor`/`hostApiMajor`=1 and `protocolVersion`=1. The host inj
 
 The only manifest capabilities are `external.open`, location, notifications, clipboard, `directory.write` and `screen.capture`. Grants are installation-shared, default denied and individually revocable; denial never prevents enablement.
 
-Base interfaces include configuration, instance KV, saves, generic network, metrics, scoped directory reads/target opening, media, output-loopback capture, pointer/window geometry, output volume and activity state. They are not capability declarations, but their scopes, resource binding, lifecycle, quotas and delivery checks remain.
+Base interfaces include configuration, instance KV, saves, generic network, metrics, scoped directory reads/target opening, media, output-loopback capture, pointer/window geometry, output volume and activity state. They work without authorization and obey their resource binding, lifecycle, quota and delivery rules.
 
 HTTP headers choose {name,value} OR {name,`secretBindingId`,prefix?}; plaintext cannot carry prefix. `target.open` chooses {`bindingId`} OR {`directoryBindingId`,`relativePath`}. Mixed forms are rejected.
 
@@ -26,4 +26,4 @@ features indicate host support, not authorization or successful device execution
 
 ## Source and related declarations
 
-This English reference describes the same current contract for authors. The [synchronized source-language contract](../../../reference/contracts/host-api.md) retains the host's full wording. Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).
+Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).

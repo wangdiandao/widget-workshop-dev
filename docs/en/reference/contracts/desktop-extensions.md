@@ -16,12 +16,12 @@ All calls require a valid enabled instance/document. The host owns authorization
 
 ## Notifications, panels and credentials
 
-Immediate notifications support bounded actions and dismiss of a valid original-document `notificationId`. Dismiss does not enumerate/read notifications or prove display/read state. IDs expire and do not survive reload/revocation/restart.
+Immediate notifications support bounded actions and dismiss of a valid original-document `notificationId`. Dismiss operates on the original notification reference; success does not establish display or read state. IDs expire and do not survive reload/revocation/restart.
 
 Panels open only package-local pages. They share instance identity, grants, configuration and saves, but each has a separate document session. Use post/closed events and explicit close/activation; no arbitrary remote iframe or new installation is created.
 
-credentials stores the component's installation-scoped keys with current-user DPAPI protection and atomic writes. It is separate from user secret bindings, which remain references. Login, token refresh and server-side revocation are author/provider responsibilities; there is no host account service. See [full types](../types.md) and [desktop recipes](../../recipes/desktop-integration.md).
+credentials stores the component's installation-scoped keys with current-user DPAPI protection and atomic writes. It is separate from user secret bindings, which remain references. Login, token refresh and server-side revocation are author/provider responsibilities. See [full types](../types.md) and [desktop recipes](../../recipes/desktop-integration.md).
 
 ## Source and related declarations
 
-This English reference describes the same current contract for authors. The [synchronized source-language contract](../../../reference/contracts/desktop-extensions.md) retains the host's full wording. Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).
+Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).

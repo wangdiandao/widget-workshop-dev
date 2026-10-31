@@ -43,12 +43,12 @@ function theme(en: boolean) {
 }
 export default defineConfig({
   title: 'Widget Workshop',
-  description: '组件开发指南 / Component developer guide',
+  description: 'Component developer guide',
   base: '/widget-workshop-dev/',
   sitemap: {hostname: 'https://wangdiandao.github.io/widget-workshop-dev/'},
   locales: {
-    root: {label: '简体中文', lang: 'zh-CN', themeConfig: theme(false)},
-    en: {label: 'English', lang: 'en-US', themeConfig: theme(true)}
+    root: {label: '简体中文', lang: 'zh-CN', description: '组件开发指南', themeConfig: theme(false)},
+    en: {label: 'English', lang: 'en-US', description: 'Component developer guide', themeConfig: theme(true)}
   },
   themeConfig: {
     search: {provider: 'local', options: {locales: {root: {translations: {
