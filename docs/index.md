@@ -3,7 +3,7 @@ layout: home
 hero:
   name: Widget Workshop
   text: 把想法放到桌面上
-  tagline: 用网页技术构建桌宠、游戏、信息流与桌面工具。从第一个组件到可靠存档、透明交互和多屏协作。
+  tagline: 为 Widget Workshop 开发组件。使用指南、接口参考与示例，将想法实现为组件。
   actions:
     - theme: brand
       text: 开始第一个组件
@@ -19,8 +19,8 @@ features:
     details: HTML、CSS、JavaScript，或你选择的前端工具。发布构建后的静态目录。
     link: /guide/package
   - title: 桌面里的交互
-    details: 透明轮廓、真实穿透、拖动和可信编辑恢复，为桌宠与边缘游戏设计。
-    link: /recipes/desktop-pet
+    details: 了解窗口呈现、输入、生命周期及宿主能力，构建组件交互。
+    link: /guide/lifecycle
   - title: 数据有清楚的归属
     details: 每屏配置、实例 KV、安装共享存档和临时协作消息各司其职。
     link: /guide/data

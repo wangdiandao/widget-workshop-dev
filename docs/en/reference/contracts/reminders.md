@@ -2,7 +2,7 @@
 
 Reminders reuse the optional notifications capability. Delivery only happens while the host runs, including tray mode. Full exit stops delivery; restart resumes still-valid records. No system scheduled background service is installed.
 
-reminders.set accepts {key,dueAt,expiresAt,title,body}; it replaces that instance key after a successful commit. Keys are 1–64 ASCII letter/digit/underscore/hyphen starting with a letter. Times are UTC Unix milliseconds: dueAt is future and within thirty days, expiresAt is after dueAt and at most twenty-four hours later. Notification text limits apply.
+`reminders.set` accepts {key,`dueAt`,`expiresAt`,title,body}; it replaces that instance key after a successful commit. Keys are 1–64 ASCII letter/digit/underscore/hyphen starting with a letter. Times are UTC Unix milliseconds: `dueAt` is future and within thirty days, `expiresAt` is after `dueAt` and at most twenty-four hours later. Notification text limits apply.
 
 list returns current unconsumed/unexpired instance records in due order, without history. remove/clear are idempotent cleanup and do not require notifications authorization, but still require an active valid original instance.
 
@@ -14,4 +14,4 @@ A due record is removed before at-most-once delivery is attempted. Crashes or sh
 
 ## Source and related declarations
 
-This English reference describes the same current contract for authors. The [synchronized source-language contract](../../../reference/contracts/reminders.md) retains the host's full wording. Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md). Review both editions when the host changes.
+This English reference describes the same current contract for authors. The [synchronized source-language contract](../../../reference/contracts/reminders.md) retains the host's full wording. Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).

@@ -18,8 +18,6 @@ examples/github-tasks只用于仓库本地开发验证，不随应用打包。�
 
 设备流程按服务interval单槽轮询，最长十五分钟；slow_down增加至少五秒并遵守更长服务间隔。任务和到期刷新只由手动操作触发，无后台任务重试或无限页累计。401使本页连接失效，普通网络失败保留已确认身份，限流提示手动稍后重试。链接只允许核对后的GitHub地址，通过external.open打开。
 
-## 验证与来源
+## 服务资料
 
-受控网络回复覆盖设备等待、慢轮询、取消、到期刷新、失效、分页及关闭，真实WebView验证生产页面调用的是通用网络接口。无需重新申请真实账号授权，不恢复八小时测试；受控结果不冒充真实登录。
-
-Context7查询额度不足，流程参数补查GitHub官方[Device Flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-device-flow-to-generate-a-user-access-token)与[刷新令牌](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens)。这些是组件服务集成规则，不增加宿主登录API。
+登录流程和令牌刷新遵循GitHub官方[Device Flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-device-flow-to-generate-a-user-access-token)与[刷新令牌](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens)。这些是组件服务集成规则，不增加宿主登录API。

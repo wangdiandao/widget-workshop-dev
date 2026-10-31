@@ -1,16 +1,16 @@
 # Edge games: progress, offline simulation and saves
 
-Start with examples/edge-garden: game.js owns the model, simulation.js computation, main.js host/view coordination and audio.js audio resources. Keep these responsibilities separate.
+Start with `examples/edge-garden`: `game.js` owns the model, `simulation.js` computation, `main.js` host/view coordination and `audio.js` audio resources. Keep these responsibilities separate.
 
 ## Versioned progress and conflicts
 
 Define bounded JSON progress including a business schema version, resources, inventory, growth and last successful timestamp. Validate loaded values. An unsupported schema needs explicit recovery rather than guesses or silent overwrite. Display mode belongs to per-display configuration; progress belongs to shared installation saves.
 
-Commit with the current successful expectedRevision, or null for a new slot. Advance the local revision only after success. SAVE_CONFLICT requires reload and a business merge or user choice. Last-writer-wins is not valid for concurrent rewards or spending. Package/layout rollback does not roll back saves.
+Commit with the current successful `expectedRevision`, or null for a new slot. Advance the local revision only after success. `SAVE_CONFLICT` requires reload and a business merge or user choice. Last-writer-wins is not valid for concurrent rewards or spending. Package/layout rollback does not roll back saves.
 
 ## Bounded offline progress
 
-Use widgetHost.elapsedSince(savedAt, {maxMs: 8 * 60 * 60 * 1000}) with a validated timestamp. Eight hours is an example business cap, not a platform limit. Handle clockMovedBack and capped explicitly. Use aggregate computation or bounded simulation steps and cap resource growth. Local time is not an anti-cheat authority.
+Use `widgetHost.elapsedSince`(`savedAt`, {`maxMs`: 8 * 60 * 60 * 1000}) with a validated timestamp. Eight hours is an example business cap, not a platform limit. Handle `clockMovedBack` and capped explicitly. Use aggregate computation or bounded simulation steps and cap resource growth. Local time is not an anti-cheat authority.
 
 ## Rendering and checkpoints
 

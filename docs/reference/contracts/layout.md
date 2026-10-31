@@ -6,7 +6,7 @@
 
 每个显示器的当前状态直接使用布局格式持久化，配置不独立保存。布局库保存/覆盖复制当前屏布局，应用或恢复覆盖该屏当前布局；存档属于安装组件，不进入布局。实例身份由安装内部身份与显示器身份稳定派生，不携带配置。
 
-当前schemaVersion=1，每个条目必须提供zOrder；muted可省略，默认为false，接受local/workshop/development来源。正式接入Steamworks前保持破坏性更新，不兼容历史格式。allowMultipleInstances=false且其他屏已有启用实例时，预览提示冲突并禁止应用或恢复；事务提交再次校验，不自动停用其他屏。
+当前schemaVersion=1，每个条目必须提供zOrder；muted可省略，默认为false，接受local/workshop/development来源。发布前保持破坏性更新，不兼容历史格式。allowMultipleInstances=false且其他屏已有启用实例时，预览提示冲突并禁止应用或恢复；事务提交再次校验，不自动停用其他屏。
 
 ## 文件格式
 

@@ -59,7 +59,7 @@
       "key": "wander",
       "label": "缓慢散步",
       "group": "呈现",
-      "description": "还需在宿主允许自主移动。操作名字/投喂面板、拖动、隐藏、减少动画或节能时不移动；进度与位置不写入布局。",
+      "description": "由组件配置控制。操作名字/投喂面板、拖动、隐藏、减少动画或节能时不移动；进度与位置不写入布局。",
       "type": "boolean",
       "default": false,
       "shareable": true

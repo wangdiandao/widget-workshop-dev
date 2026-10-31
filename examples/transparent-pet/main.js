@@ -20,7 +20,7 @@
     if (bounds.x < 12) direction = 1;
     moving = true;
     try { await widgetHost.call('window.moveTo', {x:bounds.x + 12 * direction, y:bounds.y}, options); }
-    catch (_) { /* 用户锁定或系统过渡后静默等待下一次允许，不累积重试。 */ }
+    catch (_) { /* 编辑或系统过渡时跳过本次移动，不累积重试。 */ }
     finally { moving = false; }
   }, 1000);
   async function regions() {

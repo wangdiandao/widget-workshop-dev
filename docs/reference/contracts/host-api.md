@@ -166,13 +166,13 @@ Services 唯一拥有监听注册表、资源绑定与生命周期，平台只�
 
 导航、停用、卸载、期限或服务退出使未保存资源失效并回收。资源登记/IO 由 Services 拥有并使用有界外部队列，UI 只收集保存选择，不在 UI 或事务锁执行复制、刷新和关闭文件。导入与导出分别计数，不授予目录写入、任意文件写入、命令或插件能力。
 
-## 自主移动与用户控制
+## 自主移动与生命周期
 
-`window.moveTo {x,y}` 接受当前实例工作区内的 DIP 位置（有限且绝对值不超过 1000000），宿主按实际尺寸夹在当前屏幕工作区。用户须先从可信管理抽屉打开“允许自主移动”，默认关闭；这是自身呈现偏好，不是读取系统资源的 Capability。拒绝返回 RESOURCE_UNAVAILABLE，不阻止启用、绘制或真实用户 beginDrag。网页不能替用户打开开关，不能移动其他窗口、切换显示器、改变层级或抢焦点。
+`window.moveTo {x,y}` 接受当前实例工作区内的 DIP 位置（有限且绝对值不超过 1000000），宿主按实际尺寸夹在当前屏幕工作区。已启用且可见的实例默认可以调用，无需声明 Capability 或额外授权开关；不能移动其他窗口、切换显示器、改变层级或抢焦点。
 
-接受后返回空对象，表示最新位置进入一个槽位；即时接受即完成请求，之后的 Abort 不撤回已接受位置，隐藏和可信编辑仍可取消待应用位置。原生窗口最多每 16ms 应用一次，后到位置覆盖尚未应用的位置，不逐帧保存元数据。实际位置通过 environment.changed 返回；自主移动不需要用户授权开关。临时位置与 beginDrag 一样不进入布局或游戏存档，用户保存的位置不变。可信编辑、重载或已保存锚点变化时恢复锚点；隐藏、锁屏/挂起或正在拖动时不接受新自主移动，丢弃待应用位置，恢复后不重放。恢复可见或退出编辑不会复活旧请求。
+接受后返回空对象，表示最新位置进入一个槽位；即时接受即完成请求，之后的 Abort 不撤回已接受位置。原生窗口最多每 16ms 应用一次，后到位置覆盖尚未应用的位置，不逐帧保存元数据。实际位置通过 `environment.changed` 返回；临时位置与 `window.beginDrag` 一样不进入布局或游戏存档，用户保存的位置不变。
 
-允许自主移动按当前实例保存，不随布局分享、应用或恢复改变；新实例保持关闭。原生 16ms 合并不取消既有桥接总量和消息速率限制，也不承诺恒定帧率。可信编辑和用户真实拖动仍可用于恢复位置。
+隐藏、可信编辑、全局暂停、锁屏、系统挂起或正在拖动时拒绝新移动并清除待应用位置，返回 `RESOURCE_UNAVAILABLE`；这些状态解除后不重放旧请求。编辑、重载或已保存锚点变化时恢复保存位置。锁屏与电源挂起原因独立，解锁不能提前解除仍有效的挂起保护。原生 16ms 合并仍受桥接总量和消息速率限制，不承诺恒定帧率。用户可通过可信编辑和真实拖动调整位置。
 
 ## 包内资产范围读取
 
@@ -285,8 +285,8 @@ location需要独立声明与授权。网页使用标准 `getCurrentPosition` / 
   "protocolVersion": 1,
   "id": "42",
   "sessionId": "host-issued-session",
-  "method": "system.metrics.get",
-  "params": {}
+  "method": "notifications.show",
+  "params": {"title": "任务完成", "body": "处理结果已准备好"}
 }
 ```
 
@@ -296,7 +296,7 @@ location需要独立声明与授权。网页使用标准 `getCurrentPosition` / 
   "id": "42",
   "sessionId": "host-issued-session",
   "ok": false,
-  "error": {"code": "CAPABILITY_DENIED", "message": "未授予 system.metrics"}
+  "error": {"code": "CAPABILITY_DENIED", "message": "未授予 notifications"}
 }
 ```
 
@@ -328,7 +328,7 @@ AbortSignal 从 call 开始等待握手时即生效；预先取消或握手期�
 
 功能标志input.polygons支持多边形区域。`window.setInputRegions` 的每项为矩形 `{x,y,width,height}` 或多边形 `{points:[{x,y},...]}`，两种字段不得混用。总区域仍最多 64；每个多边形 3–32 个顶点，一次请求的多边形顶点总数最多 512，额度分别为 inputPolygonPoints / inputPolygonVertices。顶点顺序沿边界，闭合边由宿主补齐，首点不重复；支持顺逆时针与凹形，拒绝重复点、自交、非相邻边接触、相邻边回折、零面积和超出自身内容。坐标为有限非负 DIP，先量化到最近 1/64 DIP，量化前后都必须位于内容内；量化后退化同样拒绝。形状取并集，不支持洞或相减。非法参数为 INVALID_ARGUMENT，数量超额为 QUOTA_EXCEEDED；失败原子保留旧区域。矩形现有取整规则保持；多边形转为最近物理像素后裁剪到当前窗口，亚像素细部可能消失，边界遵循系统区域命中，不承诺数学边线像素。更新、取消、编辑恢复和文档归属沿用本节规则，不进入布局或存档。
 
-透明场景支持 `window.setInputRegions` 和 `window.beginDrag` 功能标志，无新增 Capability。`window.setInputRegions` 仅用于透明且 inputMode=regions 的当前实例；矩形规则为有限 DIP、非负起点、正尺寸且完全位于自身内容范围，多边形见本页 v2.28 定义；不接受其他实例或显示器。替换原子生效，失败保留旧区域，空集合纯穿透；导航/重载清空，调整尺寸/DPI时重新计算原生区域并裁剪到当前内容。可信编辑期间拒绝作者区域变更，编辑遮罩始终接收完整矩形。
+透明场景支持 `window.setInputRegions` 和 `window.beginDrag` 功能标志，无新增 Capability。`window.setInputRegions` 仅用于透明且 inputMode=regions 的当前实例；矩形规则为有限 DIP、非负起点、正尺寸且完全位于自身内容范围，多边形规则见本节首段；不接受其他实例或显示器。替换原子生效，失败保留旧区域，空集合纯穿透；导航/重载清空，调整尺寸/DPI时重新计算原生区域并裁剪到当前内容。可信编辑期间拒绝作者区域变更，编辑遮罩始终接收完整矩形。
 
 `window.beginDrag({})` 仅在透明交互实例自己刚收到真实左键或主触点/笔尖按下的 500 ms 内、该次接触/捕获仍有效且非可信编辑时允许，其他情况 RESOURCE_UNAVAILABLE。鼠标捕获或触点的系统隐式捕获持续至松开、捕获丢失、隐藏、锁定、挂起或关闭，离开命中区仍可结束拖动；不能请求任意外部窗口输入。位置限制在当前工作区，原生每帧最多处理一个最新位置，结束时发送自身空间变化；拖动中不推送无界坐标流、不写布局，重载恢复保存位置。可信编辑模式清除临时位置并从保存位置操作，用户编辑仍由 Services 保存。返回均为 `{}`，未就绪/故障时不能调用。
 
@@ -339,7 +339,7 @@ AbortSignal 从 call 开始等待握手时即生效；预先取消或握手期�
 | config.get | 无 | 当前配置对象；秘密和资源仅返回 bindingId 或 null |
 | config.set | `{values: {...}}` | 验证并提交后的完整配置；仅允许普通字段 |
 | window.setSize | `{width,height}` | `{width,height}`，当前实例作者请求的 DIP 尺寸；无额外 Capability，无位置或其他实例参数 |
-| window.setInputRegions | `{regions:[矩形或多边形]}` | `{}`；透明 regions 模式，形状与额度见本页 v2.28 |
+| window.setInputRegions | `{regions:[矩形或多边形]}` | `{}`；透明 regions 模式，形状与额度见本节 |
 | window.beginDrag | `{}` | `{}`；仅自身真实主输入捕获，临时位置不持久化 |
 | storage.get | `{key}` | `{found,value}`；不存在时 found=false、value=null |
 | storage.set | `{key,value}` | `{}`；value 为 JSON |

@@ -1,6 +1,6 @@
-# Sources and support scope
+# References
 
-The baseline is Widget Workshop SDK 0.1.0, hostApiMajor=1 and protocolVersion=1. The host SDK and owning contract/module files remain the authority; host-snapshot.json identifies synchronized inputs. Pre-release contracts may change destructively without compatibility branches.
+The baseline is Widget Workshop SDK 0.1.0, `hostApiMajor`=1 and `protocolVersion`=1. The host SDK and owning contract/module files remain the authority; `host-snapshot.json` identifies synchronized inputs. Pre-release contracts may change destructively without compatibility branches.
 
 ## Official references
 
@@ -10,9 +10,3 @@ The baseline is Widget Workshop SDK 0.1.0, hostApiMajor=1 and protocolVersion=1.
 - [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins): portable root manifest, Codex compatibility and marketplaces.
 - [Claude Code manifest](https://code.claude.com/docs/en/plugins-reference) and [marketplaces](https://code.claude.com/docs/en/plugin-marketplaces).
 - [Vite 6.4.5](https://github.com/vitejs/vite/releases/tag/v6.4.5): the explicitly selected patched build override.
-
-Context7 returned a monthly quota error for this implementation. Official references above and installed CLI help were used instead. Private host interfaces were verified against local source, not claimed as publicly documented APIs.
-
-## What checks establish
-
-Static checks verify hashes, references, package basics, metadata, syntax and types. VitePress build verifies the documentation. Strict host validation, actual WebView execution, physical input, multiple displays and audio/capture devices are separate checks and must be reported separately. Host-synchronized examples are not claims that every environment was retested.
