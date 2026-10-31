@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "kind": "widget",
+  "widgetId": "680a6ee5-ae77-4b7a-95ab-a4ce9ab051f8",
+  "version": "0.0.1",
+  "hostApiMajor": 1,
+  "name": "信息流示例",
+  "author": "Widget Workshop",
+  "description": "包内模拟资讯或 HTTPS JSON 信息流，单任务刷新、离线快照和纯文本渲染。",
+  "entry": "index.html",
+  "tags": ["Information"],
+  "window": {"size": {"width": 360, "height": 400, "minWidth": 280, "minHeight": 200}},
+  "capabilities": ["external.open"],
+  "configuration": [
+    {"key": "endpoint", "label": "HTTPS JSON 地址（留空使用包内数据）", "type": "string", "default": "", "maxLength": 2048, "shareable": false},
+    {"key": "refreshSeconds", "label": "刷新间隔（秒）", "type": "integer", "default": 300, "minimum": 30, "maximum": 3600, "shareable": true}
+  ]
+}

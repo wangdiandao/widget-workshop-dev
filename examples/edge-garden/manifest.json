@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "kind": "widget",
+  "widgetId": "ee015ad2-e00b-4592-a6d9-d79320d7dc7d",
+  "version": "1.26.0",
+  "hostApiMajor": 1,
+  "name": "边缘花园",
+  "description": "工作区边缘的轻量花园，支持展开、折叠与横纵布局。",
+  "author": "WidgetWorkshop",
+  "entry": "index.html",
+  "window": {
+    "size": {
+      "width": 420,
+      "height": 108,
+      "minWidth": 144,
+      "minHeight": 108
+    },
+    "layer": "top",
+    "surface": {
+      "transparent": true,
+      "inputMode": "regions"
+    }
+  },
+  "capabilities": [],
+  "configuration": [
+    {
+      "key": "mode",
+      "label": "花园布局",
+      "type": "enum",
+      "default": "compact",
+      "shareable": true,
+      "options": [
+        {
+          "value": "compact",
+          "label": "横向"
+        },
+        {
+          "value": "expanded",
+          "label": "展开"
+        },
+        {
+          "value": "vertical",
+          "label": "纵向"
+        }
+      ]
+    }
+  ],
+  "allowMultipleInstances": false,
+  "tags": [
+    "Game"
+  ]
+}

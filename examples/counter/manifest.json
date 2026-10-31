@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "widget",
+  "widgetId": "a7253c66-6ea5-46d1-ad99-54e2a036e612",
+  "version": "0.0.1",
+  "hostApiMajor": 1,
+  "name": "计数卡",
+  "author": "Widget Workshop",
+  "description": "无需权限的实例 KV 计数入门示例。",
+  "entry": "index.html",
+  "tags": ["Developer Tools"],
+  "capabilities": [],
+  "configuration": []
+}

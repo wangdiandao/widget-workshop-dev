@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>计算与画布</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <h1>计算与画布</h1>
+  <p id="system">正在读取环境…</p>
+  <p id="lifecycle" aria-live="polite">尚无生命周期通知</p>
+  <button id="report">查看本机兼容报告</button><pre id="reportResult"></pre>
+  <p>输入数字，使用独立 Worker 计算。隐藏时继续计算并停止绘制；计算超时或取消后可重试。</p>
+  <label for="numbers">数据（逗号或空格分隔，最多 10000 个）</label>
+  <textarea id="numbers" rows="2" maxlength="200000">1, 2, 3, 4, 5</textarea>
+  <div><button id="compute">计算</button><button id="cancel">取消计算</button><button id="sound">试听音效</button></div>
+  <output id="result" aria-live="polite">等待输入</output>
+  <section id="reminderPanel"><h2>提醒</h2><p>最多八条。同一位置再次保存会替换；工坊彻底退出后停投。</p>
+  <label for="reminderSlot">提醒位置</label><select id="reminderSlot"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>
+  <label for="reminderTitle">名称</label><input id="reminderTitle" maxlength="48" value="计时结束">
+  <div><label for="seconds">时长</label><input id="seconds" type="number" value="5" min="1" max="2592000"><select id="reminderUnit" aria-label="时长单位"><option value="seconds">秒</option><option value="minutes" selected>分钟</option><option value="hours">小时</option><option value="days">天</option></select></div>
+  <div><button id="timer">保存提醒</button><button id="removeTimer">取消所选位置</button><button id="refreshTimers">刷新提醒</button><button id="clearTimers">清空本实例提醒</button><button id="cancelReminderOperation" disabled>取消当前操作</button></div><output id="reminders" aria-live="polite"></output></section>
+  <canvas id="scene" width="360" height="70" aria-label="Worker 动画"></canvas>
+  <output id="drawing" aria-live="polite">正在准备绘制</output>
+  <output id="compatibility"></output>
+  <script src="main.js"></script><script src="reminders.js"></script>
+</body>
+</html>

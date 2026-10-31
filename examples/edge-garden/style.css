@@ -1,0 +1,53 @@
+:root {font:13px system-ui,sans-serif;color:#143d31;background:transparent;}
+html,body {margin:0;width:100%;height:100%;overflow:hidden;background:transparent;}
+main {position:absolute;inset:4px;box-sizing:border-box;border:1px solid #86bda6;border-radius:16px;background:linear-gradient(130deg,#effbed,#c6ebd7);padding:12px;display:grid;grid-template-columns:1fr 120px auto;gap:10px;align-items:center;}
+header {display:flex;flex-direction:column;gap:5px;}
+nav {display:flex;gap:6px;} button {font:inherit;color:inherit;border:1px solid #92bda9;background:#ffffffb0;border-radius:8px;padding:6px 9px;cursor:pointer;}
+button:focus-visible {outline:2px solid #146950;outline-offset:2px;}
+.garden {height:58px;display:flex;gap:12px;align-items:end;justify-content:center;}
+.plant {width:25px;height:17px;background:#ba7853;border-radius:3px 3px 9px 9px;position:relative;}
+.plant b {position:absolute;bottom:16px;left:11px;width:3px;height:25px;background:#3e9360;transform-origin:bottom;animation:sway 3s ease-in-out infinite;}
+.plant b::before,.plant b::after {content:'';position:absolute;top:0;width:15px;height:10px;background:#4ca970;border-radius:12px 2px 12px 2px;}
+.plant b::before {left:-13px;transform:rotate(12deg);} .plant b::after {left:1px;top:9px;transform:rotate(65deg);} .tall b {height:37px;animation-delay:-1s;}
+#details,#status {display:none;} h1 {font-size:18px;} p {line-height:1.7;}
+#status:not(:empty) {display:block;position:absolute;bottom:3px;left:12px;font-size:11px;color:#8c2424;}
+body[data-mode=expanded] main {grid-template-columns:1fr auto;grid-template-rows:auto 90px 1fr;}
+body[data-mode=expanded] .garden {height:80px;grid-column:1/-1;} body[data-mode=expanded] nav {grid-column:2;grid-row:1;}
+body[data-mode=expanded] #details {display:block;grid-column:1/-1;}
+body[data-mode=vertical] main {display:flex;flex-direction:column;justify-content:space-between;align-items:stretch;}
+body[data-mode=vertical] .garden {height:150px;gap:6px;} body[data-mode=vertical] nav {flex-direction:column;}
+@keyframes sway {50% {transform:rotate(7deg);}}
+@media(prefers-reduced-motion:reduce) {.plant b {animation:none;}}
+.calm .plant b {animation:none;}
+.garden {position:relative;padding-bottom:18px;box-sizing:border-box;}
+#heroStats {position:absolute;bottom:0;max-width:100%;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.garden {min-width:0;}
+#patrolProgress {position:absolute;bottom:14px;left:0;width:100%;height:3px;appearance:none;border:0;}
+#patrolProgress::-webkit-progress-bar {background:#a4ceba;border-radius:2px;}
+#patrolProgress::-webkit-progress-value {background:#22734f;border-radius:2px;}
+.gameActions {display:flex;gap:5px;flex-wrap:wrap;}
+#details h1 {margin:0 0 8px;font-size:16px;}
+#details p {margin:8px 0;line-height:1.5;}
+#saveStatus {display:block;margin-top:6px;font-size:11px;}
+#recoverySummary {display:block;font-size:12px;line-height:1.5;overflow-wrap:anywhere;padding:6px 0;} #recoverySummary[hidden] {display:none;}
+#inventoryCounts,#experienceLabel {display:block;overflow-wrap:anywhere;} #experienceProgress {display:block;width:100%;height:8px;margin:5px 0;}
+button:disabled {opacity:.5;cursor:default;}
+button[aria-pressed=true] {background:#b2ddbb;}
+.gamePaused .plant b {animation-play-state:paused;}
+.sceneInactive .plant b {animation-play-state:paused;}
+body[data-mode=expanded] main {grid-template-rows:auto 64px minmax(0,1fr);}
+body[data-mode=expanded] #details {min-height:0;overflow:auto;align-self:stretch;padding:4px;box-sizing:border-box;scrollbar-gutter:stable;}
+body[data-mode=expanded] .garden {height:60px;}
+
+body:not(.gameReady) .plant b {animation-play-state:paused;}
+
+@media (forced-colors:active) {
+  main {background:Canvas;color:CanvasText;border-color:CanvasText;}
+  #status {color:CanvasText;}
+  button[aria-pressed=true] {border-style:dashed;text-decoration:underline;text-underline-offset:3px;}
+  button:disabled {opacity:1;color:GrayText;}
+  .plant {background:Canvas;border:1px solid CanvasText;}
+  .plant b,.plant b::before,.plant b::after {background:CanvasText;}
+  #patrolProgress::-webkit-progress-bar {background:Canvas;border:1px solid CanvasText;}
+  #patrolProgress::-webkit-progress-value {background:Highlight;}
+}

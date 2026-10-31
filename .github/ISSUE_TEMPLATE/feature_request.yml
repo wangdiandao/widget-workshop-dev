@@ -1,15 +1,23 @@
-name: Feature request
-description: Suggest an improvement to the Widget Workshop developer toolkit.
+name: 需求或规范同步
+description: 教程、方案、接口同步与开发工具需求
+title: '[Request] '
 body:
   - type: textarea
-    id: scenario
+    id: goal
     attributes:
-      label: Scenario
-      description: What component developer workflow should this improve?
+      label: 使用场景与目标
     validations:
       required: true
   - type: textarea
-    id: proposal
+    id: scope
     attributes:
-      label: Proposal
-      description: Describe the docs, Skill, schema, script, or example change you want.
+      label: 范围与来源
+      description: 受影响文档、示例、Skills；宿主联动请列来源文件及作者可见行为。
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 验收条件
+    validations:
+      required: true

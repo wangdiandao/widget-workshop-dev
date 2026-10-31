@@ -1,0 +1,6 @@
+interface:
+  display_name: "Widget Workshop Development"
+  short_description: "Develop, debug and review widgets using verified host APIs"
+  default_prompt: "Use $widget-workshop-dev to complete this Widget Workshop task using the bundled contracts and examples."
+policy:
+  allow_implicit_invocation: true

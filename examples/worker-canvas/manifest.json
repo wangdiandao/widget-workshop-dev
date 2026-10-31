@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "kind": "widget",
+  "widgetId": "e31ddc10-4030-4630-9809-c0f28217ea4d",
+  "version": "1.16.2",
+  "hostApiMajor": 1,
+  "name": "计算与画布",
+  "description": "包内 Worker 统计工具、OffscreenCanvas 动画与音效验证入口。",
+  "author": "WidgetWorkshop",
+  "entry": "index.html",
+  "window": {
+    "size": {
+      "width": 420,
+      "height": 340,
+      "minWidth": 360,
+      "minHeight": 300
+    },
+    "layer": "top"
+  },
+  "capabilities": [
+    "notifications"
+  ],
+  "configuration": [
+    {
+      "key": "frameRate",
+      "label": "动画帧率",
+      "group": "画布",
+      "description": "降低帧率可减少绘制负载，隐藏时每秒检查一次。",
+      "type": "integer",
+      "minimum": 10,
+      "maximum": 60,
+      "default": 30,
+      "shareable": true
+    }
+  ],
+  "allowMultipleInstances": true,
+  "tags": [
+    "Developer Tools"
+  ]
+}

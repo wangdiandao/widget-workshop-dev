@@ -1,0 +1,9 @@
+{
+  "name": "widget-workshop",
+  "version": "0.1.0",
+  "description": "Widget Workshop component development, verified APIs, practical examples and local-development lessons.",
+  "author": {
+    "name": "wangdiandao"
+  },
+  "skills": "./skills/"
+}

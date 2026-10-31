@@ -1,0 +1,25 @@
+name: Issue policy
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened, ready_for_review]
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+jobs:
+  linked-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            if (pr.user.login !== context.repo.owner) throw new Error('External contributions are not accepted. Please open an Issue instead.');
+            const match = pr.head.ref.match(/^(?:docs|fix|feat|chore)\/(\d+)-[a-z0-9-]+$/);
+            if (!match) throw new Error('Branch must be docs|fix|feat|chore/<issue>-<topic>.');
+            const number = Number(match[1]);
+            const linked = [...(pr.body ?? '').matchAll(/(?:closes|fixes|resolves)\s+#(\d+)\b/gi)].map(m => Number(m[1]));
+            if (!linked.includes(number)) throw new Error(`PR body must include Closes #${number}.`);
+            const {data: issue} = await github.rest.issues.get({...context.repo, issue_number: number});
+            if (issue.pull_request || issue.state !== 'open') throw new Error('Link an open Issue in this repository.');
+            core.info(`Linked Issue #${number}: ${issue.title}`);

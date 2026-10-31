@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>文件统计</title><link rel="stylesheet" href="style.css"></head>
+<body><main><h1>文件统计</h1><p>逐块统计文件或网络响应。网络地址与可选令牌在宿主配置中设置。</p>
+<div><button id="choose">选择文件</button> <button id="asset">包内样本</button> <button id="network">网络统计</button> <button id="cancel" disabled>取消</button></div>
+<p><button id="export" disabled>导出统计 JSON</button> <button id="copy" disabled>复制统计</button></p>
+<output id="result" aria-live="polite">尚未选择文件</output>
+<section id="responsePreview" hidden><h2>文本预览</h2><p id="previewStatus" class="hint"></p><pre id="responseText" tabindex="0" aria-label="文件或网络文本；最多 8192 个字符单元"></pre></section>
+<p class="hint">统计 0A 换行字节；FNV-1a 用于比较内容，不是安全签名。支持最多 256 MiB。</p>
+<section><h2>PNG 缩略图</h2><p class="hint">最多8 MiB、4096边长及419万像素；保留透明，不放大。导出前由宿主确认位置。</p>
+<label for="imageEdge">最长边</label> <select id="imageEdge"><option value="256">256 像素</option><option value="512" selected>512 像素</option><option value="1024">1024 像素</option></select>
+<p><button id="imageChoose">选择 PNG</button> <button id="imageResize" disabled>重新生成</button> <button id="imageCancel" disabled>取消图片操作</button> <button id="imageSave" disabled>导出 PNG</button></p>
+<p class="hint">改最长边会从原图重新生成，无需再次选图；页面内仅保留一份不超过8 MiB的原图，新选图或离开时释放。</p>
+<output id="imageStatus" aria-live="polite">尚未选择图片</output><img id="imagePreview" alt="生成的 PNG 缩略图" hidden></section>
+<section><h2>剪贴板文本</h2><p class="hint">单独授权后可主动读取当前纯文本；此工具只在点击时读取，不保存历史。</p><button id="readClipboard">读取剪贴板</button> <button id="cancelClipboardRead" disabled>取消读取</button><output id="clipboardStatus" aria-live="polite">尚未读取</output><pre id="clipboardText" tabindex="0" aria-label="读取的剪贴板文本" hidden></pre></section><section><h2>目录视图</h2><p class="hint">在宿主配置中选择目录。变化后重新枚举前 100 项；五分钟后可重新开始。</p>
+<button id="watch">开始监听</button> <button id="refresh">手动刷新</button> <button id="stopWatch" disabled>停止监听</button>
+<output id="directoryStatus" aria-live="polite">尚未监听</output><ul id="entries"></ul></section></main>
+<script src="main.js"></script><script src="directory.js"></script><script src="image.js"></script><script src="clipboard.js"></script></body></html>
