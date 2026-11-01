@@ -463,47 +463,43 @@
   "contentTags": [
     {
       "name": "Information",
-      "zhCN": "信息资讯"
+      "zhCN": "资讯"
     },
     {
       "name": "Productivity",
-      "zhCN": "效率办公"
+      "zhCN": "效率"
     },
     {
-      "name": "System Tools",
-      "zhCN": "系统工具"
+      "name": "System",
+      "zhCN": "系统"
     },
     {
-      "name": "File Tools",
-      "zhCN": "文件工具"
+      "name": "Files",
+      "zhCN": "文件"
     },
     {
       "name": "Media",
-      "zhCN": "媒体影音"
+      "zhCN": "媒体"
     },
     {
       "name": "Decoration",
-      "zhCN": "桌面装饰"
+      "zhCN": "装饰"
     },
     {
-      "name": "Desktop Pet",
-      "zhCN": "桌宠陪伴"
-    },
-    {
-      "name": "Game",
-      "zhCN": "游戏娱乐"
+      "name": "Entertainment",
+      "zhCN": "娱乐"
     },
     {
       "name": "Education",
-      "zhCN": "学习教育"
+      "zhCN": "教育"
     },
     {
       "name": "Lifestyle",
-      "zhCN": "生活日常"
+      "zhCN": "生活"
     },
     {
-      "name": "Developer Tools",
-      "zhCN": "开发工具"
+      "name": "Development",
+      "zhCN": "开发"
     }
   ]
 }

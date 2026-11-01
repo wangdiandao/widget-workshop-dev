@@ -46,7 +46,7 @@ location能力需要清单声明和安装授权，拒绝不阻止组件启用；
   "name": "系统概览",
   "description": "展示系统资源，采样不可用时显示说明。",
   "author": "Example Author",
-  "tags": ["System Tools"],
+  "tags": ["System"],
   "entry": "index.html",
   "preview": "preview.png",
   "window": {
@@ -98,7 +98,7 @@ schema v1 顶层未知字段、未知能力或未知字段类型返回校验错�
 
 不允许多实例的组件在版本激活时若已有多个启用实例，激活失败并保留当前版本；用户先停用额外实例后重试。限制按安装身份执行，不把不同来源的安装合并。
 
-组件标签采用单层大类：Information（信息资讯）、Productivity（效率办公）、System Tools（系统工具）、File Tools（文件工具）、Media（媒体影音）、Decoration（桌面装饰）、Desktop Pet（桌宠陪伴）、Game（游戏娱乐）、Education（学习教育）、Lifestyle（生活日常）、Developer Tools（开发工具）。英文值精确匹配；应用内按宿主语言显示，呈现位置见管理界面（宿主文档：`../modules/ui.md`）。标签不授予能力，不代替版本或权限声明。`Widget`和`Layout`由工坊内容类型自动生成，不属于作者标签。
+组件标签采用单层大类：Information（资讯）、Productivity（效率）、System（系统）、Files（文件）、Media（媒体）、Decoration（装饰）、Entertainment（娱乐，包含桌宠与游戏）、Education（教育）、Lifestyle（生活）、Development（开发）。英文值精确匹配；应用内按宿主语言显示，呈现位置见管理界面（宿主文档：`../modules/ui.md`）。标签不授予能力，不代替版本或权限声明。`Widget`和`Layout`由工坊内容类型自动生成，不属于作者标签。
 
 ## 包内多语言
 

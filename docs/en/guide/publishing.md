@@ -11,7 +11,7 @@ Deliver a static component directory, not a Git checkout, dependency tree or use
 
 ## Workshop workflow
 
-Use Publish to Workshop in the selected development component's detail drawer. The host validates current source and prepares a clean upload copy. Source `widgetId` must still match the component; publication need not activate the source and does not replace the running version.
+Use Publish in the selected development component's detail drawer. The host validates current source and prepares a clean upload copy. Source `widgetId` must still match the component; publication need not activate the source and does not replace the running version.
 
 Uploads start private. Review metadata, preview, tags and actual content using the host workflow. Failure must preserve the usable installation. Service availability, account consent and terms depend on Steam and the environment.
 

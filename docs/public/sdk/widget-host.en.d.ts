@@ -1,5 +1,5 @@
 /** Standard manifest tags use the English identifiers in protocol.json.contentTags; unknown values are omitted from display and upload. */
-type WidgetTag = 'Information' | 'Productivity' | 'System Tools' | 'File Tools' | 'Media' | 'Decoration' | 'Desktop Pet' | 'Game' | 'Education' | 'Lifestyle' | 'Developer Tools';
+type WidgetTag = 'Information' | 'Productivity' | 'System' | 'Files' | 'Media' | 'Decoration' | 'Entertainment' | 'Education' | 'Lifestyle' | 'Development';
 type JsonValue = null | boolean | number | string | JsonValue[] | {[key: string]: JsonValue};
 type WidgetCapability = 'external.open' | 'location' | 'notifications' | 'clipboard' | 'directory.write' | 'screen.capture';
 interface WidgetContext {
