@@ -6,7 +6,7 @@ Applying replaces only the selected display after dependency preflight. Missing 
 
 Installation authorization, resource bindings, secrets, component credentials, KV, saves, cache and reminders have their own ownership; a layout/package rollback is not a progress or permission backup. Shared configuration obeys field types and sharing policy.
 
-Local layouts may reference development identities without author source paths. Workshop layouts only reference Workshop works and require explicit rebinding from development content. IDs use canonical installation identity rather than display labels or component names.
+Component references contain only `widgetId` (UUID) and `hostApiMajor`. Layouts do not store component source or Workshop item IDs. Dependencies match installed components by UUID across local, development and Workshop sources; ambiguous duplicate installations are rejected. Workshop publishing uses the same references without rebinding. Removing an installation clears its personal configuration from saved layouts and restore snapshots before another source can satisfy that UUID.
 
 Display IDs are stable internal identities, not connection order or display numbers. Disconnection preserves intent without silently migrating content. Global language/theme/autostart and local display aliases are not shared layout settings.
 

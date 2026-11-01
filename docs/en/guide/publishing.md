@@ -15,4 +15,4 @@ Use Publish in the selected development component's detail drawer. The host vali
 
 Uploads start private. Review metadata, preview, tags and actual content using the host workflow. Failure must preserve the usable installation. Service availability, account consent and terms depend on Steam and the environment.
 
-Shared layouts replace one display, require existing dependencies and do not subscribe automatically. Local layouts may reference development identities; Workshop layouts must reference formal Workshop works. Never include author source paths or grants. Read [Workshop behavior](../reference/modules/workshop.md) and [layouts](../reference/contracts/layout.md).
+Shared layouts replace one display, require existing dependencies and do not subscribe automatically. Layouts identify dependencies by component UUID, regardless of local, development or Workshop source. Publishing does not require Workshop component references or rebinding. Never include author source paths or grants. Read [Workshop behavior](../reference/modules/workshop.md) and [layouts](../reference/contracts/layout.md).

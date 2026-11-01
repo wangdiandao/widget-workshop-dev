@@ -46,8 +46,8 @@
     {
       "source": "docs/contracts/layout.md",
       "destination": "docs/reference/contracts/layout.md",
-      "sourceSha256": "50b20fc31e3e4bd811e500572f31178fea97899be5d4be5019ea442c3a10e7eb",
-      "sha256": "b46dfb2589ed1894dd8f54c5af8fc5767b9c1f8b4ae8e983970eb9249f53f3ea"
+      "sourceSha256": "ea8325596228e0ec254dca1ab272f18a1b21d7d824320716ccab5a3832740b20",
+      "sha256": "def5a5ce1059a9f913f0f1093d5b1b2678b7292a7af4c0022cf4a36d11c36cb1"
     },
     {
       "source": "docs/contracts/reminders.md",
@@ -76,8 +76,8 @@
     {
       "source": "docs/modules/development.md",
       "destination": "docs/reference/modules/development.md",
-      "sourceSha256": "a2a3cb87de39c142c87a5697fa533205750cbd0e79f4bb2cf19fb5f2c8c9d6f6",
-      "sha256": "b13ae7ae7cee6a85865c919b06ae784b71640a3ea663eb66fbde60824dc58c53"
+      "sourceSha256": "7c29f89b14d5735ff53f94981db143e34a7fbaa527d3caded983d9b7b883af33",
+      "sha256": "baf4f001235bc25cb4aa2f82aa10d343db3068ef22a8b0367d2433b53e157afc"
     },
     {
       "source": "docs/modules/edge-garden.md",
@@ -118,8 +118,8 @@
     {
       "source": "docs/modules/workshop.md",
       "destination": "docs/reference/modules/workshop.md",
-      "sourceSha256": "beab2454171f6b183071e0e60c71990fb4593b2669bbdcd2854342ba4d88b143",
-      "sha256": "044487c20f5d37283a81b6273b38e9e3cbbd8b5aabcbf975549644ca823c21cb"
+      "sourceSha256": "4fbc6104e0a23d14ef0c8dc30f4bafd1c6be0d8b699c83a443c13233e1e01cf2",
+      "sha256": "cdba17e404cc970f8871efa60791f433486bcc2564675c28fb2e5d74485a230d"
     },
     {
       "source": "examples/edge-garden/audio.js",
