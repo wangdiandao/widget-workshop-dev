@@ -22,8 +22,8 @@
     {
       "source": "docs/contracts/component.md",
       "destination": "docs/reference/contracts/component.md",
-      "sourceSha256": "2d696b33f93ed444ff5ed9f9b273922f3d48cae8431ededc57673adc22dda0cc",
-      "sha256": "d774428dd21d831de15c30568511dea90acaa1ea350bd4e45a716faf1038a0f2"
+      "sourceSha256": "b3c21e5da89b20907e9b898648599675ae5079284e96a264ba25d8f507ecda99",
+      "sha256": "07109730076f6f3b10a7a0fd730a86fdfd0ce6fcaba1848c10810977d1f2d40a"
     },
     {
       "source": "docs/contracts/configuration.md",
@@ -76,8 +76,8 @@
     {
       "source": "docs/modules/development.md",
       "destination": "docs/reference/modules/development.md",
-      "sourceSha256": "32ee32bafca9519ce9935bacf0ab3d06d4bd17ab473aee301dbfa636694531e4",
-      "sha256": "7c8b2de90c72092c086e7ddff9d892e64a0b1a4ecef659c73faef8de5aa5b177"
+      "sourceSha256": "a2a3cb87de39c142c87a5697fa533205750cbd0e79f4bb2cf19fb5f2c8c9d6f6",
+      "sha256": "b13ae7ae7cee6a85865c919b06ae784b71640a3ea663eb66fbde60824dc58c53"
     },
     {
       "source": "docs/modules/edge-garden.md",
