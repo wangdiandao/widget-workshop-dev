@@ -2,7 +2,7 @@
 
 # 组件包协议
 
-包格式为schemaVersion=1、hostApiMajor=1，作者SDK固定为0.1.0。发布前保持破坏性更新，公开协议为1，内部管理状态格式为2；存档正文格式由作者自行定义。能力声明及可拒绝授权见[宿主接口](host-api.md)。
+包格式为schemaVersion=1、hostApiMajor=1，当前作者SDK为0.1.0，更新规则见[作者 SDK 版本管理](../modules/development.md#作者-sdk-版本管理)。发布前保持破坏性更新，公开协议为1，内部管理状态格式为2；存档正文格式由作者自行定义。能力声明及可拒绝授权见[宿主接口](host-api.md)。
 
 ## 内容目录
 

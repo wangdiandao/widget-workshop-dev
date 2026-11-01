@@ -1,6 +1,6 @@
 # Component package contract
 
-The package `schemaVersion` and `hostApiMajor` are 1; SDK baseline is 0.1.0. Deliver a directory containing `manifest.json`, its local HTML entry and local static resources. Users do not run author scripts. entry defaults to `index.html`; preview defaults to `preview.png` with a placeholder when implicit and absent. Explicit previews must exist and be PNG.
+The package `schemaVersion` and `hostApiMajor` are 1; the current SDK is 0.1.0, with independent [versioning rules](../modules/development.md#author-sdk-versioning). Deliver a directory containing `manifest.json`, its local HTML entry and local static resources. Users do not run author scripts. entry defaults to `index.html`; preview defaults to `preview.png` with a placeholder when implicit and absent. Explicit previews must exist and be PNG.
 
 ## Manifest fields
 
