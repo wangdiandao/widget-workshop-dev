@@ -8,7 +8,7 @@
   "author": "Widget Workshop",
   "description": "无需权限的实例 KV 计数入门示例。",
   "entry": "index.html",
-  "tags": ["Developer Tools"],
+  "tags": ["Development"],
   "capabilities": [],
   "configuration": []
 }

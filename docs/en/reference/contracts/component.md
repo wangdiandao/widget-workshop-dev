@@ -8,6 +8,10 @@ Required identity fields include kind: widget, a UUID `widgetId`, three-part num
 
 `allowMultipleInstances` defaults false: one enabled intent across displays, including hidden/disconnected states. When true there is still at most one instance per installation per display. Installation identity is distinct from the author's `widgetId`, and cross-source duplicate additions are rejected.
 
+## Content tags
+
+Use the exact English values `Information`, `Productivity`, `System`, `Files`, `Media`, `Decoration`, `Entertainment`, `Education`, `Lifestyle` and `Development`. Entertainment includes desktop pets and games. The host localizes their display names; tags do not grant capabilities. `Widget` and `Layout` are generated Workshop content types, not author tags.
+
 ## Window defaults
 
 | Field | Default and rule |

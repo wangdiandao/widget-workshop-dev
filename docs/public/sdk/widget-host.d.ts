@@ -1,5 +1,5 @@
 /** 组件清单中的标准标签；英文身份以 protocol.json.contentTags 为准，未知清单值不展示或上传。 */
-type WidgetTag = 'Information' | 'Productivity' | 'System Tools' | 'File Tools' | 'Media' | 'Decoration' | 'Desktop Pet' | 'Game' | 'Education' | 'Lifestyle' | 'Developer Tools';
+type WidgetTag = 'Information' | 'Productivity' | 'System' | 'Files' | 'Media' | 'Decoration' | 'Entertainment' | 'Education' | 'Lifestyle' | 'Development';
 type JsonValue = null | boolean | number | string | JsonValue[] | {[key: string]: JsonValue};
 type WidgetCapability = 'external.open' | 'location' | 'notifications' | 'clipboard' | 'directory.write' | 'screen.capture';
 interface WidgetContext {

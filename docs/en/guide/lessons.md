@@ -58,7 +58,7 @@ Stardust cache stores reconstructible previews and is not proof that GPU recover
 
 ## 10. Reload runs a validated copy
 
-Source watching waits at least one second of stable changes before copy/validation. Invalid candidates preserve the last successful version. Unsaved drafts delay automatic activation; manual actions retain save/discard/continue editing. Restoring the previous package disables automatic reload to prevent immediate replacement.
+Source watching waits at least one second of stable changes before copy/validation. Invalid candidates preserve the last successful version. Unsaved drafts delay automatic activation; manual actions retain save/discard/continue editing. The development drawer offers Reload without manual restoration of a previous package.
 
 Source: development module. Check the bound build output first when edits do not appear. Do not bypass draft protection or copy host binaries as a reload workaround. Test partial writes, invalid manifests, drafts and missing directories.
 
