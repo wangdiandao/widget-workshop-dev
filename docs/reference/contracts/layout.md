@@ -6,7 +6,7 @@
 
 每个显示器的当前状态直接使用布局格式持久化，配置不独立保存。布局库保存/覆盖复制当前屏布局，应用或恢复覆盖该屏当前布局；存档属于安装组件，不进入布局。实例身份由安装内部身份与显示器身份稳定派生，不携带配置。
 
-当前schemaVersion=1，每个条目必须提供zOrder；muted可省略，默认为false，接受local/workshop/development来源。发布前保持破坏性更新，不兼容历史格式。allowMultipleInstances=false且其他屏已有启用实例时，预览提示冲突并禁止应用或恢复；事务提交再次校验，不自动停用其他屏。
+当前schemaVersion=1，每个条目必须提供zOrder；muted可省略，默认为false，组件依赖仅记录 UUID，不记录组件来源。发布前保持破坏性更新，不兼容历史格式。allowMultipleInstances=false且其他屏已有启用实例时，预览提示冲突并禁止应用或恢复；事务提交再次校验，不自动停用其他屏。
 
 ## 文件格式
 
@@ -24,7 +24,6 @@
   "items": [
     {
       "component": {
-        "source": "local",
         "widgetId": "f1846617-c096-4c41-b6d1-4622f9b12ab1",
         "hostApiMajor": 1
       },
@@ -41,9 +40,9 @@
 }
 ```
 
-工坊组件引用形式为 `{source:"workshop",appId:"...",publishedFileId:"...",widgetId:"...",hostApiMajor:1}`。宿主API版本必须为1，不支持的引用禁止应用；不自动改写版本或授予其他能力。本地引用只在本机存在相应安装身份时解析，不自动用同 widgetId 的工坊安装替换。分享到创意工坊的布局只接受工坊组件引用；含本地依赖时提示作者先发布组件并重新绑定布局，不自动替用户发布。
+组件引用形式为 `{widgetId:"...",hostApiMajor:1}`，不保存 source、appId 或 publishedFileId。依赖仅按 UUID 匹配已安装组件，与本地、开发或工坊来源无关；同 UUID 多个安装时拒绝歧义，不任意选择。宿主API版本必须为1，不支持的引用禁止应用。工坊发布保留相同引用，不要求组件来自工坊，也不提供引用重绑定。
 
-schemaVersion、kind、layoutId、version、name、sourceResolution、sourceWorkArea、items 必填；sourceResolution 为保存时完整显示区域的物理像素正整数宽高（不是工作区或 DIP），每项 componentName 为非空名称快照。组件不可重复身份继续由 component 的来源与 UUID/工坊条目确定，名称不参与匹配。其余规则：version 格式与组件包一致。items 可为空，表示清空目标屏当前布局；同一安装组件引用最多一次。enabled/visible 必须为布尔值，layer 必须为 top/bottom。sourceWorkArea 宽高必须为正；bounds 为有限 DIP 数值，宽高为正。未知字段、重复 JSON 键、重复组件引用和不支持的协议均拒绝导入。
+schemaVersion、kind、layoutId、version、name、sourceResolution、sourceWorkArea、items 必填；sourceResolution 为保存时完整显示区域的物理像素正整数宽高（不是工作区或 DIP），每项 componentName 为非空名称快照。组件不可重复身份仅由 component.widgetId 确定，名称不参与匹配。其余规则：version 格式与组件包一致。items 可为空，表示清空目标屏当前布局；同一组件 UUID 最多一次。enabled/visible 必须为布尔值，layer 必须为 top/bottom。sourceWorkArea 宽高必须为正；bounds 为有限 DIP 数值，宽高为正。未知字段、重复 JSON 键、重复组件引用和不支持的协议均拒绝导入。
 
 zOrder 为 0 到 2147483647 的整数，同一 layer 内不得重复，越大越靠前；不同层可重复，top 始终位于 bottom 之上。隐藏条目同样保留顺序。预览与实际应用使用同一排列。
 
