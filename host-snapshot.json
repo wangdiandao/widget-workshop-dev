@@ -76,8 +76,8 @@
     {
       "source": "docs/modules/development.md",
       "destination": "docs/reference/modules/development.md",
-      "sourceSha256": "bb37942c1b57810ed4740e48dccd08edd002c8c13f25ade1f37233c7a6c68a7c",
-      "sha256": "5b503b1a98818a77e8acfb906d77bb8a23b5eb99d99247d5a0349cd754aeb3eb"
+      "sourceSha256": "21ef1c5aa5ef48dfb98274a82b3dfc9e759c433902754b67ce60f9c7efdafc86",
+      "sha256": "f9ffdcb28a7ee339ebe1b470fa67ff57f0fdf5a7df901b8bfd4e8c9b7fa41595"
     },
     {
       "source": "docs/modules/edge-garden.md",
