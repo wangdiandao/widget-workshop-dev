@@ -19,4 +19,6 @@ In Preview and publish, choose Publish or Update. Publish shows the work title, 
 
 New publications start public. Review metadata, preview, tags and actual content using the host workflow. Failure must preserve the usable installation. Service availability, account consent and terms depend on Steam and the environment.
 
+Publish in a layout detail drawer opens the same dialog directly, with a Publish/Update selector. Layout dialogs list included component names and UUIDs instead of a preview image, upload file list, or raw layout JSON. Select and review shareable configuration values in that same dialog: none are selected for a new draft, and saved drafts retain the selection. Sharing choices remain available when updating and use only the configuration snapshot validated by the host when preparing the draft.
+
 Shared layouts replace one display, require existing dependencies and do not subscribe automatically. Layouts identify dependencies by component UUID, regardless of local, development or Workshop source. Publishing does not require Workshop component references or rebinding. Never include author source paths or grants. Read [Workshop behavior](../reference/modules/workshop.md) and [layouts](../reference/contracts/layout.md).
