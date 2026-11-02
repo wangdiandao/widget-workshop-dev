@@ -76,8 +76,8 @@
     {
       "source": "docs/modules/development.md",
       "destination": "docs/reference/modules/development.md",
-      "sourceSha256": "21ef1c5aa5ef48dfb98274a82b3dfc9e759c433902754b67ce60f9c7efdafc86",
-      "sha256": "f9ffdcb28a7ee339ebe1b470fa67ff57f0fdf5a7df901b8bfd4e8c9b7fa41595"
+      "sourceSha256": "285bbf836ee1625754ed4fe6da8f37a1cddc49172b0b987826679bb0f14dae32",
+      "sha256": "3c46baf62c44dba452d94a6ee0428f917e51d5b069f3ef5f8d14a0a266ad4923"
     },
     {
       "source": "docs/modules/edge-garden.md",
@@ -118,8 +118,8 @@
     {
       "source": "docs/modules/workshop.md",
       "destination": "docs/reference/modules/workshop.md",
-      "sourceSha256": "da8c1df82dfffc728092be47d588e478337de5574df354a0b0ac040b0548472d",
-      "sha256": "0d76fb2c0d0cbea95f9545806f013d6d1594e80e1f24ecf7c933d2cda1769565"
+      "sourceSha256": "1c9fb5d574527112ba948ef12bf0318bf4a1bbb383673a732da57290d5684213",
+      "sha256": "8b54f895b3315fac61e53ec8e6ab5e049cb2ab89fe3113ab853a724636468dd9"
     },
     {
       "source": "examples/edge-garden/audio.js",
