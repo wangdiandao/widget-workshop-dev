@@ -4,7 +4,7 @@
 
 ## 作者 SDK
 
-sdk/是JS、TypeScript声明及机器可读协议的唯一维护来源，当前版本0.1.1。宿主将widget-host.js编译为自身资源，在包主文档创建时、业务脚本执行前提供window.widgetHost，等待注册完成后才导航；重载和版本切换同样自动提供。组件包不携带widget-host.js、widget-host.d.ts或protocol.json，不添加SDK脚本标签。类型声明供编辑器和构建工具从宿主随附sdk目录引用，不进入发布包；protocol.json由宿主和开发工具使用。SDK变化同步宿主、开发工具及许可证。Worker没有直接宿主桥接。组件可通过 `widgetHost.context.language` 和 `language.changed` 无权限读取并跟随宿主实际语言，定义见[宿主语言](../contracts/host-api.md#宿主语言)。强调色、文字缩放及组件原生菜单见[宿主接口](../contracts/host-api.md#强调色与文字缩放)，均无需Capability；菜单按实例文档注册，重载后由作者重新设置。发布前协议可破坏性修改。
+sdk/是JS、TypeScript声明及机器可读协议的唯一维护来源，当前版本0.1.1。宿主将widget-host.js编译为自身资源，在包主文档创建时、业务脚本执行前提供window.widgetHost，等待注册完成后才导航；重载和版本切换同样自动提供。组件包不携带widget-host.js、widget-host.d.ts或protocol.json，不添加SDK脚本标签。类型声明供编辑器和构建工具从宿主随附sdk目录引用，不进入发布包；protocol.json由宿主和开发工具使用。SDK变化同步宿主、开发工具及许可证。Worker没有直接宿主桥接。组件可通过 `widgetHost.context.language` 和 `language.changed` 无权限读取并跟随宿主实际语言，定义见[宿主语言](../contracts/host-api.md#宿主语言)。强调色、文字缩放及组件原生菜单见[宿主接口](../contracts/host-api.md#强调色与文字缩放)，均无需Capability；菜单按实例文档注册，重载后由作者重新设置。协议版本及兼容范围遵循格式版本规则（宿主文档：`../development.md#格式版本兼容与迁移`）。
 
 ready提供context/features/limits；事件先更新context，on返回解除函数，离开取消调用并释放订阅。compatibility分开报告宿主支持、浏览器API存在、实际探测和未实测设备，不能从存在性推定可用性。Capability可拒绝，安装获准后直接调用；外链不逐次确认，实际系统选择/覆盖和本人账号同意保留。
 
@@ -23,7 +23,7 @@ TypeScript使用ES2020、DOM、strict及noEmit，不启用skipLibCheck。HTTP头
 
 同一次交付按最高影响递增一次，不按 Build 次数、应用版本或 Steam BuildID 自动递增。已分发的不同 SDK 内容不得复用同一 SDK 版本；纯注释和排版不触发递增。SDK 变更须先改唯一来源及权威协议，再同步 JS、TypeScript、机器协议、相关示例、宿主输出及中英作者指南，完成受影响验证后分发。
 
-`hostApiMajor/apiMajor` 表示宿主接口兼容代际，`protocolVersion` 表示桥接信封/握手格式代际，包/布局/存档 `schemaVersion` 和内部状态格式分别管理；它们不跟随 SDK 数字自动递增。仅各自契约的代际变化才更新相关值并同步双方校验；发布前可直接破坏性修改，不增加兼容/迁移分支，但仍须按上表递增 SDK 并说明作者影响。当前各协议值不因本次版本规则制定改变。组件及布局 manifest.version 仍使用自己的三段版本，不改成应用四段版本。
+`hostApiMajor/apiMajor` 表示宿主接口兼容代际，`protocolVersion` 表示桥接信封/握手格式代际，包/布局/存档 `schemaVersion` 和内部状态格式分别管理；它们不跟随 SDK 数字自动递增。仅各自契约的代际变化才更新相关值并同步双方校验；兼容与迁移遵循格式版本规则（宿主文档：`../development.md#格式版本兼容与迁移`），仍须按上表递增 SDK 并说明作者影响。当前各格式均以 v1 为基线，分别管理。组件及布局 manifest.version 仍使用自己的三段版本，不改成应用四段版本。
 
 ## 身份与目录
 

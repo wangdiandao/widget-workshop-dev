@@ -22,8 +22,8 @@
     {
       "source": "docs/contracts/component.md",
       "destination": "docs/reference/contracts/component.md",
-      "sourceSha256": "d98187c1b9baade93aa2da17a8d082f0c089a17a264e0b82d512c865ab4c0a34",
-      "sha256": "0aced234b12935c35882b834f9ed6c99d44ecd744a9bf2343abeee2632b1fe8e"
+      "sourceSha256": "5786d997e769e30f6979249a32e4655e442367a978fa4d9e21e4cc4da7ab4e42",
+      "sha256": "a9f68e6be9afb8475f7c1ee400b0fe99d1cd8d220e5640c7ab16317c1ff79b96"
     },
     {
       "source": "docs/contracts/configuration.md",
@@ -40,14 +40,14 @@
     {
       "source": "docs/contracts/host-api.md",
       "destination": "docs/reference/contracts/host-api.md",
-      "sourceSha256": "dbd1815b13ecb6fce666d09fe8549f59df9e3016ad659ff277b072538e7f466e",
-      "sha256": "2ceddef581f0c250c55a533562a6cac70516fc24f4d2a224233a72081711d7f0"
+      "sourceSha256": "c326bef73d001860b0c031715101a1c1fd953c0e3f7bd25632a3a55da7efbeab",
+      "sha256": "04d8e0a62290f77275170ab2dbdeca3de8e268c4e9685cbda0ee7864e5da78e0"
     },
     {
       "source": "docs/contracts/layout.md",
       "destination": "docs/reference/contracts/layout.md",
-      "sourceSha256": "ea8325596228e0ec254dca1ab272f18a1b21d7d824320716ccab5a3832740b20",
-      "sha256": "def5a5ce1059a9f913f0f1093d5b1b2678b7292a7af4c0022cf4a36d11c36cb1"
+      "sourceSha256": "1dcd45cdcb4f8d27a765df1112dbb57d43bcff02e7a5261d20f0dc242d5c4885",
+      "sha256": "ee3cb54619be5998e44d4e27c2657f8bc53475d7640e72b7105a32cd04cf8345"
     },
     {
       "source": "docs/contracts/reminders.md",
@@ -76,8 +76,8 @@
     {
       "source": "docs/modules/development.md",
       "destination": "docs/reference/modules/development.md",
-      "sourceSha256": "974f1214294ac61a43d4ab2b89ef95e9dedc74f1aa096e2e70e6373c11773ba9",
-      "sha256": "9ec2a8d148ade6bf5e62ae87602a7425be787db5d2359b9d26a5fe31afb5186c"
+      "sourceSha256": "bb37942c1b57810ed4740e48dccd08edd002c8c13f25ade1f37233c7a6c68a7c",
+      "sha256": "5b503b1a98818a77e8acfb906d77bb8a23b5eb99d99247d5a0349cd754aeb3eb"
     },
     {
       "source": "docs/modules/edge-garden.md",

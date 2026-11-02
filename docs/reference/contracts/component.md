@@ -2,7 +2,7 @@
 
 # 组件包协议
 
-包格式为schemaVersion=1、hostApiMajor=1，当前作者SDK为0.1.1，更新规则见[作者 SDK 版本管理](../modules/development.md#作者-sdk-版本管理)。发布前保持破坏性更新，公开协议为1，内部管理状态格式为2；存档正文格式由作者自行定义。能力声明及可拒绝授权见[宿主接口](host-api.md)。
+包格式为schemaVersion=1、hostApiMajor=1，当前作者SDK为0.1.1，更新规则见[作者 SDK 版本管理](../modules/development.md#作者-sdk-版本管理)。公开协议和内部管理状态均以 v1 为基线，兼容与迁移遵循格式版本规则（宿主文档：`../development.md#格式版本兼容与迁移`）；存档正文格式由作者自行定义。能力声明及可拒绝授权见[宿主接口](host-api.md)。
 
 ## 内容目录
 
@@ -80,7 +80,7 @@ location能力需要清单声明和安装授权，拒绝不阻止组件启用；
 | schemaVersion / kind | 必须为 `1` / `widget`；不支持的 schema 拒绝安装，不猜测解释 |
 | widgetId | UUID，作品身份；已关联同一来源后不可更换 |
 | version | 首版采用三个非负整数 `major.minor.patch`，不支持预发布后缀；按数字段比较 |
-| hostApiMajor | 当前为 `1`，发布前不增加兼容分支 |
+| hostApiMajor | 当前为 `1`；兼容代际独立管理，见格式版本规则（宿主文档：`../development.md#格式版本兼容与迁移`） |
 | allowMultipleInstances | 可选布尔值，默认false；false时按安装在所有显示器最多一个启用意图，隐藏或断屏仍占用；其他屏启用按钮禁用，服务、布局和版本激活同样检查 |
 | name / description / author | UTF-8 文本，name 与 author 非空；只作显示，不作为身份和路径 |
 | tags | 可选字符串数组，默认空，支持多选；最多64项，每项1–64个字符。标准英文值及中英文显示名由SDK的`protocol.json.contentTags`统一维护；重复值合并，未知值保留在作者清单但不展示、不用于工坊上传 |
