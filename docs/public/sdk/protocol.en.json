@@ -1,7 +1,7 @@
 {
   "protocolVersion": 1,
   "apiMajor": 1,
-  "sdkVersion": "0.1.1",
+  "sdkVersion": "0.1.2",
   "features": [
     "i18n",
     "config.get",

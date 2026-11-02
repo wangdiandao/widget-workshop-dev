@@ -1,5 +1,5 @@
 {
-  "sdkVersion": "0.1.1",
+  "sdkVersion": "0.1.2",
   "files": [
     {
       "source": "docs/CONTEXT.md",
@@ -22,8 +22,8 @@
     {
       "source": "docs/contracts/component.md",
       "destination": "docs/reference/contracts/component.md",
-      "sourceSha256": "5786d997e769e30f6979249a32e4655e442367a978fa4d9e21e4cc4da7ab4e42",
-      "sha256": "a9f68e6be9afb8475f7c1ee400b0fe99d1cd8d220e5640c7ab16317c1ff79b96"
+      "sourceSha256": "6e0983cb87cadce8106fab768a5e5ccb13cde9b865d4c986cd048bc17f7fc7bd",
+      "sha256": "82387add17a69cf38c6f55c547f4f6a3e3422cf01f0993e66d2e592bf0a00f9e"
     },
     {
       "source": "docs/contracts/configuration.md",
@@ -46,8 +46,8 @@
     {
       "source": "docs/contracts/layout.md",
       "destination": "docs/reference/contracts/layout.md",
-      "sourceSha256": "1dcd45cdcb4f8d27a765df1112dbb57d43bcff02e7a5261d20f0dc242d5c4885",
-      "sha256": "ee3cb54619be5998e44d4e27c2657f8bc53475d7640e72b7105a32cd04cf8345"
+      "sourceSha256": "de3c5b88af8cac2938f2cc2ad49e6013e223112f2764ec3d393f9c7b6cb3adc0",
+      "sha256": "f83013f72233b4230a13b50293c74a041f93bfcbb4cf4b7631c6c9bb7b28487f"
     },
     {
       "source": "docs/contracts/reminders.md",
@@ -76,8 +76,8 @@
     {
       "source": "docs/modules/development.md",
       "destination": "docs/reference/modules/development.md",
-      "sourceSha256": "285bbf836ee1625754ed4fe6da8f37a1cddc49172b0b987826679bb0f14dae32",
-      "sha256": "3c46baf62c44dba452d94a6ee0428f917e51d5b069f3ef5f8d14a0a266ad4923"
+      "sourceSha256": "d462a23796d987b014188a66be743a2cd1b03083b16460a3e0c6f967b05ba56e",
+      "sha256": "5e3c91193c2a7eb485a1d4be4c8c43d218f7aa6bf09469032c40dd2e13710e03"
     },
     {
       "source": "docs/modules/edge-garden.md",
@@ -118,8 +118,8 @@
     {
       "source": "docs/modules/workshop.md",
       "destination": "docs/reference/modules/workshop.md",
-      "sourceSha256": "f537936546357006d2d3267a1ee7ff6a10ef1c9095177980ffe083e75fb3243b",
-      "sha256": "eb272a936026bf959d843568bf0065d47942315256d826ccd2f959b6212c1eba"
+      "sourceSha256": "cd4f4fe2a07085b443a1f6785da5c5814eb3956546680815e803d28118553305",
+      "sha256": "2ced55578ceeebbe3d6220bf1dfca98734058ccaa77a52bedadda214cde21199"
     },
     {
       "source": "examples/edge-garden/audio.js",
@@ -328,26 +328,26 @@
     {
       "source": "sdk/protocol.json",
       "destination": "docs/public/sdk/protocol.json",
-      "sourceSha256": "00477afa9e1374fe7c1f0fc98e516813c3292e916edf44aa6707fcdc57dbfa9b",
-      "sha256": "ce3a12727b47b616e06c9b0ca29c981e12fcab1ab3281c1921fa136d21433eec"
+      "sourceSha256": "e41764220e9abed5147a35f643069a687a1b85e89abef14993ea904543f1876b",
+      "sha256": "16769fc027da0c3ed44faa308c6a0a3f594137935d41d32cd6d79d530f68f98d"
     },
     {
       "source": "sdk/protocol.json",
       "destination": "docs/public/sdk/protocol.en.json",
-      "sourceSha256": "00477afa9e1374fe7c1f0fc98e516813c3292e916edf44aa6707fcdc57dbfa9b",
-      "sha256": "298a5c0146108e721ad0350801cf332f0e58093c305359473e5670ea1b5d72e0"
+      "sourceSha256": "e41764220e9abed5147a35f643069a687a1b85e89abef14993ea904543f1876b",
+      "sha256": "3c7b9739b22cf4756fa74623075401fa1efb63f60080ba0d0d0cbd4de7b7477c"
     },
     {
       "source": "sdk/widget-host.d.ts",
       "destination": "docs/public/sdk/widget-host.d.ts",
-      "sourceSha256": "411de44f4d2f80d39cd2703ad6fe482f304362820c87e2b87e82b4f59ade6c65",
-      "sha256": "e1c0111544e6f59da09790d1789623c718fd962232674ff1cb3321b6b3fb67a6"
+      "sourceSha256": "055c41d21f29b6933655abe05aca3265687a8e50173320138d0705f79661c45e",
+      "sha256": "6afc561021a16f3a899b975328d30cede822d92a17c6b49b3006fec24f85c747"
     },
     {
       "source": "sdk/widget-host.d.ts",
       "destination": "docs/public/sdk/widget-host.en.d.ts",
-      "sourceSha256": "411de44f4d2f80d39cd2703ad6fe482f304362820c87e2b87e82b4f59ade6c65",
-      "sha256": "b32a7e4dd807f3e719ac8c6c994293c08084c13998c25688c1837cfdd0c0e153"
+      "sourceSha256": "055c41d21f29b6933655abe05aca3265687a8e50173320138d0705f79661c45e",
+      "sha256": "ff6ec6a81e6dab70dee0c277c66cfb65f72e2a64f8ad84e681a546c641a8380a"
     }
   ]
 }

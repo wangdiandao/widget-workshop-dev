@@ -1,3 +1,4 @@
+/** WidgetWorkshop SDK 0.1.2; manifest requiredFeatures declares mandatory host features independently of SDK releases. */
 /** Standard manifest tags use the lowercase English identifiers in protocol.json.contentTags; unknown values are omitted from display and upload. */
 type WidgetTag = 'information' | 'productivity' | 'system' | 'files' | 'media' | 'decoration' | 'entertainment' | 'education' | 'lifestyle' | 'development';
 type JsonValue = null | boolean | number | string | JsonValue[] | {[key: string]: JsonValue};

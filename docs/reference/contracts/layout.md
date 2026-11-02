@@ -42,7 +42,7 @@
 
 组件引用形式为 `{widgetId:"...",hostApiMajor:1}`，不保存 source、appId 或 publishedFileId。依赖仅按 UUID 匹配已安装组件，与本地、开发或工坊来源无关；同 UUID 多个安装时拒绝歧义，不任意选择。宿主API版本必须为1，不支持的引用禁止应用。工坊发布保留相同引用，不要求组件来自工坊，也不提供引用重绑定。
 
-schemaVersion、kind、layoutId、version、name、sourceResolution、sourceWorkArea、items 必填；sourceResolution 为保存时完整显示区域的物理像素正整数宽高（不是工作区或 DIP），每项 componentName 为非空名称快照。组件不可重复身份仅由 component.widgetId 确定，名称不参与匹配。其余规则：version 格式与组件包一致。items 可为空，表示清空目标屏当前布局；同一组件 UUID 最多一次。enabled/visible 必须为布尔值，layer 必须为 top/bottom。sourceWorkArea 宽高必须为正；bounds 为有限 DIP 数值，宽高为正。未知字段、重复 JSON 键、重复组件引用和不支持的协议均拒绝导入。
+schemaVersion、kind、layoutId、version、name、sourceResolution、sourceWorkArea、items 必填；sourceResolution 为保存时完整显示区域的物理像素正整数宽高（不是工作区或 DIP），每项 componentName 为非空名称快照。组件不可重复身份仅由 component.widgetId 确定，名称不参与匹配。其余规则：version 格式与组件包一致。items 可为空，表示清空目标屏当前布局；同一组件 UUID 最多一次。enabled/visible 必须为布尔值，layer 必须为 top/bottom。sourceWorkArea 宽高必须为正；bounds 为有限 DIP 数值，宽高为正。未知字段、重复 JSON 键、重复组件引用和不支持的协议均拒绝导入。已保存的当前屏布局允许读取结构有效但运行代际不兼容的安装引用，以保留启用意图；应用/恢复仍检查引用代际与激活版本一致且为宿主所支持。
 
 zOrder 为 0 到 2147483647 的整数，同一 layer 内不得重复，越大越靠前；不同层可重复，top 始终位于 bottom 之上。隐藏条目同样保留顺序。预览与实际应用使用同一排列。
 
@@ -54,7 +54,7 @@ zOrder 为 0 到 2147483647 的整数，同一 layer 内不得重复，越大越
 
 ## 应用与恢复
 
-1. 选择目标显示器，确认已连接且物理像素宽高与 sourceResolution 一致，否则禁止应用或覆盖。解析布局并校验引用；逐项检查是否存在已完整安装、兼容、未待清理的本地激活版本。列出缺失项，任一缺失即禁用应用按钮，不自动订阅或下载。
+1. 选择目标显示器，确认已连接且物理像素宽高与 sourceResolution 一致，否则禁止应用或覆盖。解析布局并校验引用；逐项检查是否存在已完整安装、兼容、未待清理的本地激活版本。列出缺失项及[运行不兼容](component.md#运行兼容性)的组件和原因，任一依赖不可用即禁用应用按钮，不自动订阅或下载。
 2. 在数据层计算适配与配置变化，显示新增、替换、停用及默认值回落。预览不运行新组件、不修改状态，也不检查用户是否授予 Capability。
 3. 用户确认后取得目标屏布局操作锁，重新检查显示器、依赖、版本和配置模式，保存原状态快照，再准备候选状态与窗口。新窗口准备期间不启动作者脚本；失败保留原状态。
 4. 原子提交候选状态；目标屏中未列出的条目移除，其既有配置不在当前布局中保留，列出的组件按布局的 enabled/visible/layer/zOrder 排布。不复制到其他屏，不改变安装级授权。

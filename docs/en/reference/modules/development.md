@@ -8,10 +8,12 @@ Read the [local development lessons](../../guide/lessons.md), [recipes](../../re
 
 ## Author SDK versioning
 
-The author SDK is not locked. Its current version is `0.1.1`, independently using `major.minor.patch`. `sdkVersion` in the host protocol is the current version source. Keep JavaScript, declarations, machine protocol, host distribution, examples and both guide editions synchronized when the SDK changes.
+The author SDK is not locked. Its current version is `0.1.2`, independently using `major.minor.patch`. `sdkVersion` in the host protocol is the current version source. Keep JavaScript, declarations, machine protocol, host distribution, examples and both guide editions synchronized when the SDK changes.
 
 During `0.x`, increment patch for routine additions and fixes, including limited protocol adjustments such as content tags. Increment minor and reset patch only when the user explicitly decides to enter a new SDK feature stage. Document affected methods, types, events and required author changes for any break. Starting at `1.0.0`, increment major for incompatible changes, minor for compatible additions and patch for fixes; reset all fields to the right. Use the highest-impact change once per SDK delivery. Host UI, internal refactoring, packaging and prose-only changes do not automatically change the SDK version. Different distributed SDK content must not reuse a version; comment/format-only changes are excluded.
 
 `hostApiMajor/apiMajor`, bridge `protocolVersion` and each data format version describe separate contract generations. Update only the generation whose contract changes; do not copy SDK or application version numbers into them. Optional additions with unchanged defaults retain their schema; breaking changes increment the affected format. Supported migration inputs and lower bounds must be explicitly documented and validated. The current canonical formats use v1; historical variants are not accepted merely because they share that number. SDK changes still follow the SDK versioning rules and explain author impact. Component/layout manifest versions remain their own three-part versions. See [format compatibility](../../guide/sources.md#formats-and-compatibility).
 
 The application separately uses four fields (`major.minor.patch.revision`). Development uploads retain the previous default application's version. Only after an explicit decision to update Steam default is the release version incremented once, based on all changes since the previous default, followed by validation, develop upload and default promotion. This does not automatically increment the SDK.
+
+Component requirements and enabled-intent recovery follow [runtime compatibility](../contracts/component.md#runtime-compatibility).

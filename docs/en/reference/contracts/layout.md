@@ -15,3 +15,5 @@ Display IDs are stable internal identities, not connection order or display numb
 ## Source and related declarations
 
 Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).
+
+Runtime-incompatible installed dependencies are listed separately from missing dependencies and block applying or restoring the whole layout, preserving the current layout. Saved display layouts retain structurally valid incompatible references and enabled intent; apply/restore require the reference API generation to match the installed version and be supported by the host. See [runtime compatibility](component.md#runtime-compatibility).
