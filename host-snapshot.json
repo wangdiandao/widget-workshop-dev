@@ -22,8 +22,8 @@
     {
       "source": "docs/contracts/component.md",
       "destination": "docs/reference/contracts/component.md",
-      "sourceSha256": "6e0983cb87cadce8106fab768a5e5ccb13cde9b865d4c986cd048bc17f7fc7bd",
-      "sha256": "82387add17a69cf38c6f55c547f4f6a3e3422cf01f0993e66d2e592bf0a00f9e"
+      "sourceSha256": "b53da2e32d741165b3861d4385f4d6557e51ac2fe6a683d0692cb33c8177f387",
+      "sha256": "3a6d65327fcb90a26398e4fd6ffcbe49ed862a62fb317f0f7cd5e15d166d4da0"
     },
     {
       "source": "docs/contracts/configuration.md",
