@@ -15,7 +15,7 @@ The GitHub icon beside the Development page title opens the [widget-workshop-dev
 
 Use Publish in the selected development component's detail drawer. The host validates current source and prepares a clean upload copy. Source `widgetId` must still match the component; publication need not activate the source and does not replace the running version.
 
-In Preview and publish, choose Publish or Update from the Operation dropdown. Publish creates a new Workshop item and shows the shared metadata. Update also shows a required Your item ID field and change notes. Saving an update draft preserves its target item ID. Once linked, the draft stays in Update mode with a read-only target. If creation has an unknown outcome, recover the original item ID and update it to avoid creating a duplicate.
+In Preview and publish, choose Publish or Update from the Operation dropdown. Publish creates a new Workshop item and shows the shared metadata. Update also shows a required Your item ID field. The work description introduces the component; the dialog does not ask for change notes. A labeled preview image appears between tags and visibility. Saving an update draft preserves its target item ID. Once linked, the draft stays in Update mode with a read-only target. If creation has an unknown outcome, recover the original item ID and update it to avoid creating a duplicate.
 
 Uploads start private. Review metadata, preview, tags and actual content using the host workflow. Failure must preserve the usable installation. Service availability, account consent and terms depend on Steam and the environment.
 
