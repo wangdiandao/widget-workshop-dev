@@ -1,3 +1,4 @@
+/** WidgetWorkshop SDK 0.1.2; manifest requiredFeatures declares mandatory host features independently of SDK releases. */
 /** 组件清单中的标准标签；小写英文标识以 protocol.json.contentTags 为准，未知清单值不展示或上传。 */
 type WidgetTag = 'information' | 'productivity' | 'system' | 'files' | 'media' | 'decoration' | 'entertainment' | 'education' | 'lifestyle' | 'development';
 type JsonValue = null | boolean | number | string | JsonValue[] | {[key: string]: JsonValue};

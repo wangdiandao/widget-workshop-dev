@@ -8,6 +8,16 @@ Include `manifest.json` and the local HTML referenced by entry, defaulting to `i
 
 window declares initial/minimum dimensions, initial layer and surface. Opaque is the default. Transparent work must explicitly handle native input mode and recovery; CSS cannot implement native click-through. Authors control size through the manifest and `window.setSize`; layouts do not override author size.
 
+## Declare runtime compatibility
+
+Component `version` identifies the work release. SDK release versions identify development references; neither replaces runtime compatibility checks. `hostApiMajor` identifies the interface and behavior generation. Published contracts remain compatible within a generation; cross-generation support requires an explicitly implemented and verified host. The current supported generation is 1.
+
+Declare mandatory host features in the manifest, for example `"requiredFeatures": ["saves.load", "saves.commit"]`. The default is an empty array. Identifiers match handshake features exactly: at most 256 unique entries, each containing 1–128 ASCII letters, digits, dots, underscores or hyphens. Require only features without which the component cannot run; probe optional features after ready and provide fallbacks. Supporting an interface does not grant permission. Handle denied capabilities independently.
+
+Missing mandatory features or an unsupported API generation cause package checks and installation to return PROTOCOL_UNSUPPORTED. Failed updates preserve the active version. If an installed component becomes incompatible with the host, execution stops while personal data and enabled intent are preserved. Compatibility recovery automatically restores enabled components; components explicitly disabled during the block remain disabled. Incompatible layout dependencies prevent applying or restoring the layout. Bundling an older SDK cannot bypass the checks: the host provides the SDK.
+
+See [runtime compatibility](../reference/contracts/component.md#runtime-compatibility) for the contract.
+
 ## Frontend tooling and types
 
 Build locally resolvable assets and copy the manifest into the final directory. Bind that runnable output directory on the Development page. A development server URL is not a component package.

@@ -1,6 +1,6 @@
 # References
 
-The baseline is Widget Workshop SDK 0.1.1, `hostApiMajor`=1 and `protocolVersion`=1. The host SDK and owning contract/module files remain the authority; `host-snapshot.json` identifies synchronized inputs.
+The baseline is Widget Workshop SDK 0.1.2, `hostApiMajor`=1 and `protocolVersion`=1. The host SDK and owning contract/module files remain the authority; `host-snapshot.json` identifies synchronized inputs.
 
 ## Formats and compatibility
 

@@ -1,10 +1,24 @@
 # Component package contract
 
-The package `schemaVersion` and `hostApiMajor` are 1; the current SDK is 0.1.1, with independent [versioning rules](../modules/development.md#author-sdk-versioning). Deliver a directory containing `manifest.json`, its local HTML entry and local static resources. Users do not run author scripts. entry defaults to `index.html`; preview defaults to `preview.png` with a placeholder when implicit and absent. Explicit previews must exist and be PNG.
+The package `schemaVersion` and `hostApiMajor` are 1; the current SDK is 0.1.2, with independent [versioning rules](../modules/development.md#author-sdk-versioning). Deliver a directory containing `manifest.json`, its local HTML entry and local static resources. Users do not run author scripts. entry defaults to `index.html`; preview defaults to `preview.png` with a placeholder when implicit and absent. Explicit previews must exist and be PNG.
+
+## Runtime compatibility
+
+Component `version` orders work updates, SDK versions identify development and diagnostic releases, `schemaVersion` identifies manifest structure, and `hostApiMajor` identifies the interface and behavior generation. SDK releases need not match exactly. Published contracts stay compatible within a generation; cross-generation support covers only explicitly implemented and verified generations. Currently only manifest schema 1 and API generation 1 are supported for installation and execution.
+
+Optional `requiredFeatures` defaults to an empty array. It contains at most 256 unique, case-sensitive identifiers, each 1–128 ASCII letters, digits, dots, underscores or hyphens, matching the host handshake feature catalog. Unknown well-formed identifiers are missing mandatory features; malformed or duplicate entries are invalid manifests. Require only essential functionality. Probe optional features and degrade gracefully. Denied capabilities do not make a component version incompatible and do not prevent enabling it. Breaking changes to existing feature semantics require a new API generation; an SDK version increment alone is insufficient.
+
+For example, `"hostApiMajor": 1, "requiredFeatures": ["saves.load", "saves.commit"]` requires that generation and both features. Older hosts may reject this added manifest field; forward readability is not promised.
+
+Package checking, import, Workshop downloads and development reloads reject incompatible inputs with PROTOCOL_UNSUPPORTED and the required generation or missing features. First-install failure creates no installation; Workshop subscriptions and the failure reason remain. Failed updates preserve the active version, data and grants. Activation, layout apply/restore and final transaction commit recheck compatibility.
+
+An installed manifest with readable, valid structure is retained even if it cannot run. The host preserves installation, configuration, saves, KV, grants, bindings and enabled intent, displays the reason and creates no runtime for it. Other compatible components can recover normally. Users may disable or remove a blocked component, but cannot newly enable it. Compatibility is derived from the current host rather than persisted as another switch. Restart or an installation update reevaluates it; enabled components resume automatically when compatible, while explicitly disabled components remain disabled and disconnected displays wait for reconnection. Unknown schemas and corrupt data follow the format rules rather than being guessed or silently cleared.
+
+Any incompatible layout dependency blocks applying or restoring the whole layout and leaves the current layout intact. Rollback does not restore earlier saves, KV or permissions; authors own compatibility of their business data.
 
 ## Manifest fields
 
-Required identity fields include kind: widget, a UUID `widgetId`, three-part numeric version, nonempty name/author and matching `hostApiMajor`. Optional description/tags/i18n/entry/preview/window/capabilities/configuration follow the current schema. Unknown top-level fields, capabilities and field types are rejected. Capabilities are unique names; the array may be empty. configuration is an array with unique keys.
+Required identity fields include kind: widget, a UUID `widgetId`, three-part numeric version, nonempty name/author and matching `hostApiMajor`. Optional description/tags/i18n/entry/preview/window/capabilities/configuration/requiredFeatures follow the current schema. Unknown top-level fields, capabilities and field types are rejected. Capabilities are unique names; the array may be empty. configuration is an array with unique keys.
 
 `allowMultipleInstances` defaults false: one enabled intent across displays, including hidden/disconnected states. When true there is still at most one instance per installation per display. Installation identity is distinct from the author's `widgetId`, and cross-source duplicate additions are rejected.
 
