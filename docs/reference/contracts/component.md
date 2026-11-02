@@ -2,7 +2,7 @@
 
 # 组件包协议
 
-包格式为schemaVersion=1、hostApiMajor=1，当前作者SDK为0.1.0，更新规则见[作者 SDK 版本管理](../modules/development.md#作者-sdk-版本管理)。发布前保持破坏性更新，公开协议为1，内部管理状态格式为2；存档正文格式由作者自行定义。能力声明及可拒绝授权见[宿主接口](host-api.md)。
+包格式为schemaVersion=1、hostApiMajor=1，当前作者SDK为0.1.1，更新规则见[作者 SDK 版本管理](../modules/development.md#作者-sdk-版本管理)。发布前保持破坏性更新，公开协议为1，内部管理状态格式为2；存档正文格式由作者自行定义。能力声明及可拒绝授权见[宿主接口](host-api.md)。
 
 ## 内容目录
 
@@ -46,7 +46,7 @@ location能力需要清单声明和安装授权，拒绝不阻止组件启用；
   "name": "系统概览",
   "description": "展示系统资源，采样不可用时显示说明。",
   "author": "Example Author",
-  "tags": ["System"],
+  "tags": ["system"],
   "entry": "index.html",
   "preview": "preview.png",
   "window": {
@@ -98,7 +98,7 @@ schema v1 顶层未知字段、未知能力或未知字段类型返回校验错�
 
 不允许多实例的组件在版本激活时若已有多个启用实例，激活失败并保留当前版本；用户先停用额外实例后重试。限制按安装身份执行，不把不同来源的安装合并。
 
-组件标签采用单层大类：Information（资讯）、Productivity（效率）、System（系统）、Files（文件）、Media（媒体）、Decoration（装饰）、Entertainment（娱乐，包含桌宠与游戏）、Education（教育）、Lifestyle（生活）、Development（开发）。英文值精确匹配；应用内按宿主语言显示，呈现位置见管理界面（宿主文档：`../modules/ui.md`）。标签不授予能力，不代替版本或权限声明。`Widget`和`Layout`由工坊内容类型自动生成，不属于作者标签。
+组件标签采用单层大类：information（资讯）、productivity（效率）、system（系统）、files（文件）、media（媒体）、decoration（装饰）、entertainment（娱乐，包含桌宠与游戏）、education（教育）、lifestyle（生活）、development（开发）。小写英文标识精确匹配，清单 `tags` 和工坊内容标签使用该标识；`sdk/protocol.json.contentTags` 中的 `name` 保存标识，`enUS`、`zhCN` 分别保存英文和简体中文显示名称；应用内按宿主语言显示，呈现位置见管理界面（宿主文档：`../modules/ui.md`）。SDK 0.1.1 的清单须将原首字母大写标签改为小写；原大写值按未知标签处理，不显示或上传。标签不授予能力，不代替版本或权限声明。`Widget`和`Layout`由工坊内容类型自动生成，不属于作者标签。
 
 ## 包内多语言
 

@@ -1,6 +1,6 @@
 # Host API, authorization and errors
 
-SDK 0.1.0 uses `apiMajor`/`hostApiMajor`=1 and `protocolVersion`=1. The host injects `widgetHost` before business scripts. Wait for ready, use call(method, params, {signal}) and retain unsubscribe functions returned by on. Workers have no direct bridge.
+SDK 0.1.1 uses `apiMajor`/`hostApiMajor`=1 and `protocolVersion`=1. The host injects `widgetHost` before business scripts. Wait for ready, use call(method, params, {signal}) and retain unsubscribe functions returned by on. Workers have no direct bridge.
 
 ## Capabilities and base interfaces
 

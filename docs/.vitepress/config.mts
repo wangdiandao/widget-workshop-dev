@@ -38,7 +38,7 @@ function theme(en: boolean) {
     returnToTopLabel: en ? 'Back to top' : '返回顶部',
     sidebarMenuLabel: en ? 'Menu' : '目录',
     darkModeSwitchLabel: en ? 'Appearance' : '外观',
-    footer: {message: en ? 'Current host contract · SDK 0.1.0 · MIT' : '当前宿主协议 · SDK 0.1.0 · MIT', copyright: 'Widget Workshop contributors'}
+    footer: {message: en ? 'Current host contract · SDK 0.1.1 · MIT' : '当前宿主协议 · SDK 0.1.1 · MIT', copyright: 'Widget Workshop contributors'}
   };
 }
 export default defineConfig({
