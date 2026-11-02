@@ -118,8 +118,8 @@
     {
       "source": "docs/modules/workshop.md",
       "destination": "docs/reference/modules/workshop.md",
-      "sourceSha256": "d3772483fe119bcfb209f55e3e93aba3b65f34f3ea353885ee1006a2efda0d7c",
-      "sha256": "232f73f60c73d9cd763848c3653312a9889ec430ef3aeb568a88144c66656e3f"
+      "sourceSha256": "da8c1df82dfffc728092be47d588e478337de5574df354a0b0ac040b0548472d",
+      "sha256": "0d76fb2c0d0cbea95f9545806f013d6d1594e80e1f24ecf7c933d2cda1769565"
     },
     {
       "source": "examples/edge-garden/audio.js",
