@@ -1,5 +1,5 @@
 {
-  "sdkVersion": "0.2.0",
+  "sdkVersion": "0.1.1",
   "files": [
     {
       "source": "docs/CONTEXT.md",
@@ -22,8 +22,8 @@
     {
       "source": "docs/contracts/component.md",
       "destination": "docs/reference/contracts/component.md",
-      "sourceSha256": "cb710bb6ed2b22ae4c49678a924b377ecc9545bbf873439902dbe4d1d8420094",
-      "sha256": "d6a03c767357a22a6edfd891ae012ff2281ca46da2d10a11cf7d09567641149f"
+      "sourceSha256": "d98187c1b9baade93aa2da17a8d082f0c089a17a264e0b82d512c865ab4c0a34",
+      "sha256": "0aced234b12935c35882b834f9ed6c99d44ecd744a9bf2343abeee2632b1fe8e"
     },
     {
       "source": "docs/contracts/configuration.md",
@@ -40,7 +40,7 @@
     {
       "source": "docs/contracts/host-api.md",
       "destination": "docs/reference/contracts/host-api.md",
-      "sourceSha256": "b72cebc6d86920e104c80f964e8d9317e3058a22162fd9ddc896368c94b753de",
+      "sourceSha256": "dbd1815b13ecb6fce666d09fe8549f59df9e3016ad659ff277b072538e7f466e",
       "sha256": "2ceddef581f0c250c55a533562a6cac70516fc24f4d2a224233a72081711d7f0"
     },
     {
@@ -76,8 +76,8 @@
     {
       "source": "docs/modules/development.md",
       "destination": "docs/reference/modules/development.md",
-      "sourceSha256": "6c6215d8b7453c2c7e223cae2564949ae8aff92c7166b3bad93f7a40afb955ac",
-      "sha256": "12cd46fbbcd94a1a2e920f887548adde80f106ce33bdab715972966dad4b985f"
+      "sourceSha256": "974f1214294ac61a43d4ab2b89ef95e9dedc74f1aa096e2e70e6373c11773ba9",
+      "sha256": "9ec2a8d148ade6bf5e62ae87602a7425be787db5d2359b9d26a5fe31afb5186c"
     },
     {
       "source": "docs/modules/edge-garden.md",
@@ -328,14 +328,14 @@
     {
       "source": "sdk/protocol.json",
       "destination": "docs/public/sdk/protocol.json",
-      "sourceSha256": "60a7cb4053dfb9148514e1e4db2a3d8102e3ab50dffde4154fd868425ff3e54a",
-      "sha256": "eef267e159b98a328360305cede3c6e2ac5b1357b95eb595862a5ae4f15b9d4e"
+      "sourceSha256": "00477afa9e1374fe7c1f0fc98e516813c3292e916edf44aa6707fcdc57dbfa9b",
+      "sha256": "ce3a12727b47b616e06c9b0ca29c981e12fcab1ab3281c1921fa136d21433eec"
     },
     {
       "source": "sdk/protocol.json",
       "destination": "docs/public/sdk/protocol.en.json",
-      "sourceSha256": "60a7cb4053dfb9148514e1e4db2a3d8102e3ab50dffde4154fd868425ff3e54a",
-      "sha256": "e9577850189104b7993dbfa1badb2a183fb39f1dd0374d637f246d46a390da7e"
+      "sourceSha256": "00477afa9e1374fe7c1f0fc98e516813c3292e916edf44aa6707fcdc57dbfa9b",
+      "sha256": "298a5c0146108e721ad0350801cf332f0e58093c305359473e5670ea1b5d72e0"
     },
     {
       "source": "sdk/widget-host.d.ts",

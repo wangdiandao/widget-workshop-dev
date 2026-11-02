@@ -1,6 +1,6 @@
 # Component package contract
 
-The package `schemaVersion` and `hostApiMajor` are 1; the current SDK is 0.2.0, with independent [versioning rules](../modules/development.md#author-sdk-versioning). Deliver a directory containing `manifest.json`, its local HTML entry and local static resources. Users do not run author scripts. entry defaults to `index.html`; preview defaults to `preview.png` with a placeholder when implicit and absent. Explicit previews must exist and be PNG.
+The package `schemaVersion` and `hostApiMajor` are 1; the current SDK is 0.1.1, with independent [versioning rules](../modules/development.md#author-sdk-versioning). Deliver a directory containing `manifest.json`, its local HTML entry and local static resources. Users do not run author scripts. entry defaults to `index.html`; preview defaults to `preview.png` with a placeholder when implicit and absent. Explicit previews must exist and be PNG.
 
 ## Manifest fields
 
@@ -12,7 +12,7 @@ Required identity fields include kind: widget, a UUID `widgetId`, three-part num
 
 Use the exact English values `information`, `productivity`, `system`, `files`, `media`, `decoration`, `entertainment`, `education`, `lifestyle` and `development`. Entertainment includes desktop pets and games. The host localizes their display names; tags do not grant capabilities. `Widget` and `Layout` are generated Workshop content types, not author tags.
 
-Tag values in `manifest.tags` are case-sensitive lowercase identifiers. In `protocol.json.contentTags`, `name` is the identifier; `enUS` and `zhCN` are the English and Simplified Chinese display labels. SDK 0.2.0 requires changing previous capitalized tag values to lowercase; capitalized values are treated as unknown.
+Tag values in `manifest.tags` are case-sensitive lowercase identifiers. In `protocol.json.contentTags`, `name` is the identifier; `enUS` and `zhCN` are the English and Simplified Chinese display labels. SDK 0.1.1 requires changing previous capitalized tag values to lowercase; capitalized values are treated as unknown.
 
 ## Window defaults
 

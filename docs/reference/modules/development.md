@@ -4,7 +4,7 @@
 
 ## 作者 SDK
 
-sdk/是JS、TypeScript声明及机器可读协议的唯一维护来源，当前版本0.2.0。宿主将widget-host.js编译为自身资源，在包主文档创建时、业务脚本执行前提供window.widgetHost，等待注册完成后才导航；重载和版本切换同样自动提供。组件包不携带widget-host.js、widget-host.d.ts或protocol.json，不添加SDK脚本标签。类型声明供编辑器和构建工具从宿主随附sdk目录引用，不进入发布包；protocol.json由宿主和开发工具使用。SDK变化同步宿主、开发工具及许可证。Worker没有直接宿主桥接。组件可通过 `widgetHost.context.language` 和 `language.changed` 无权限读取并跟随宿主实际语言，定义见[宿主语言](../contracts/host-api.md#宿主语言)。强调色、文字缩放及组件原生菜单见[宿主接口](../contracts/host-api.md#强调色与文字缩放)，均无需Capability；菜单按实例文档注册，重载后由作者重新设置。发布前协议可破坏性修改。
+sdk/是JS、TypeScript声明及机器可读协议的唯一维护来源，当前版本0.1.1。宿主将widget-host.js编译为自身资源，在包主文档创建时、业务脚本执行前提供window.widgetHost，等待注册完成后才导航；重载和版本切换同样自动提供。组件包不携带widget-host.js、widget-host.d.ts或protocol.json，不添加SDK脚本标签。类型声明供编辑器和构建工具从宿主随附sdk目录引用，不进入发布包；protocol.json由宿主和开发工具使用。SDK变化同步宿主、开发工具及许可证。Worker没有直接宿主桥接。组件可通过 `widgetHost.context.language` 和 `language.changed` 无权限读取并跟随宿主实际语言，定义见[宿主语言](../contracts/host-api.md#宿主语言)。强调色、文字缩放及组件原生菜单见[宿主接口](../contracts/host-api.md#强调色与文字缩放)，均无需Capability；菜单按实例文档注册，重载后由作者重新设置。发布前协议可破坏性修改。
 
 ready提供context/features/limits；事件先更新context，on返回解除函数，离开取消调用并释放订阅。compatibility分开报告宿主支持、浏览器API存在、实际探测和未实测设备，不能从存在性推定可用性。Capability可拒绝，安装获准后直接调用；外链不逐次确认，实际系统选择/覆盖和本人账号同意保留。
 
@@ -12,11 +12,11 @@ TypeScript使用ES2020、DOM、strict及noEmit，不启用skipLibCheck。HTTP头
 
 ## 作者 SDK 版本管理
 
-作者 SDK 不锁定，当前为 `0.2.0`，采用独立的 `major.minor.patch` 三段版本。`sdk/protocol.json` 的 `sdkVersion` 是当前版本来源，`widget-host.js` 标头、类型声明、宿主分发及作者指南必须同步；SDK 版本不是宿主最低版本或权限授予依据。
+作者 SDK 不锁定，当前为 `0.1.1`，采用独立的 `major.minor.patch` 三段版本。`sdk/protocol.json` 的 `sdkVersion` 是当前版本来源，`widget-host.js` 标头、类型声明、宿主分发及作者指南必须同步；SDK 版本不是宿主最低版本或权限授予依据。
 
 | 阶段/变更 | 递增规则 |
 | --- | --- |
-| `0.x` 开发阶段 | 新增公开接口或破坏性变更递增 minor，patch 归零；破坏性变化须明确列出受影响方法、类型、事件和作者需修改的内容 |
+| `0.x` 开发阶段 | 日常增量调整和修正递增 patch，包括标签目录等有限范围的协议调整；仅用户明确决定进入新的 SDK 功能阶段时递增 minor 并将 patch 归零。破坏性变化须明确列出受影响方法、类型、事件和作者需修改的内容 |
 | `1.0.0` 起 | 不兼容公开接口/行为变更递增 major，兼容新增递增 minor，修复递增 patch；递增后右侧段归零 |
 | 各阶段的修复 | 不改变公开契约的 SDK 实现或声明修正递增 patch；改变约定行为或调用方式按破坏性变更处理 |
 | 无 SDK 变化 | 仅改宿主界面、内部重构、打包、文档措辞或组件业务时保持 SDK 版本 |
