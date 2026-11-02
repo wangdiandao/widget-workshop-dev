@@ -1,6 +1,6 @@
 # 参考资料
 
-本站以当前 Widget Workshop 的 SDK 0.1.0、hostApiMajor=1、protocolVersion=1 为基线。宿主源码中的 sdk 和所属协议/模块是唯一事实来源；host-snapshot.json 给出同步文件的哈希。发布前协议允许破坏性变更，不能据此承诺旧版本兼容。
+本站以当前 Widget Workshop 的 SDK 0.2.0、hostApiMajor=1、protocolVersion=1 为基线。宿主源码中的 sdk 和所属协议/模块是唯一事实来源；host-snapshot.json 给出同步文件的哈希。发布前协议允许破坏性变更，不能据此承诺旧版本兼容。
 
 ## 官方资料
 

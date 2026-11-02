@@ -4,7 +4,7 @@
 
 ## 作者 SDK
 
-sdk/是JS、TypeScript声明及机器可读协议的唯一维护来源，当前版本0.1.0。宿主将widget-host.js编译为自身资源，在包主文档创建时、业务脚本执行前提供window.widgetHost，等待注册完成后才导航；重载和版本切换同样自动提供。组件包不携带widget-host.js、widget-host.d.ts或protocol.json，不添加SDK脚本标签。类型声明供编辑器和构建工具从宿主随附sdk目录引用，不进入发布包；protocol.json由宿主和开发工具使用。SDK变化同步宿主、开发工具及许可证。Worker没有直接宿主桥接。组件可通过 `widgetHost.context.language` 和 `language.changed` 无权限读取并跟随宿主实际语言，定义见[宿主语言](../contracts/host-api.md#宿主语言)。强调色、文字缩放及组件原生菜单见[宿主接口](../contracts/host-api.md#强调色与文字缩放)，均无需Capability；菜单按实例文档注册，重载后由作者重新设置。发布前协议可破坏性修改。
+sdk/是JS、TypeScript声明及机器可读协议的唯一维护来源，当前版本0.2.0。宿主将widget-host.js编译为自身资源，在包主文档创建时、业务脚本执行前提供window.widgetHost，等待注册完成后才导航；重载和版本切换同样自动提供。组件包不携带widget-host.js、widget-host.d.ts或protocol.json，不添加SDK脚本标签。类型声明供编辑器和构建工具从宿主随附sdk目录引用，不进入发布包；protocol.json由宿主和开发工具使用。SDK变化同步宿主、开发工具及许可证。Worker没有直接宿主桥接。组件可通过 `widgetHost.context.language` 和 `language.changed` 无权限读取并跟随宿主实际语言，定义见[宿主语言](../contracts/host-api.md#宿主语言)。强调色、文字缩放及组件原生菜单见[宿主接口](../contracts/host-api.md#强调色与文字缩放)，均无需Capability；菜单按实例文档注册，重载后由作者重新设置。发布前协议可破坏性修改。
 
 ready提供context/features/limits；事件先更新context，on返回解除函数，离开取消调用并释放订阅。compatibility分开报告宿主支持、浏览器API存在、实际探测和未实测设备，不能从存在性推定可用性。Capability可拒绝，安装获准后直接调用；外链不逐次确认，实际系统选择/覆盖和本人账号同意保留。
 
@@ -12,7 +12,7 @@ TypeScript使用ES2020、DOM、strict及noEmit，不启用skipLibCheck。HTTP头
 
 ## 作者 SDK 版本管理
 
-作者 SDK 不锁定，当前为 `0.1.0`，采用独立的 `major.minor.patch` 三段版本。`sdk/protocol.json` 的 `sdkVersion` 是当前版本来源，`widget-host.js` 标头、类型声明、宿主分发及作者指南必须同步；SDK 版本不是宿主最低版本或权限授予依据。
+作者 SDK 不锁定，当前为 `0.2.0`，采用独立的 `major.minor.patch` 三段版本。`sdk/protocol.json` 的 `sdkVersion` 是当前版本来源，`widget-host.js` 标头、类型声明、宿主分发及作者指南必须同步；SDK 版本不是宿主最低版本或权限授予依据。
 
 | 阶段/变更 | 递增规则 |
 | --- | --- |

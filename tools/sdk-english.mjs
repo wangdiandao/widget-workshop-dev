@@ -1,5 +1,5 @@
 const comments = new Map([
-  ['组件清单中的标准标签；英文身份以 protocol.json.contentTags 为准，未知清单值不展示或上传。', 'Standard manifest tags use the English identifiers in protocol.json.contentTags; unknown values are omitted from display and upload.'],
+  ['组件清单中的标准标签；小写英文标识以 protocol.json.contentTags 为准，未知清单值不展示或上传。', 'Standard manifest tags use the lowercase English identifiers in protocol.json.contentTags; unknown values are omitted from display and upload.'],
   ['宿主实际显示语言，无需权限；与 Windows 区域格式 system.locale 分开。', 'Actual host display language, available without authorization; separate from the Windows regional format in system.locale.'],
   ['宿主实际昼夜主题，包含宿主覆盖；无需权限，与 system.theme 分开。', 'Actual host light/dark theme, including the host override; available without authorization and separate from system.theme.'],
   ['Windows 强调色 #RRGGBB；未采样或不可用为 null。', 'Windows accent color as #RRGGBB; null when not sampled or unavailable.'],

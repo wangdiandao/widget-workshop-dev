@@ -1,7 +1,7 @@
 {
   "protocolVersion": 1,
   "apiMajor": 1,
-  "sdkVersion": "0.1.0",
+  "sdkVersion": "0.2.0",
   "features": [
     "i18n",
     "config.get",
@@ -462,43 +462,53 @@
   },
   "contentTags": [
     {
-      "name": "Information",
+      "name": "information",
+      "enUS": "Information",
       "zhCN": "资讯"
     },
     {
-      "name": "Productivity",
+      "name": "productivity",
+      "enUS": "Productivity",
       "zhCN": "效率"
     },
     {
-      "name": "System",
+      "name": "system",
+      "enUS": "System",
       "zhCN": "系统"
     },
     {
-      "name": "Files",
+      "name": "files",
+      "enUS": "Files",
       "zhCN": "文件"
     },
     {
-      "name": "Media",
+      "name": "media",
+      "enUS": "Media",
       "zhCN": "媒体"
     },
     {
-      "name": "Decoration",
+      "name": "decoration",
+      "enUS": "Decoration",
       "zhCN": "装饰"
     },
     {
-      "name": "Entertainment",
+      "name": "entertainment",
+      "enUS": "Entertainment",
       "zhCN": "娱乐"
     },
     {
-      "name": "Education",
+      "name": "education",
+      "enUS": "Education",
       "zhCN": "教育"
     },
     {
-      "name": "Lifestyle",
+      "name": "lifestyle",
+      "enUS": "Lifestyle",
       "zhCN": "生活"
     },
     {
-      "name": "Development",
+      "name": "development",
+      "enUS": "Development",
       "zhCN": "开发"
     }
   ]
