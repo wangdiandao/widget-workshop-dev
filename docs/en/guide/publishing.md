@@ -11,6 +11,8 @@ Deliver a static component directory, not a Git checkout, dependency tree or use
 
 ## Workshop workflow
 
+The GitHub icon beside the Development page title opens the [widget-workshop-dev repository](https://github.com/wangdiandao/widget-workshop-dev).
+
 Use Publish in the selected development component's detail drawer. The host validates current source and prepares a clean upload copy. Source `widgetId` must still match the component; publication need not activate the source and does not replace the running version.
 
 In Preview and publish, choose Publish or Update from the Operation dropdown. Publish creates a new Workshop item and shows the shared metadata. Update also shows a required Your item ID field and change notes. Saving an update draft preserves its target item ID. Once linked, the draft stays in Update mode with a read-only target. If creation has an unknown outcome, recover the original item ID and update it to avoid creating a duplicate.
