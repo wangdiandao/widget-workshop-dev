@@ -209,7 +209,7 @@ window.addEventListener('pagehide', () => { offDrop(); offDropError(); }, {once:
 
 作者逐块拉取和消费后再请求下一范围，取消时在 finally 关闭句柄；不得把大文件先拼成一个无限增长的字符串或 KV 值。导出和带秘密绑定的 HTTP 流分别见本页对应定义。
 
-本协议定义不可信网页与原生宿主的边界。组件不能直接访问宿主对象、Steam SDK或任意本机API；网络和执行策略见下节。发布前协议允许破坏性修改。
+本协议定义不可信网页与原生宿主的边界。组件不能直接访问宿主对象、Steam SDK或任意本机API；网络和执行策略见下节。兼容代际及升级遵循格式版本规则（宿主文档：`../development.md#格式版本兼容与迁移`）。
 
 实际执行及最终投递均校验撤权与失效代次，慢IO使用全局有界队列。
 
@@ -306,7 +306,7 @@ location需要独立声明与授权。网页使用标准 `getCurrentPosition` / 
 
 ## 请求顺序与预算
 
-发布前协议可破坏性调整。features 返回支持的方法名及 `webassembly`、`location`、`events`、`context.visibility`、`request.cancel`、`directory.snapshot`、`network.safeRedirect`；实现支持不代表授权。features供作者探测支持情况并提供降级。所有Capability仍可拒绝。
+协议变更遵循格式版本规则（宿主文档：`../development.md#格式版本兼容与迁移`）。features 返回支持的方法名及 `webassembly`、`location`、`events`、`context.visibility`、`request.cancel`、`directory.snapshot`、`network.safeRedirect`；实现支持不代表授权。features供作者探测支持情况并提供降级。所有Capability仍可拒绝。
 
 解析前每 WebView 限 60 条/秒、突发 16 条，8 MiB/秒、突发 16 MiB；全宿主限 240 条/秒、突发 64 条，32 MiB/秒、突发 64 MiB。超额不解析、不回应不可信 ID，SDK 等待会超时；单条仍限 8 MiB。limits 返回这些值和并发、超时、正文、KV、目录额度。获取 WebView 原始消息的开销无法由预算消除。
 
