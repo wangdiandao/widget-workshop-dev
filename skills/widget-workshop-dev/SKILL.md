@@ -19,6 +19,8 @@ The plugin root is two directories above this file. Resolve all paths from that 
 
 ## API lookup and review
 
+For SDK changes and migration advice, follow [SDK compatibility and interface retirement](../../docs/en/reference/modules/development.md#sdk-compatibility-and-interface-retirement). Do not infer compatibility or retirement from SDK version numbers alone.
+
 Read docs/public/sdk/widget-host.d.ts for exact request/result types and docs/public/sdk/protocol.json for features and budgets. Read the relevant docs/en/reference contract before implementing a host call. Check authorization, ownership, expiry, cancellation and errors, not just argument types. The six capabilities are external.open, location, notifications, clipboard, directory.write and screen.capture; networking and documented base interfaces work without authorization.
 
 During review, trace asynchronous work through completion and cleanup; inspect denial/revocation, stale successes and failures, scoped resources, CAS saves, native hit regions and package contents. Lead with actionable defects, locations, consequences and repairs. Report only validation actually executed. Static checks are not actual WebView, input-device or multi-monitor tests.
