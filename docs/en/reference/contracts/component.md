@@ -4,6 +4,8 @@ The package `schemaVersion` and `hostApiMajor` are 1; the current SDK is 0.1.2, 
 
 ## Runtime compatibility
 
+Interface deprecation and retirement follow the [SDK compatibility policy](../modules/development.md#sdk-compatibility-and-interface-retirement).
+
 Component `version` orders work updates, SDK versions identify development and diagnostic releases, `schemaVersion` identifies manifest structure, and `hostApiMajor` identifies the interface and behavior generation. SDK releases need not match exactly. Published contracts stay compatible within a generation; cross-generation support covers only explicitly implemented and verified generations. Currently only manifest schema 1 and API generation 1 are supported for installation and execution.
 
 Optional `requiredFeatures` defaults to an empty array. It contains at most 256 unique, case-sensitive identifiers, each 1–128 ASCII letters, digits, dots, underscores or hyphens, matching the host handshake feature catalog. Unknown well-formed identifiers are missing mandatory features; malformed or duplicate entries are invalid manifests. Require only essential functionality. Probe optional features and degrade gracefully. Denied capabilities do not make a component version incompatible and do not prevent enabling it. Breaking changes to existing feature semantics require a new API generation; an SDK version increment alone is insufficient.

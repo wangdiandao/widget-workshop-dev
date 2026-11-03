@@ -306,6 +306,8 @@ location需要独立声明与授权。网页使用标准 `getCurrentPosition` / 
 
 ## 请求顺序与预算
 
+公开接口的兼容、弃用与退役遵循[SDK 兼容与接口退役](../modules/development.md#sdk-兼容与接口退役)。
+
 协议变更遵循格式版本规则（宿主文档：`../development.md#格式版本兼容与迁移`）。features 返回支持的方法名及 `webassembly`、`location`、`events`、`context.visibility`、`request.cancel`、`directory.snapshot`、`network.safeRedirect`；实现支持不代表授权。features供作者探测支持情况并提供降级。所有Capability仍可拒绝。
 
 解析前每 WebView 限 60 条/秒、突发 16 条，8 MiB/秒、突发 16 MiB；全宿主限 240 条/秒、突发 64 条，32 MiB/秒、突发 64 MiB。超额不解析、不回应不可信 ID，SDK 等待会超时；单条仍限 8 MiB。limits 返回这些值和并发、超时、正文、KV、目录额度。获取 WebView 原始消息的开销无法由预算消除。

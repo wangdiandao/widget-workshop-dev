@@ -22,8 +22,8 @@
     {
       "source": "docs/contracts/component.md",
       "destination": "docs/reference/contracts/component.md",
-      "sourceSha256": "b53da2e32d741165b3861d4385f4d6557e51ac2fe6a683d0692cb33c8177f387",
-      "sha256": "3a6d65327fcb90a26398e4fd6ffcbe49ed862a62fb317f0f7cd5e15d166d4da0"
+      "sourceSha256": "71ca9a1376740b4780f096500270e2a3418363ec02c3be6012d713630b5eb6d2",
+      "sha256": "cf356d83f5bfa281b0252546a33e9b06cdcc791606f3637f2aef3013e8a07057"
     },
     {
       "source": "docs/contracts/configuration.md",
@@ -40,8 +40,8 @@
     {
       "source": "docs/contracts/host-api.md",
       "destination": "docs/reference/contracts/host-api.md",
-      "sourceSha256": "c326bef73d001860b0c031715101a1c1fd953c0e3f7bd25632a3a55da7efbeab",
-      "sha256": "04d8e0a62290f77275170ab2dbdeca3de8e268c4e9685cbda0ee7864e5da78e0"
+      "sourceSha256": "226ae778e369f34b2d23e2e1a6fd94e45264b2b70ad28820b19f9697eef17367",
+      "sha256": "f628be738175c15cfd7aa1c1bbef69dfc2d95a2738221666f9c6c053b7f50675"
     },
     {
       "source": "docs/contracts/layout.md",
@@ -76,8 +76,8 @@
     {
       "source": "docs/modules/development.md",
       "destination": "docs/reference/modules/development.md",
-      "sourceSha256": "d462a23796d987b014188a66be743a2cd1b03083b16460a3e0c6f967b05ba56e",
-      "sha256": "5e3c91193c2a7eb485a1d4be4c8c43d218f7aa6bf09469032c40dd2e13710e03"
+      "sourceSha256": "edad5400bd8d1bbfd9340221220ccfce376b5d7d95f42227ffde605a897219cf",
+      "sha256": "5aa44961756a0977324e1afa69b83e13e86ff3c17b36d23d72dd276f4059f8bf"
     },
     {
       "source": "docs/modules/edge-garden.md",
