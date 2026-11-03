@@ -32,6 +32,8 @@
 
 提醒工具保持操作槽直到原调用结束；计算画布的兼容报告也只有一个 controller。来源：提醒协议、examples/worker-canvas/main.js 的 reportController。测试连续开始/取消时同时存活操作数仍有上限。对可立即替换的纯读取任务，也要用代次阻止旧结果并遵守宿主在途额度。
 
+宿主队列按安装和全局限制执行及排队总数，满载返回 `QUOTA_EXCEEDED`，取消会及时剔除尚未执行的任务。业务侧仍须合并替换操作并限制重试，不能用连续取消规避背压；已经开始的原生调用可能尚在退出。
+
 ## 6. Worker 绘制需要确认，不只是节流
 
 星河微光为状态消息加 sequence，收到匹配 applied 后才发下一份 latest。计算画布同样有 presentationInFlight/pendingPresentation 和五秒响应期限。仅按固定 interval postMessage 不能保证慢 Worker 不积压。

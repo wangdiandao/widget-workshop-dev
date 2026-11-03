@@ -1,6 +1,6 @@
 # Host API, authorization and errors
 
-SDK 0.1.1 uses `apiMajor`/`hostApiMajor`=1 and `protocolVersion`=1. The host injects `widgetHost` before business scripts. Wait for ready, use call(method, params, {signal}) and retain unsubscribe functions returned by on. Workers have no direct bridge.
+SDK 0.1.2 uses `apiMajor`/`hostApiMajor`=1 and `protocolVersion`=1. The host injects `widgetHost` before business scripts. Wait for ready, use call(method, params, {signal}) and retain unsubscribe functions returned by on. Workers have no direct bridge.
 
 ## Capabilities and base interfaces
 
@@ -21,6 +21,8 @@ Context includes identity, view, feature list, limits, configuration, granted ca
 Public failures include `INVALID_ARGUMENT`, `PROTOCOL_UNSUPPORTED`, `METHOD_NOT_FOUND`, `CAPABILITY_UNDECLARED`, `CAPABILITY_DENIED`, `RESOURCE_UNAVAILABLE`, `NOT_FOUND`, `QUOTA_EXCEEDED`, `TIMEOUT`, `CANCELLED` and `INTERNAL_ERROR`. Saves add their documented conflict errors.
 
 Requests and final delivery validate the original instance/document, cancellation, grants and dependencies. Timeouts, navigation, disablement and revocation invalidate work; cancelling cannot undo already committed side effects. Public errors omit secrets, stack traces and personal paths.
+
+Host request queues are bounded per installation as well as globally, counting both running and queued work. Saturation returns `QUOTA_EXCEEDED`. Cancellation removes queued work promptly; active native operations retain their capacity until they finish safely. `config.set` and `window.setSize` check validity after acquiring the transaction lock and before publishing state. A cancellation that arrives after publication does not undo it.
 
 features indicate host support, not authorization or successful device execution. compatibility separates API existence, actual probes and untested devices. Read [complete method/event declarations and machine budgets](../types.md), [saves](saves.md) and the specific desktop contracts before implementation.
 

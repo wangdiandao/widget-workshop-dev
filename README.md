@@ -53,7 +53,7 @@ For local use, run `claude --plugin-dir .`, or register the repository with `cod
 | skills | Shared Codex / Claude Code Skills |
 | tools | Repository tooling |
 
-The host provides SDK 0.1.0 with `hostApiMajor` and `protocolVersion` set to 1. Use the declarations for development, but do not bundle SDK files into a component. See the [reference](docs/en/reference/index.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+The host provides SDK 0.1.2 with `hostApiMajor` and `protocolVersion` set to 1. Use the declarations for development, but do not bundle SDK files into a component. See the [reference](docs/en/reference/index.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
 ## Feedback
 

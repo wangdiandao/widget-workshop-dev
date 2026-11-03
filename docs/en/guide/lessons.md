@@ -32,6 +32,8 @@ Do not release a mutation slot as soon as the cancel button is pressed. The unde
 
 Reminder operations retain their slot until the original request ends; compatibility reports have one `reportController`. Sources: reminders contract and worker-canvas/`main.js`. Rapid start/cancel must keep outstanding work bounded. Replaceable reads still need generations and host pending-request limits.
 
+Host queues cap running and queued work per installation and globally. Saturation returns `QUOTA_EXCEEDED`, and cancellation promptly removes queued work. Authors must still coalesce replaceable work and bound retries; repeated cancellation is not a way around backpressure, and an active native call may still be finishing.
+
 ## 6. Worker drawing needs acknowledgements
 
 Stardust gives each state a sequence and sends the next latest state only after the matching applied acknowledgement. The computation canvas uses `presentationInFlight`/`pendingPresentation` and a five-second response deadline. Posting at a fixed interval does not establish backpressure.

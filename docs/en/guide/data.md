@@ -45,3 +45,5 @@ Here, `signal` belongs to the current operation. Validate the loaded business va
 `SAVE_CONFLICT` requires reloading and a business merge or explicit conflict UI. Do not overwrite using the latest revision blindly or retry forever. A lost response requires a load before another write. Cancellation does not undo a published commit.
 
 KV allows 256 KiB per value and 16 MiB per instance. Saves have separate budgets and keep the previous successful revision. Save at checkpoints and coalesce updates rather than writing every frame. Neither layouts nor package rollback restore persistent progress. See [saves](../reference/contracts/saves.md).
+
+The host component page offers installation-wide Clear after every instance is disabled and the user confirms. Authors initialize empty progress after clearing. The host provides neither save export nor backup import. Author-controlled `saves.restore` only restores the internal previous successful snapshot. Keep list visibility separate from editor selection: resume shared-data refresh when leaving editing without a draft, and preserve input when saving fails.

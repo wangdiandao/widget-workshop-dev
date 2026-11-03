@@ -22,6 +22,10 @@ The host serializes atomic publication. Authors reload/merge or present a confli
 
 Use elapsedSince with a business `maxMs` for offline calculation, handling `clockMovedBack` and capped. Local timestamps are not anti-cheat evidence. onClosing provides one bounded normal-shutdown opportunity per document, with no veto; regular checkpoints remain necessary. See [the game recipe](../../recipes/game.md).
 
+## Host save management
+
+The component drawer provides Clear for the entire installation after all its instances are disabled. Confirmation defaults to Cancel. Clearing removes save slots and their recovery copies while retaining configuration, KV, cache and browser data. The host does not provide a save export or backup import action. Author-controlled `saves.restore` still publishes the previous successful slot snapshot as a new revision.
+
 ## Source and related declarations
 
 Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).

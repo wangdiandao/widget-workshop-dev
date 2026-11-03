@@ -12,6 +12,8 @@ The current reader and writer use canonical `schemaVersion: 1`. Historical varia
 
 Display IDs are stable internal identities, not connection order or display numbers. Disconnection preserves intent without silently migrating content. Global language/theme/autostart and local display aliases are not shared layout settings.
 
+Layout details show dependencies, compatibility and configuration fallback results without an arrangement diagram. Preflight uses a published snapshot; preparation and final commit revalidate state. Importing a file whose `layoutId` already exists creates a separate local copy with a new UUID, preserving the original record and bindings. New local layouts start at `1.0.0`; overwrite and actual rename advance the work version. Publication negotiates and freezes a version above the remote version; retries retain the same content and version.
+
 ## Source and related declarations
 
 Exact method signatures and complete machine budgets are shared in [SDK declarations](../types.md).
