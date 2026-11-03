@@ -2,11 +2,13 @@
 
 # 宿主接口与Capability
 
-当前SDK0.1.0，hostApiMajor/apiMajor=1、protocolVersion=1。类型声明与机器可读字段以sdk唯一来源同步。
+当前SDK0.1.2，hostApiMajor/apiMajor=1、protocolVersion=1。类型声明与机器可读字段以sdk唯一来源同步。
 
 组件自行通过直接联网或通用network接口完成登录、令牌和服务请求；参见[组件登录验证](../modules/github.md)。
 
 ## 参数与关联协议
+
+组件请求使用按安装计额的有界队列，额度包含执行中与排队任务，满载明确返回QUOTA_EXCEEDED。取消、超时和文档失效及时释放尚未执行的任务；已经执行的原生调用仍在安全边界结束，不因取消立即释放其活动额度。配置和尺寸修改在取得事务锁后及状态指针发布前检查有效性；已经提交的状态不由迟到取消回滚。
 
 HTTP头与目标参数规则：HTTP 头必须在明文 `{name,value}` 与秘密 `{name,secretBindingId,prefix?}` 中二选一，明文形式不得携带 prefix。`target.open` 也必须在 `{bindingId}` 与 `{directoryBindingId,relativePath}` 中二选一，不接受混合字段或固定绑定附加 relativePath；捕获票据和执行复用同一选择器检查，非法形式返回 INVALID_ARGUMENT。此处拒绝歧义输入，不扩张已有目标范围或权限。
 

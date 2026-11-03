@@ -40,14 +40,14 @@
     {
       "source": "docs/contracts/host-api.md",
       "destination": "docs/reference/contracts/host-api.md",
-      "sourceSha256": "226ae778e369f34b2d23e2e1a6fd94e45264b2b70ad28820b19f9697eef17367",
-      "sha256": "f628be738175c15cfd7aa1c1bbef69dfc2d95a2738221666f9c6c053b7f50675"
+      "sourceSha256": "33dd48bfadcdfc5b3849f6299afb266e7770bb4114eb441534684693474248e6",
+      "sha256": "6fc092164ac641b3152abac7db0cc0968a72424543e4f2c9771c4687499456c7"
     },
     {
       "source": "docs/contracts/layout.md",
       "destination": "docs/reference/contracts/layout.md",
-      "sourceSha256": "de3c5b88af8cac2938f2cc2ad49e6013e223112f2764ec3d393f9c7b6cb3adc0",
-      "sha256": "f83013f72233b4230a13b50293c74a041f93bfcbb4cf4b7631c6c9bb7b28487f"
+      "sourceSha256": "a5f9d13f0da8ac59361c2acf01f03240f79815666ade4dd8b2c52fbee118951e",
+      "sha256": "1efa294cf50b8bd66df0082595453ae4af138d5e0f85faa169f67d6c0087b3f8"
     },
     {
       "source": "docs/contracts/reminders.md",
@@ -58,8 +58,8 @@
     {
       "source": "docs/contracts/saves.md",
       "destination": "docs/reference/contracts/saves.md",
-      "sourceSha256": "b27a2f9eb711a9a2e937f681cfb3022ca7de356f0ed559b78a392a0e467b6ef2",
-      "sha256": "361de4729b61e95d2c3c35520a39542c0ec128488d2a81a21efe7c7ab3868087"
+      "sourceSha256": "e907d4d51ab921b11de75fda1b085f42273bae0b666ee1add2981d2bb5dd0c0a",
+      "sha256": "9b8a8df7447260afaa42ff05ebc4d9eb10d15b5e82373c420bc3323f831bf473"
     },
     {
       "source": "docs/contracts/system-integration.md",
@@ -118,8 +118,8 @@
     {
       "source": "docs/modules/workshop.md",
       "destination": "docs/reference/modules/workshop.md",
-      "sourceSha256": "cd4f4fe2a07085b443a1f6785da5c5814eb3956546680815e803d28118553305",
-      "sha256": "2ced55578ceeebbe3d6220bf1dfca98734058ccaa77a52bedadda214cde21199"
+      "sourceSha256": "8ae8e49d86bf37a34a242bbf6159a9e4fccefe7def4e679f48a2553c44d5d99f",
+      "sha256": "eab7891fabf1deda6412f7a21517aade25597ebea605c130491a1f93e183a74c"
     },
     {
       "source": "examples/edge-garden/audio.js",
