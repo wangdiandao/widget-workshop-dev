@@ -2,6 +2,10 @@
 
 # 开发组件与作者SDK
 
+## 源码目录维护
+
+开发详情的“重新定位”允许用户重新选择同 UUID 的源码目录，校验复制成功后更新绑定并沿用候选激活流程；不能切换来源或更换组件身份。选择前保护未保存配置，目录校验失败保留旧绑定和运行版本；候选运行失败保留当前活动版本。
+
 ## 作者 SDK
 
 sdk/是JS、TypeScript声明及机器可读协议的唯一维护来源，当前版本0.1.2。宿主将widget-host.js编译为自身资源，在包主文档创建时、业务脚本执行前提供window.widgetHost，等待注册完成后才导航；重载和版本切换同样自动提供。组件包不携带widget-host.js、widget-host.d.ts或protocol.json，不添加SDK脚本标签。类型声明供编辑器和构建工具从宿主随附sdk目录引用，不进入发布包；protocol.json由宿主和开发工具使用。SDK变化同步宿主、开发工具及许可证。Worker没有直接宿主桥接。组件可通过 `widgetHost.context.language` 和 `language.changed` 无权限读取并跟随宿主实际语言，定义见[宿主语言](../contracts/host-api.md#宿主语言)。强调色、文字缩放及组件原生菜单见[宿主接口](../contracts/host-api.md#强调色与文字缩放)，均无需Capability；菜单按实例文档注册，重载后由作者重新设置。协议版本及兼容范围遵循格式版本规则（宿主文档：`../development.md#格式版本兼容与迁移`）。
