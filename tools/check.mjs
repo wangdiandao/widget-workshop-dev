@@ -33,6 +33,11 @@ assert.equal(codexMarket.plugins[0].source.path, './');
 assert.equal(claudeMarket.plugins[0].source, './');
 assert.equal(codexMarket.plugins[0].name, portable.name);
 assert.equal(claudeMarket.plugins[0].name, portable.name);
+assert.equal(claudeMarket.plugins[0].version, portable.version);
+assert.equal((await json('package.json')).version, portable.version);
+const packageLock = await json('package-lock.json');
+assert.equal(packageLock.version, portable.version);
+assert.equal(packageLock.packages[''].version, portable.version);
 const snapshot = await json('host-snapshot.json');
 for (const file of snapshot.files) {
   const bytes = await readFile(path.join(root, file.destination));
