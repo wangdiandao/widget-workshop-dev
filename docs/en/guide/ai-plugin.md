@@ -2,6 +2,8 @@
 
 The repository root is the plugin. English Skills share bundled documentation, types and examples; developer documentation is available in Chinese and English. The plugin adds no MCP service or native execution capability and does not install examples automatically.
 
+The plugin version identifies the complete bundle of Skills, documentation, examples and API references. It is independent of the host application and author SDK versions. Skills route tasks to bundled documentation, so a documentation change does not always require rewriting a Skill, but published bundle updates receive a new plugin version.
+
 ## Install
 
 Codex:
