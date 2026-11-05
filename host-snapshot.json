@@ -22,8 +22,8 @@
     {
       "source": "docs/contracts/component.md",
       "destination": "docs/reference/contracts/component.md",
-      "sourceSha256": "71ca9a1376740b4780f096500270e2a3418363ec02c3be6012d713630b5eb6d2",
-      "sha256": "cf356d83f5bfa281b0252546a33e9b06cdcc791606f3637f2aef3013e8a07057"
+      "sourceSha256": "3a9663eda2733c05942ea57ba6291a86502f2fa6f7c3e2b37145277a215bf1d0",
+      "sha256": "3c7f49c5065a07f44ce3c073909d57d21f45ac60a1b9ed5050354856fc385519"
     },
     {
       "source": "docs/contracts/configuration.md",
@@ -58,8 +58,8 @@
     {
       "source": "docs/contracts/saves.md",
       "destination": "docs/reference/contracts/saves.md",
-      "sourceSha256": "e907d4d51ab921b11de75fda1b085f42273bae0b666ee1add2981d2bb5dd0c0a",
-      "sha256": "9b8a8df7447260afaa42ff05ebc4d9eb10d15b5e82373c420bc3323f831bf473"
+      "sourceSha256": "c3857538fe10853a594c8a6e985bf5c7200a4f6e8d74596bbd67e1ab01b22d7e",
+      "sha256": "4c9e319d4a152fcc318ae051740d0aefc66f5645ae2dc47479479263709f1cc8"
     },
     {
       "source": "docs/contracts/system-integration.md",
@@ -76,8 +76,8 @@
     {
       "source": "docs/modules/development.md",
       "destination": "docs/reference/modules/development.md",
-      "sourceSha256": "edad5400bd8d1bbfd9340221220ccfce376b5d7d95f42227ffde605a897219cf",
-      "sha256": "5aa44961756a0977324e1afa69b83e13e86ff3c17b36d23d72dd276f4059f8bf"
+      "sourceSha256": "d96fd135c67900da2d4517cbedd7fcff8902f7d55577270dcac3c1ab2db82914",
+      "sha256": "3276625c2bfbd0a0903759250e354cfc302ca71afe1cb13edfce74a6ad71fd82"
     },
     {
       "source": "docs/modules/edge-garden.md",
@@ -106,8 +106,8 @@
     {
       "source": "docs/modules/runtime.md",
       "destination": "docs/reference/modules/runtime.md",
-      "sourceSha256": "012625f4352962aed298a7a3e96cb2251dde862fd22df7459fb0cdd687243057",
-      "sha256": "031140b7cf366da906feba24c7b74eca801de73d5416a9cbeeec9cf8f7f7be90"
+      "sourceSha256": "c9faeffd0b1de7c858a57027c7c28d72af765bc5af22c47b05f3486342e02709",
+      "sha256": "a194b6df6fb815171294c4e3799eb2d349c56145448fbfb59c541fcae26e953d"
     },
     {
       "source": "docs/modules/stardust.md",

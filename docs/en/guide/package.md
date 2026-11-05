@@ -28,6 +28,6 @@ Use `docs/public/sdk/widget-host.d.ts` outside the package for editor/compiler t
 
 The host runs a validated immutable copy, not the author directory directly. Development reloads use content hashes, allowing the declared version to stay unchanged; invalid input preserves the last successful version. Formal versions use three nonnegative integers.
 
-Ordinary local import does not watch source files or offer directory updates. Add a development component explicitly; after moving the directory, remove the development installation and add it again from the new location. Removing development installation preserves author source but cleans installation-owned data.
+Ordinary local import does not watch source files or update an existing installation. Update in local component details accepts the same UUID with a higher package version, validates and activates a candidate, and preserves installation identity, permissions, configuration and saves. Add a development component explicitly; after moving its directory, use Relocate to select the new directory with the same UUID. Validation failure preserves the old binding; candidate activation failure preserves the current running version. Removing a development installation preserves author source but cleans installation-owned data.
 
 See [the package contract](../reference/contracts/component.md) for exact fields, path and size budgets, and [development behavior](../reference/modules/development.md) for reloads and draft protection.
