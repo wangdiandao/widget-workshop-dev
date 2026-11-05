@@ -70,4 +70,10 @@ File tools remove handlers, abort work and clear previews on `pagehide`. The com
 
 Sources: file-tool/`main.js` and worker-canvas/`main.js`. Give each handle, subscription, timer and object URL an owner, release in finally where appropriate, and make document invalidation irreversible. Verify success, denial, cancellation, timeout and closure separately.
 
+## 12. Keep record controls across refreshes
+
+Key each record view by its stable ID. Update changed text and state, move existing nodes when order changes, and remove only deleted records. Replacing the whole list on every read recreates controls and can interrupt interaction. Capture the ID in a click handler, then look up the current record instead of retaining an old copy of its body.
+
+The host's built-in notes widget uses this pattern. Check node identity after unchanged reads, remote edits, reordering, insertion and deletion. Test focus, scrolling and drafts separately: reusing a node does not guarantee focus survives disabling it. Keep drafts after failed saves, and release timers, handlers and view references on closure. Built-in notes ships with the host and is not one of this guide's copyable example packages.
+
 Use the [recipes](../recipes/index.md) to choose source material, then select the relevant failure cases above.
