@@ -82,8 +82,8 @@
     {
       "source": "docs/modules/edge-garden.md",
       "destination": "docs/reference/modules/edge-garden.md",
-      "sourceSha256": "c0f9575750d75fda6c6dbabddbb3ef6778da08a898fa34c3161efaf825f7b0ac",
-      "sha256": "4bcc3edb1c55aac56eedde35926e6bb5b0297accf5fe2c4f1772c242c121309f"
+      "sourceSha256": "5c9eedc970f5a8e825ab2c1d07e8aa5250a93b74f6fc25cacb737d6305910d15",
+      "sha256": "e47a426c067c6a528dade8768341664450794d94595a748cdef6f8dde2c47ea4"
     },
     {
       "source": "docs/modules/file-tool.md",
